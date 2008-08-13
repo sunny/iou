@@ -1,0 +1,12 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    %title
+      IOU
+      = " - #{h @title}" if @title
+  %body
+    %header
+      %p= link_to "IOU", root_path
+
+    = yield
+
