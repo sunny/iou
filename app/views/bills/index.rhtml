@@ -1,0 +1,23 @@
+<h1>Latest Bills</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Transaction</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for bill in @bills %>
+    <tr>
+      <td><%=h bill.text %></td>
+      <td><%=h bill.amount %> €</td>
+      <td><%=h bill.title %></td>
+      <td><%=h bill.transaction_at %></td>
+      <td><%= link_to "Show", bill %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
