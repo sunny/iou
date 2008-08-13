@@ -1,5 +1,8 @@
 
+
 %h1= @title="New bill"
+
+= error_messages_for 'bill'
 
 - form_for @bill do |f|
   = render :partial => 'form', :locals => { :f => f }

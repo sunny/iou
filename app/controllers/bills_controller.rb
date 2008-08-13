@@ -10,4 +10,13 @@ class BillsController < ApplicationController
   def new
     @bill = Bill.new
   end
+
+  def create
+    @bill = Bill.create(params[:bill])
+    if @bill.errors.empty?
+      redirect_to @bill
+    else
+      render :action => 'new'
+    end
+  end
 end
