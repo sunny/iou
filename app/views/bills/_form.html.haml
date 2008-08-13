@@ -1,0 +1,34 @@
+%p
+  %label{:for => "bill_title"} Description
+  = f.text_field :title
+
+%p
+  %label{:for => "bill_from_user_id"} From
+  = f.collection_select :from_user_id, User.all, :id, :name
+
+%p
+  %label{:for => "bill_to_user_id"} To
+  = f.collection_select :to_user_id, User.all, :id, :name
+
+%ul#actions
+  %li
+    = f.radio_button :kind, 1
+    %label{:for => "bill_kind_1"} owed
+  %li
+    = f.radio_button :kind, 2
+    %label{:for => "bill_kind_2"} lent
+  %li
+    = f.radio_button :kind, 3
+    %label{:for => "bill_kind_3"} gave
+  %li
+    = f.radio_button :kind, 4
+    %label{:for => "bill_kind_4"} got
+
+%p
+  %label{:for => "bill_title"} Amount
+  = f.text_field :amount, :size => 4
+  €
+%p
+  %label{:for => "bill_transaction_at_3i"} Date
+  = f.date_select :transaction_at, :order => [:day, :month, :year]
+
