@@ -1,0 +1,20 @@
+%h1= @title="Latest Bills"
+
+%table
+  %thead
+    %tr
+      %th Transaction
+      %th Amount
+      %th Description
+      %th Date
+
+  %tbody
+    - for bill in @bills
+      %tr
+        %td= h bill.text
+        %td= h bill.amount
+        %td= h bill.title
+        %td= h bill.transaction_at
+        %td= link_to "Show", bill
+
+
