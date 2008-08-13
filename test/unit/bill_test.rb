@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class BillTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  def test_verb
+    assert_equal bills(:one).verb, 'owed'
+    assert_equal bills(:two).verb, 'lent'
   end
 end

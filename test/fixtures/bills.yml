@@ -11,7 +11,7 @@ one:
 two:
   title: Laundry
   amount: 6.5
-  kind: 1
+  kind: 2
   from_user: sunny
   to_user: julie
   transaction_at: 2008-08-13
