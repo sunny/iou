@@ -1,0 +1,9 @@
+- @title = "Bill: #{@bill.title}"
+%h1 Bill
+
+%article.bill
+  %p= h @bill.text
+  %p= h @bill.amount.to_s + " €"
+  %p= h @bill.transaction_at
+  %p= h @bill.title
+
