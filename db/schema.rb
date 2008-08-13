@@ -9,12 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080813204551) do
+ActiveRecord::Schema.define(:version => 20080813212240) do
 
   create_table "bills", :force => true do |t|
     t.string   "title"
     t.float    "amount"
-    t.integer  "type"
+    t.integer  "kind"
     t.integer  "from_user_id"
     t.integer  "to_user_id"
     t.date     "transaction_at"

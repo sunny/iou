@@ -2,16 +2,16 @@
 
 one:
   title: Dinner at the Hog's Head
-  amount: 1.5
-  type: 42
+  amount: 42
+  kind: 1
   from_user: sunny
   to_user: julie
   transaction_at: 2008-08-11
 
 two:
   title: Laundry
-  amount: 1.5
-  type: 6.5
+  amount: 6.5
+  kind: 1
   from_user: sunny
   to_user: julie
   transaction_at: 2008-08-13
