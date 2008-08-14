@@ -13,8 +13,11 @@
   %tbody
     - for bill in @bills
       %tr
-        %td= h bill.text
-        %td= h bill.amount
+        %td
+          %strong= h bill.from_user.name
+          = h bill.past_verb
+          %strong= h bill.to_user.name
+        %td= h bill.amount.to_s + " €"
         %td= h bill.title
         %td= h bill.transaction_at
         %td= link_to "Show", bill

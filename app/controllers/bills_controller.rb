@@ -1,6 +1,6 @@
 class BillsController < ApplicationController
   def index
-    @bills = Bill.all
+    @bills = Bill.all :include => [:from_user, :to_user]
   end
 
   def show

@@ -9,10 +9,6 @@ class Bill < ActiveRecord::Base
 
   PAST_VERBS = %w[. owed lent gave got]
 
-  def text
-    "#{from_user.name} #{past_verb} #{to_user.name}"
-  end
-
   def past_verb
     PAST_VERBS[kind]
   end
