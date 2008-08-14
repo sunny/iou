@@ -1,14 +1,8 @@
-%p
-  %label{:for => "bill_title"} Description
-  = f.text_field :title
 
 %p
-  %label{:for => "bill_from_user_id"} From
-  = f.collection_select :from_user_id, User.all, :id, :name
-
-%p
-  %label{:for => "bill_to_user_id"} To
-  = f.collection_select :to_user_id, User.all, :id, :name
+  %label{:for => "bill_amount"} Amount
+  = f.text_field :amount, :size => 4
+  €
 
 %ul#actions
   %li
@@ -25,9 +19,21 @@
     %label{:for => "bill_kind_4"} got
 
 %p
-  %label{:for => "bill_title"} Amount
-  = f.text_field :amount, :size => 4
-  €
+  %label{:for => "bill_from_user_id"} From
+  = f.collection_select :from_user_id, User.all, :id, :name
+
+%p
+  %label{:for => "bill_to_user_id"} To
+  = f.collection_select :to_user_id, User.all, :id, :name
+
+
+
+
+%p
+  %label{:for => "bill_title"} Description
+  = f.text_field :title
+
+
 %p
   %label{:for => "bill_transaction_at_3i"} Date
   = f.date_select :transaction_at, :order => [:day, :month, :year]
