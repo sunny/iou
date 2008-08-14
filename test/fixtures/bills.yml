@@ -1,6 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+owed:
   title: Dinner at the Hog's Head
   amount: 42
   kind: 1
@@ -8,10 +8,26 @@ one:
   to_user: julie
   transaction_at: 2008-08-11
 
-two:
+lent:
   title: Laundry
   amount: 6.5
   kind: 2
   from_user: sunny
   to_user: julie
   transaction_at: 2008-08-13
+
+gave:
+  title: 
+  amount: 2
+  kind: 3
+  from_user: julie
+  to_user: sunny
+  transaction_at: 2008-08-14
+
+got:
+  title: Bleu canard
+  amount: 8.99
+  kind: 4
+  from_user: julie
+  to_user: sunny
+  transaction_at: 2008-08-14

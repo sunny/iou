@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  def test_name_cannot_be_blank
+    user = users(:sunny)
+    user.name = "   "
+    assert !user.valid?
   end
 end
