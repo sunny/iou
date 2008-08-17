@@ -1,33 +1,24 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+julie_owes_sunny:
+  description: Bleu canard
+  amount: 8
+  payment: 0
+  from_user: julie
+  to_user: sunny
+  transaction_at: 2008-08-10
 
-sunny_pays:
-  description: Dinner at the Hog's Head
-  amount: 42
-  payment: 1
+sunny_owes_julie:
+  description: Laundry
+  amount: 6
+  payment: 0
   from_user: sunny
   to_user: julie
   transaction_at: 2008-08-11
 
-sunny_owes:
-  description: Laundry
-  amount: 6.5
-  payment: 0
-  from_user: sunny
-  to_user: julie
-  transaction_at: 2008-08-13
-
-julie_pays:
+sunny_is_reimbursed_by_julie:
   description: 
-  amount: 5.5
+  amount: 1.5
   payment: 1
   from_user: julie
   to_user: sunny
-  transaction_at: 2008-08-14
+  transaction_at: 2008-08-12
 
-julie_owes:
-  description: Bleu canard
-  amount: 42
-  payment: 0
-  from_user: julie
-  to_user: sunny
-  transaction_at: 2008-08-14

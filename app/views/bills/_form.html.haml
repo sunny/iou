@@ -1,19 +1,13 @@
 
 
-%div{:style=>'overflow:auto'}
-  %p#form_from{:style=>'float:left'}
-    = f.collection_select :from_user_id, User.all, :id, :name, :title => "From"
 
-  %ul#form_types{:style=>'float:left;margin:0 2em'}
-    %li
-      = f.radio_button :payment, false
-      %label{:for => "bill_payment_false"} owes
-    %li
-      = f.radio_button :payment, true
-      %label{:for => "bill_payment_true"} payed
-
-  %p#form_to{:style=>'float:left'}
-    = f.collection_select :to_user_id, User.all, :id, :name, :title => "To"
+%p
+  = f.collection_select :to_user_id, User.all, :id, :name
+  = f.radio_button :payment, false
+  %label{:for => "bill_payment_false"} owes
+  = f.radio_button :payment, true
+  %label{:for => "bill_payment_true"} payed
+  = f.collection_select :from_user_id, User.all, :id, :name
 
 %p#form_amount
   %label{:for => "bill_amount"} Amount

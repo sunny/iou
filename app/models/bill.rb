@@ -21,6 +21,7 @@ class Bill < ActiveRecord::Base
   def signed_amount(for_user_id = nil)
     signed = self.amount
     signed *= -1 if self.from_user_id == for_user_id
+    signed *= -1 if !self.payment?
     signed
   end
 
