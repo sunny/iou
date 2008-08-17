@@ -22,11 +22,14 @@ class BillTest < ActiveSupport::TestCase
     bill = bills(:sunny_is_reimbursed_by_julie)
     assert_equal bill.action, bill.title
   end
-    
 
-  def test_find_all_by_user
-    sunny = users(:sunny)
-    assert_equal 3, Bill.find_all_by_user(sunny.id).size
+  def test_verbs
+    paye = Bill.new(:payment => true)
+    owe  = Bill.new(:payment => false)
+    assert_equal "pay", paye.verb
+    assert_equal "owe", owe.verb
+    assert_equal "payed", paye.past_verb
+    assert_equal "owes",  owe.past_verb
   end
 
   def test_debt_and_loans_for_user
@@ -36,7 +39,7 @@ class BillTest < ActiveSupport::TestCase
     sunny_debts = Bill.debts_for_user(sunny)
     julie_debts = Bill.debts_for_user(julie)
 
-    assert_equal -0.5, sunny_debts[julie.id]
-    assert_equal  0.5, julie_debts[sunny.id]
+    assert_equal -0.5, sunny_debts[julie]
+    assert_equal  0.5, julie_debts[sunny]
   end
 end

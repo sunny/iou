@@ -14,4 +14,8 @@ class UserTest < ActiveSupport::TestCase
     user = User.new :name => "sunNY"
     assert !user.valid?, "user may not have the same name as another, even lowercased"
   end
+
+  def test_bills
+    assert_equal 3, users(:sunny).bills.size
+  end
 end

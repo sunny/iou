@@ -24,32 +24,27 @@ class Bill < ActiveRecord::Base
     self.payment? ? "pay" : "owe"
   end
 
-  # turns the amount into a debt or a loan depending on the given user
-  def signed_amount(for_user_id = nil)
+  # Returns a positive or negative amount number depending
+  # if it is considered a debt or a loan to the given user.
+  def signed_amount(user = nil)
+    user_id = user.kind_of?(User) ? user.id : user
     signed = self.amount
-    signed *= -1 if self.from_user_id == for_user_id
+    signed *= -1 if self.from_user_id == user_id
     signed *= -1 if !self.payment?
     signed
   end
 
-  # Find all bills from or to a single user.
-  def self.find_all_by_user(u)
-    uid = u.kind_of?(User) ? u.id : u
-    self.find :all, :conditions => ['from_user_id = ? or to_user_id = ?', uid, uid]
-  end
-
   # Find all the debts for a user.
   # returns a hash {user_id => debt, user_id => debt, ...}
-  def self.debts_for_user(u)
+  def self.debts_for_user(user)
     debts = {}
-    uid = u.kind_of?(User) ? u.id : u
-    bills = find_all_by_user(uid)
-    for bill in bills
-      with_uid, to = (bill.to_user_id == uid) ? bill.from_user_id : bill.to_user_id
-      debts[with_uid] ||= 0
-      debts[with_uid] += bill.signed_amount(uid)
+    user = User.find(user) unless user.kind_of?(User)
+    for bill in user.bills
+      with_user = (bill.to_user_id == user.id) ? bill.from_user_id : bill.to_user_id
+      debts[with_user] ||= 0
+      debts[with_user] += bill.signed_amount(user)
     end
-    debts
+    debts.to_h { |id, amount| [User.find(id), amount] }
   end
 
   private
