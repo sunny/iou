@@ -25,7 +25,7 @@ class BillTest < ActiveSupport::TestCase
     sunny_debts = Bill.debts_for_user(sunny)
     julie_debts = Bill.debts_for_user(julie)
 
-    assert_equal -1.0, sunny_debts[julie.id] 
+    assert_equal -1.0, sunny_debts[julie.id]
     assert_equal  1.0, julie_debts[sunny.id]
   end
 end
