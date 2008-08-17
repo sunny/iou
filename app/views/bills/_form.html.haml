@@ -1,38 +1,28 @@
 
-%p
+
+%div{:style=>'overflow:auto'}
+  %p#form_from{:style=>'float:left'}
+    = f.collection_select :from_user_id, User.all, :id, :name, :title => "From"
+
+  %ul#form_types{:style=>'float:left;margin:0 2em'}
+    %li
+      = f.radio_button :payment, false
+      %label{:for => "bill_payment_false"} owes
+    %li
+      = f.radio_button :payment, true
+      %label{:for => "bill_payment_true"} payed
+
+  %p#form_to{:style=>'float:left'}
+    = f.collection_select :to_user_id, User.all, :id, :name, :title => "To"
+
+%p#form_amount
   %label{:for => "bill_amount"} Amount
   = f.text_field :amount, :size => 4
   €
 
-%ul#actions
-  %li
-    = f.radio_button :kind, 1
-    %label{:for => "bill_kind_1"} owed
-  %li
-    = f.radio_button :kind, 2
-    %label{:for => "bill_kind_2"} lent
-  %li
-    = f.radio_button :kind, 3
-    %label{:for => "bill_kind_3"} gave
-  %li
-    = f.radio_button :kind, 4
-    %label{:for => "bill_kind_4"} got
-
-%p
-  %label{:for => "bill_from_user_id"} From
-  = f.collection_select :from_user_id, User.all, :id, :name
-
-%p
-  %label{:for => "bill_to_user_id"} To
-  = f.collection_select :to_user_id, User.all, :id, :name
-
-
-
-
-%p
-  %label{:for => "bill_title"} Description
-  = f.text_field :title
-
+%p#form_description
+  %label{:for => "bill_description"} Description
+  = f.text_field :description
 
 %p
   %label{:for => "bill_transaction_at_3i"} Date

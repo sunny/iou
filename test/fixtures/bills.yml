@@ -1,33 +1,33 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-owed:
-  title: Dinner at the Hog's Head
+sunny_pays:
+  description: Dinner at the Hog's Head
   amount: 42
-  kind: 1
+  payment: 1
   from_user: sunny
   to_user: julie
   transaction_at: 2008-08-11
 
-lent:
-  title: Laundry
+sunny_owes:
+  description: Laundry
   amount: 6.5
-  kind: 2
+  payment: 0
   from_user: sunny
   to_user: julie
   transaction_at: 2008-08-13
 
-gave:
-  title: 
+julie_pays:
+  description: 
   amount: 5.5
-  kind: 3
+  payment: 1
   from_user: julie
   to_user: sunny
   transaction_at: 2008-08-14
 
-got:
-  title: Bleu canard
+julie_owes:
+  description: Bleu canard
   amount: 42
-  kind: 4
+  payment: 0
   from_user: julie
   to_user: sunny
   transaction_at: 2008-08-14

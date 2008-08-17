@@ -1,0 +1,15 @@
+%table
+  %thead
+    %tr
+      %th Description
+      %th Action
+      %th Amount
+      %th Date
+
+  %tbody
+    - for bill in bills
+      %tr
+        %td= link_to h(bill.title), bill
+        %td= bill.action
+        %td= "#{bill.amount} €"
+        %td= h bill.transaction_at

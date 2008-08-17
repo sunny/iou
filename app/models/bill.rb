@@ -2,27 +2,25 @@ class Bill < ActiveRecord::Base
   belongs_to :from_user, :class_name => 'User', :foreign_key => 'from_user_id'
   belongs_to :to_user,   :class_name => 'User', :foreign_key => 'to_user_id'
 
-  validates_presence_of  :kind
-  validates_inclusion_of :kind, :in => 0..4, :allow_nil => true
   validates_numericality_of :amount, :greater_than => 0
   validate :ensure_user_from_and_to_is_different
 
-  #                 1    2    3    4
-  PAST_VERBS = %w[. owed lent gave took]
-
-  def past_phrase
-    "%s %s %s" % [self.from_user.name, self.past_verb, self.to_user.name]
+  def title
+    self.description.blank? ? self.action : self.description
   end
 
-  def past_verb
-    PAST_VERBS[self.kind]
+  def action
+    "%s %s %s" % [self.from_user.name, self.verb, self.to_user.name]
   end
 
-  # turns the amount into a debt (or a loan if negative)
+  def verb
+    self.payment? ? "payed" : "owes"
+  end
+
+  # turns the amount into a debt or a loan depending on the given user
   def signed_amount(for_user_id = nil)
     signed = self.amount
     signed *= -1 if self.from_user_id == for_user_id
-    signed *= -1 if self.kind == 1 or self.kind == 4
     signed
   end
 

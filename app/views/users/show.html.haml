@@ -2,7 +2,7 @@
 
 %p= link_to "Edit", edit_user_path(@user)
 
-%h2 Friends
+%h2 Debts
 
 %table
   %thead
@@ -17,11 +17,5 @@
         %td= debt < 0 ? '' : "#{debt.abs} €"
 
 %h2 Recent Bills
-%ul
-  - for bill in @bills
-    %li
-      = link_to h(bill.past_phrase), bill
-      = h bill.title.blank? ? '' : "(#{bill.title})"
-      = h time_ago_in_words(bill.transaction_at)
-      ago
 
+= render :partial => 'bills/bills', :locals => { :bills => @bills }
