@@ -2,8 +2,11 @@
 %h1 Bill
 
 %article.bill
-  %p= h @bill.text
-  %p= h @bill.amount.to_s + " €"
+  %p
+    = link_to h(@bill.from_user.name), @bill.from_user
+    = h @bill.past_verb
+    = link_to h(@bill.to_user.name), @bill.to_user
+    = h @bill.amount.to_s + " €"
   %p= h @bill.transaction_at
   %p= h @bill.title
 
