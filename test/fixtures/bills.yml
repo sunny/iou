@@ -18,7 +18,7 @@ lent:
 
 gave:
   title: 
-  amount: 2
+  amount: 5.5
   kind: 3
   from_user: julie
   to_user: sunny
@@ -26,7 +26,7 @@ gave:
 
 got:
   title: Bleu canard
-  amount: 8.99
+  amount: 42
   kind: 4
   from_user: julie
   to_user: sunny
