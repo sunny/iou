@@ -8,10 +8,10 @@ class Bill < ActiveRecord::Base
   validate :ensure_user_from_and_to_is_different
 
   #                 1    2    3    4
-  PAST_VERBS = %w[. owed lent gave got]
+  PAST_VERBS = %w[. owed lent gave took]
 
   def past_phrase
-    "%s %s %s %d €" % [self.from_user.name, self.past_verb, self.to_user.name, self.amount]
+    "%s %s %s" % [self.from_user.name, self.past_verb, self.to_user.name]
   end
 
   def past_verb

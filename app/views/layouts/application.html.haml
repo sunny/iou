@@ -6,7 +6,10 @@
       = " - #{h @title}" if @title
   %body
     %header
-      %p= link_to "IOU", root_path
+      %ul
+        %li= link_to "Bills", bills_path
+        %li= link_to "Users", users_path
+
 
     = yield
 

@@ -1,6 +1,8 @@
 - @title = "Bill: #{@bill.title}"
 %h1 Bill
 
+%p= link_to "Edit", edit_bill_path(@bill)
+
 %article.bill
   %p
     = link_to h(@bill.from_user.name), @bill.from_user

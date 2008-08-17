@@ -1,7 +1,7 @@
-%h1= @title="New bill"
+%h1= @title="Edit bill"
 
 = error_messages_for 'bill'
 
 - form_for @bill do |f|
   = render :partial => 'form', :locals => { :f => f }
-  = submit_tag "Create"
+  = submit_tag "Edit"

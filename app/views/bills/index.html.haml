@@ -5,21 +5,15 @@
 %table
   %thead
     %tr
-      %th Transaction
-      %th Amount
       %th Description
+      %th Amount
       %th Date
 
   %tbody
     - for bill in @bills
       %tr
-        %td
-          %strong= h bill.from_user.name
-          = h bill.past_verb
-          %strong= h bill.to_user.name
-        %td= h bill.amount.to_s + " €"
-        %td= h bill.title
+        %td= link_to h(bill.title.blank? ? bill.past_phrase : bill.title), bill
+        %td= "#{bill.amount} €"
         %td= h bill.transaction_at
-        %td= link_to "Show", bill
 
 
