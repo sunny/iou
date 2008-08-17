@@ -6,4 +6,12 @@ class UserTest < ActiveSupport::TestCase
     user.name = "   "
     assert !user.valid?
   end
+
+  def test_name_unique
+    user = User.new :name => "Sunny"
+    assert !user.valid?, "user may not have the same name as another"
+
+    user = User.new :name => "sunNY"
+    assert !user.valid?, "user may not have the same name as another, even lowercased"
+  end
 end
