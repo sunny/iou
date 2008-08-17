@@ -10,6 +10,10 @@ class Bill < ActiveRecord::Base
   #                 1    2    3    4
   PAST_VERBS = %w[. owed lent gave got]
 
+  def past_phrase
+    "%s %s %s %d €" % [self.from_user.name, self.past_verb, self.to_user.name, self.amount]
+  end
+
   def past_verb
     PAST_VERBS[self.kind]
   end
