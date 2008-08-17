@@ -1,21 +1,27 @@
-%h1= h @title = @user.name
+%h1=h @title = @user.name
 
-- if !@debits.empty?
-  %h2 Owes
-  %ul
-    - for user, debt in @debits
-      %li
-        = link_to user.name, user
-        = debt.abs
-        €
+%p= link_to "Edit", edit_user_path(@user)
 
-- elsif !@credits.empty?
-  %h2 Is owed
-  %ul
-    - for user, debt in @credits
-      %li
-        = link_to user.name, user
-        = debt.abs
-        €
+%h2 Friends
 
+%table
+  %thead
+    %th User
+    %th= "Owes %s" % h(@user.name)
+    %th= "%s is owed" % h(@user.name)
+  %tbody
+    - for user, debt in @debts
+      %tr
+        %td= link_to h(user.name), user
+        %td= debt > 0 ? '' : "#{debt.abs} €"
+        %td= debt < 0 ? '' : "#{debt.abs} €"
+
+%h2 Recent Bills
+%ul
+  - for bill in @bills
+    %li
+      = link_to h(bill.past_phrase), bill
+      = h bill.title.blank? ? '' : "(#{bill.title})"
+      = h time_ago_in_words(bill.transaction_at)
+      ago
 
