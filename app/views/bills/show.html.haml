@@ -1,6 +1,5 @@
 %h1= h @title = @bill.title
 
-%p= link_to "Edit", edit_bill_path(@bill)
 
 %article.bill
   %p
@@ -11,3 +10,4 @@
   %p= h @bill.description
   %p= h @bill.transaction_at
 
+  %p= link_to "Edit", edit_bill_path(@bill)

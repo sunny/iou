@@ -1,7 +1,12 @@
-%h1= @title="Edit user"
+%h1&= @title="Edit #{@user.name}"
 
 = error_messages_for 'user'
 
 - form_for @user do |f|
   = render :partial => 'form', :locals => { :f => f }
-  = submit_tag "Edit"
+  %p
+    = submit_tag "Edit"
+    or
+    = link_to "Delete", { :action => "destroy", :id => @user }, :confirm => "Are you sure you want to delete this user?", :method => :delete
+
+

@@ -4,11 +4,13 @@
     %title
       IOU
       = " - #{h @title}" if @title
+    = stylesheet_link_tag :all, :cache => true
   %body
     %header
       %ul
-        %li= link_to "Bills", bills_path
-        %li= link_to "Users", users_path
+        %li= link_or_span "Bills", bills_path
+        %li= link_or_span "New Bill", new_bill_path
+        %li= link_or_span "Users", users_path
 
 
     = yield

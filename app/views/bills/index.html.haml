@@ -1,6 +1,4 @@
-%h1= @title="Latest Bills"
-
-%p= link_to "New", new_bill_path
+%h1= @title="Bills"
 
 = render :partial => 'bills', :locals => { :bills => @bills }
 
