@@ -1,4 +1,21 @@
 %h1= h @title = @user.name
 
+- if !@debits.empty?
+  %h2 Owes
+  %ul
+    - for user, debt in @debits
+      %li
+        = link_to user.name, user
+        = debt.abs
+        €
+
+- elsif !@credits.empty?
+  %h2 Is owed
+  %ul
+    - for user, debt in @credits
+      %li
+        = link_to user.name, user
+        = debt.abs
+        €
 
 

@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
+    @owes = Bill.debts_for_user(@user).collect { |uid, debt| [User.find(uid), debt] }
+    @debits = @owes.select { |u, debt| debt > 0 }
+    @credits = @owes - @debits
   end
 
   def new
