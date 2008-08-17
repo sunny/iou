@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @bills = Bill.find_all_by_user(@user)
-    @debts = Bill.debts_for_user(@user).collect { |uid, debt| [User.find(uid), debt] }
+    @bills = @user.bills
+    @debts = @user.debts
   end
 
   def new
@@ -35,4 +35,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find params[:id]
+    @user.destroy
+    redirect_to users_path
+  end
 end
