@@ -2,6 +2,7 @@
 
 sunny:
   name: Sunny
+  password_hash: f26fdba60d54275ff3e247429b0c2d108845b44d # 'admin'
 
 julie:
   name: Julie

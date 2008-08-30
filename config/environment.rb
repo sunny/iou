@@ -1,5 +1,9 @@
 # Be sure to restart your server when you modify this file
 
+# This salt is added to passwords before they are encrypted
+# Change this to something unique to this application
+SALT = "b1b9ea35d65d220a11688c1ef051b7b58bde6de99d"
+
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
@@ -50,7 +54,7 @@ Rails::Initializer.run do |config|
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_iou_session',
-    :secret      => 'b1b9ea35d65d220a11688c1ef051b7b58bde6de99dc6d72a969cf7fc0aa2a0ace304dcdd1bb93e0509a02bef675c3599bde4d7468181b8e38d2f04a6315d3a87'
+    :secret      => SALT * (30.0 / SALT.length).ceil # must be at least 30 characters
   }
 
   # Use the database for sessions instead of the cookie-based default,

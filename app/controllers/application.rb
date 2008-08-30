@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
 
   def verify_access
-    authenticate_or_request_with_http_basic do |username, password|
+    authenticate_or_request_with_http_basic("IOU") do |username, password|
       @current_user = User.authenticate(username, password)
     end
   end

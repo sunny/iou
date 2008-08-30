@@ -7,6 +7,13 @@ class User < ActiveRecord::Base
       'WHERE from_user_id = #{id.to_i} OR to_user_id = #{id.to_i} ' +
       'ORDER BY transaction_at'
 
+  def password=(p)
+    self[:password_hash] = User.hash_password(p)
+  end
+
+  def password
+    "********"
+  end
 
   # Find all the user's debts with others as a hash of user_ids and amounts
   #   user.debts # => { 3 => 42.25, 4 => -2.5 }
@@ -15,10 +22,10 @@ class User < ActiveRecord::Base
   end
 
   def self.authenticate(username, password)
-    self.find_by_name_and_password(username.downcase, self.hash_password(password))
+    self.find_by_name_and_password_hash(username, self.hash_password(password))
   end
 
   def self.hash_password(password)
-    Digest::SHA1.hexdigest(password)
+    Digest::SHA1.hexdigest("-#{SALT}-#{password}-")
   end
 end
