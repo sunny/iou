@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
   def debts
     Bill.debts_for_user(self)
   end
+
+  def self.authenticate(username, password)
+    self.find_by_name_and_password(username.downcase, self.hash_password(password))
+  end
+
+  def self.hash_password(password)
+    Digest::SHA1.hexdigest(password)
+  end
 end

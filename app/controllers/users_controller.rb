@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :verify_access, :except => [:index, :new]
+
   def index
     @users = User.all
   end

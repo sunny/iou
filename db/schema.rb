@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080817154045) do
+ActiveRecord::Schema.define(:version => 20080830141224) do
 
   create_table "bills", :force => true do |t|
     t.string   "description"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20080817154045) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_hash"
   end
 
 end
