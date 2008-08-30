@@ -13,10 +13,21 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   filter_parameter_logging :password
 
+  private
+
   def verify_access
     authenticate_or_request_with_http_basic("IOU") do |username, password|
       @current_user = User.authenticate(username, password)
     end
   end
 
+  # Return User currently logged in via HTTP Auth
+  def current_user
+    if @current_user.nil?
+      authenticate_with_http_basic do |username, password|
+        @current_user = User.authenticate(username, password)
+      end
+    end
+    @current_user ||= false
+  end
 end

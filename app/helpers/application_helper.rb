@@ -1,14 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-
-  # Return User currently logged in via HTTP Auth
   def current_user
-    if @current_user.nil?
-      controller.authenticate_with_http_basic do |username, password|
-        @current_user = User.authenticate(username, password)
-      end
-    end
-    @current_user ||= false
+    controller.send(:current_user)
   end
 
   # Puts a span if the link is to the current page

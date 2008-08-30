@@ -12,6 +12,7 @@
           &= "Hello #{current_user.name}!"
 
       %ul
+        %li= link_or_span "IOU", root_path
         %li= link_or_span "Bills", bills_path
         %li= link_or_span "New Bill", new_bill_path
         %li= link_or_span "Users", users_path
