@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
       'ORDER BY transaction_at'
 
   def password=(p)
-    self[:password_hash] = User.hash_password(p)
+    self[:password_hash] = User.hash_password(p) unless p.blank?
   end
 
   def password
-    "********"
+    ""
   end
 
   # Find all the user's debts with others as a hash of user_ids and amounts
