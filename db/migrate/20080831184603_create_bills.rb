@@ -1,16 +1,15 @@
 class CreateBills < ActiveRecord::Migration
   def self.up
     create_table :bills do |t|
-      t.string :title
+      t.string :description
       t.float :amount
-      t.integer :type, :size => 1 # loan, debt, give, get
-
-      t.integer :from_user_id
-      t.integer :to_user_id
-
-      t.date :transaction_at
+      t.date :made_on
+      t.boolean :loan, :null => false
+      t.references :currency, :null => false
       t.timestamps
     end
+    add_index :bills, :loan
+    add_index :bills, :made_on
   end
 
   def self.down

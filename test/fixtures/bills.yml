@@ -1,24 +1,21 @@
-julie_owes_sunny:
-  description: Bleu canard
-  amount: 8
-  payment: 0
-  from_user: julie
-  to_user: sunny
-  transaction_at: 2008-08-10
+julie_paid_sunny:
+  description: Julie paid Sunny
+  amount: 0.90
+  currency: euro
+  loan: false
+  made_on: 23/07/2008
 
-sunny_owes_julie:
-  description: Laundry
-  amount: 6
-  payment: 0
-  from_user: sunny
-  to_user: julie
-  transaction_at: 2008-08-11
+pasta:
+  description: Pasta
+  amount: 1
+  currency: tr8
+  loan: true
+  made_on: 21/07/2008
 
-sunny_is_reimbursed_by_julie:
-  description: 
-  amount: 1.5
-  payment: 1
-  from_user: julie
-  to_user: sunny
-  transaction_at: 2008-08-12
+sushi_ba:
+  description: Sushi Ba
+  amount: 71.75
+  currency: euro
+  loan: false
+  made_on: 03/08/2008
 
