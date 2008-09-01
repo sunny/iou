@@ -1,9 +1,15 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
+julie:
+  email: juliekitty@gmail.com
+julie2:
+  email: jl@agencecosmic.com
+olivier:
+  email: og@agencecosmic.com
+webs:
+  email: webs@lifeisdead.net
+  name: Jordan
+  password_hash: f26fdba60d54275ff3e247429b0c2d108845b44d # 'admin'
 sunny:
-  name: Sunny
   email: negatif@gmail.com
+  name: Sunny
   password_hash: f26fdba60d54275ff3e247429b0c2d108845b44d # 'admin'
 
-julie:
-  name: Julie

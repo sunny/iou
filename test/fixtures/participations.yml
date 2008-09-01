@@ -12,6 +12,13 @@ payers2:
   currency: euro
   payer: 1
 
+payers2b:
+  bill: sushi_ba
+  user: julie
+  amount: 10
+  currency: euro
+  payer: 1
+
 payers3:
   bill: pasta
   user: sunny

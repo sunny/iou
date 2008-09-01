@@ -1,45 +1,33 @@
 require 'test_helper'
 
 class BillTest < ActiveSupport::TestCase
-  def test_from_different_from_to
-    bill = bills(:julie_owes_sunny)
-    bill.from_user_id = 1
-    bill.to_user_id   = 1
-    assert !bill.valid?, "From and to cannot not be the same"
+  def test_users
+    assert_equal 3, bills(:sushi_ba).users.size
   end
 
-  def test_action
-    bill = bills(:julie_owes_sunny)
-    assert_equal "Julie owes Sunny", bill.action
+  def test_payer_payee_participations
+    assert_equal 2, bills(:sushi_ba).payer_participations.size
+    assert_equal 3, bills(:sushi_ba).payee_participations.size
   end
 
-  def test_title_for_bill_with_a_description
-    bill = bills(:julie_owes_sunny)
-    assert_equal bill.description, bill.title
+  def test_payers_payees
+    assert_equal [users(:julie)], bills(:julie_paid_sunny).payers
+    assert_equal [users(:sunny)], bills(:julie_paid_sunny).payees
+    assert_equal 2, bills(:sushi_ba).payers.size
+    assert_equal 3, bills(:sushi_ba).payees.size
   end
 
-  def test_title_for_bill_without_a_description
-    bill = bills(:sunny_is_reimbursed_by_julie)
-    assert_equal bill.action, bill.title
+  def test_shared
+    assert bills(:sushi_ba).shared?
+    assert !bills(:julie_paid_sunny).shared?
   end
 
-  def test_verbs
-    paye = Bill.new(:payment => true)
-    owe  = Bill.new(:payment => false)
-    assert_equal "pay", paye.verb
-    assert_equal "owe", owe.verb
-    assert_equal "payed", paye.past_verb
-    assert_equal "owes",  owe.past_verb
+  def test_total_owed_to
+    assert_equal 71.75-10-9.50, bills(:sushi_ba).total_owed_to(users(:sunny))
   end
 
-  def test_debt_and_loans_for_user
-    sunny = users(:sunny)
-    julie = users(:julie)
-
-    sunny_debts = Bill.debts_for_user(sunny)
-    julie_debts = Bill.debts_for_user(julie)
-
-    assert_equal -0.5, sunny_debts[julie]
-    assert_equal  0.5, julie_debts[sunny]
+  def test_owed_to
+    owed = { user(:julie) => 9.50-10, user(:}
+    assert_equal owed, bills(:sushi_bas).owed_to(users(:sunny))
   end
 end
