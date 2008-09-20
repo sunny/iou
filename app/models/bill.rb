@@ -18,4 +18,11 @@ class Bill < ActiveRecord::Base
   def shared?
     self.payer_participations.size > 1 or self.payee_participations.size > 1
   end
+
+  # Returns the positive or negative total that everybody owes to the given user
+  def balance_for_user(user, cur = Currency::EURO)
+    user_participations = Participation.find_all_by_bill_id_and_user_id_and_currency_id(id, user.id, cur, :order => 'payer')
+    owes, paid = user_participations
+    (paid ? paid.amount : 0) - (owes ? owes.amount : 0)
+  end
 end

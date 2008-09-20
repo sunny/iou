@@ -8,7 +8,7 @@ payers1:
 payers2:
   bill: sushi_ba
   user: sunny
-  amount: 71.75
+  amount: 61.75
   currency: euro
   payer: 1
 
@@ -58,6 +58,14 @@ payees4:
   payer: 0
 
 payees5:
+  bill: sushi_ba
+  user: olivier
+  amount: <%=61.75-9.50-9.50-14 %>      # 28.75
+  currency: euro
+  fixed: 0
+  payer: 0
+
+payees6:
   bill: pasta
   user: julie
   amount: 9.00
