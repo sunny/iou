@@ -1,9 +1,21 @@
 IOU
 ===
 
-Track bills between friends. 
+Track bills between you and your friends.
 
-    $ sudo gem install haml
+Install from git
+----------------
+
+    $ git clone git clone git@github.com:sunny/iou.git
+    $ cd iou
+    $ git submodule init
+    $ git submodule update
+    $ rake gems:install
+
+Configure
+---------
+
+    $ cp config/database.yml.example config/database.yml
     $ rake db:migrate
     $ script/server
 
