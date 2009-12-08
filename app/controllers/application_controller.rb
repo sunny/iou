@@ -15,19 +15,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def verify_access
-    authenticate_or_request_with_http_basic("IOU") do |username, password|
-      @current_user = User.authenticate(username, password)
-    end
-  end
-
-  # Return User currently logged in via HTTP Auth
+  # Return first User
   def current_user
-    if @current_user.nil?
-      authenticate_with_http_basic do |username, password|
-        @current_user = User.authenticate(username, password)
-      end
-    end
-    @current_user ||= false
+    @current_user ||= User.find(:first)
   end
 end

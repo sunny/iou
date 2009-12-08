@@ -1,5 +1,4 @@
 class BillsController < ApplicationController
-  before_filter :verify_access
 
   def index
     @bills = Bill.all :include => [:from_user, :to_user]

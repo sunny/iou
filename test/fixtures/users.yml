@@ -1,3 +1,6 @@
+sunny:
+  email: negatif@gmail.com
+  name: Sunny
 julie:
   email: juliekitty@gmail.com
 julie2:
@@ -7,9 +10,4 @@ olivier:
 webs:
   email: webs@lifeisdead.net
   name: Jordan
-  password_hash: f26fdba60d54275ff3e247429b0c2d108845b44d # 'admin'
-sunny:
-  email: negatif@gmail.com
-  name: Sunny
-  password_hash: f26fdba60d54275ff3e247429b0c2d108845b44d # 'admin'
 
