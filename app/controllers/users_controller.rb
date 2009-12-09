@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find params[:id]
     @bills = @user.bills
-    @debts = @user.debts
   end
 
   def new

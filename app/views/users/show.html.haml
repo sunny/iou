@@ -2,22 +2,6 @@
 
 %p= link_to "Edit", edit_user_path(@user)
 
-%h2 Debts
-- if @debts.empty?
-  %p&= "Equal with everybody!"
-- else
-  %table
-    %thead
-      %th User
-      %th&= "Owes %s" % @user.name
-      %th&= "%s is owed" % @user.name
-    %tbody
-      - for user, debt in @debts
-        %tr
-          %td= link_to h(user.name), user
-          %td&= debt > 0 ? '' : "#{debt.abs} €"
-          %td&= debt < 0 ? '' : "#{debt.abs} €"
-
 %h2 Bills
 - if @bills.empty?
   %p&= "No bills yet for #{@user.name}"

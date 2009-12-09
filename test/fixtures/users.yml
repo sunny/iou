@@ -1,13 +1,12 @@
+you:
+  name: You
 sunny:
+  name: sunny
   email: negatif@gmail.com
-  name: Sunny
 julie:
-  email: juliekitty@gmail.com
-julie2:
-  email: jl@agencecosmic.com
+  name: julie
 olivier:
-  email: og@agencecosmic.com
+  name: olivier
 webs:
-  email: webs@lifeisdead.net
-  name: Jordan
+  name: webs
 

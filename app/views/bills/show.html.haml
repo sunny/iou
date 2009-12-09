@@ -1,13 +1,23 @@
-%h1= h @title = @bill.title
-
-
 %article.bill
-  %p
-    = link_to h(@bill.from_user.name), @bill.from_user
-    = h @bill.past_verb
-    = link_to h(@bill.to_user.name), @bill.to_user
-    = h @bill.amount.to_s + " €"
-  %p= h @bill.description
-  %p= h @bill.transaction_at
+  %h1= h @title = @bill.title
+  %p= "%.2f €" % @bill.amount
+
+  
+  %h2 Payers
+  %ul
+    - @bill.participations.paying.with_amount.each do |participation|
+      %li
+        = h participation.user.name
+        = participation.amount
+        €
+
+
+  %h2 Participants
+  %ul
+    - @bill.participations.participating.with_amount.each do |participation|
+      %li
+        = h participation.user.name
+        = participation.amount
+        €
 
   %p= link_to "Edit", edit_bill_path(@bill)

@@ -6,8 +6,8 @@ class BillTest < ActiveSupport::TestCase
   end
 
   def test_payer_payee_participations
-    assert_equal 2, bills(:sushi_ba).payer_participations.size
-    assert_equal 4, bills(:sushi_ba).payee_participations.size
+    assert_equal 2, bills(:sushi_ba).participations.paying.size
+    assert_equal 4, bills(:sushi_ba).participations.participating.size
   end
 
   def test_payers_payees

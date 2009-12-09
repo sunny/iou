@@ -1,7 +1,7 @@
 class BillsController < ApplicationController
 
   def index
-    @bills = Bill.all :include => [:from_user, :to_user]
+    @bills = Bill.all
   end
 
   def show
@@ -19,7 +19,7 @@ class BillsController < ApplicationController
   def create
     @bill = Bill.create(params[:bill])
     if @bill.errors.empty?
-      redirect_to @bill
+      redirect_to :action => 'edit', :id => @bill
     else
       render :action => 'new'
     end
@@ -28,7 +28,7 @@ class BillsController < ApplicationController
   def update
     @bill = Bill.find params[:id]
     if @bill.update_attributes(params[:bill])
-      redirect_to @bill
+      redirect_to :action => 'edit', :id => @bill
     else
       render :action => 'edit'
     end

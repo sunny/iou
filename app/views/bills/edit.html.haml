@@ -4,4 +4,7 @@
 
 - form_for @bill do |f|
   = render :partial => 'form', :locals => { :f => f }
-  = submit_tag "Edit"
+  %p
+    = submit_tag "Edit"
+    or
+    = link_to 'show', @bill

@@ -2,42 +2,36 @@ payers1:
   bill: julie_paid_sunny
   user: julie
   amount: 0.90
-  currency: euro
   payer: 1
 
 payers2:
   bill: sushi_ba
   user: sunny
   amount: 61.75
-  currency: euro
   payer: 1
 
 payers2b:
   bill: sushi_ba
   user: julie
   amount: 10
-  currency: euro
   payer: 1
 
 payers3:
   bill: pasta
   user: sunny
   amount: 7
-  currency: euro
   payer: 1
 
 payees1:
   bill: julie_paid_sunny
   user: sunny
   amount: 0.90
-  currency: euro
   payer: 0
 
 payees2:
   bill: sushi_ba
   user: sunny
   amount: 9.50
-  currency: euro
   fixed: 0
   payer: 0
  
@@ -45,7 +39,6 @@ payees3:
   bill: sushi_ba
   user: julie
   amount: 9.50
-  currency: euro
   fixed: 1
   payer: 0
 
@@ -53,7 +46,6 @@ payees4:
   bill: sushi_ba
   user: webs
   amount: 14.00
-  currency: euro
   fixed: 1
   payer: 0
 
@@ -61,7 +53,6 @@ payees5:
   bill: sushi_ba
   user: olivier
   amount: <%=61.75-9.50-9.50-14 %>      # 28.75
-  currency: euro
   fixed: 0
   payer: 0
 
@@ -69,7 +60,6 @@ payees6:
   bill: pasta
   user: julie
   amount: 9.00
-  currency: euro
   fixed: 0
   payer: 0
 

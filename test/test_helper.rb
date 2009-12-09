@@ -35,7 +35,4 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  def euro
-    $euro ||= currencies(:euro)
-  end
 end
