@@ -1,9 +1,0 @@
-%h1=h @title = @user.name
-
-%p= link_to "Edit", edit_user_path(@user)
-
-%h2 Bills
-- if @bills.empty?
-  %p&= "No bills yet for #{@user.name}"
-- else
-  = render :partial => 'bills/bills', :locals => { :bills => @bills }
