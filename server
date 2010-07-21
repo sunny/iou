@@ -1,0 +1,533 @@
+Le script a débuté sur mer. 21 juil. 2010 23:43:18 CEST
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ rails server
+mysql-2.8.1 is cached, but not installed.
+Try running `bundle install`.
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ b[K[K]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ su[K[Kbundle install
+Fetching source index from http://rubygems.org/
+Using rake (0.8.7) from system gems 
+Using abstract (1.0.0) from system gems 
+Using activesupport (3.0.0.beta4) from system gems 
+Using builder (2.1.2) from system gems 
+Using i18n (0.4.1) from system gems 
+Using activemodel (3.0.0.beta4) from system gems 
+Using erubis (2.6.6) from bundler gems 
+Using rack (1.1.0) from system gems 
+Using rack-mount (0.6.9) from bundler gems 
+Using rack-test (0.5.4) from system gems 
+Using tzinfo (0.3.22) from system gems 
+Using actionpack (3.0.0.beta4) from system gems 
+Using mime-types (1.16) from system gems 
+Using polyglot (0.3.1) from system gems 
+Using treetop (1.4.8) from system gems 
+Using mail (2.2.5) from system gems 
+Using actionmailer (3.0.0.beta4) from system gems 
+Using arel (0.4.0) from system gems 
+Using activerecord (3.0.0.beta4) from system gems 
+Using activeresource (3.0.0.beta4) from system gems 
+Using bundler (0.9.26) from system gems 
+Installing mysql (2.8.1) from .gem files at /home/sunny/.bundle/ruby/1.8/cache /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:519:in `initialize': Permission denied - /home/sunny/.bundle/ruby/1.8/gems/mysql-2.8.1/COPYING (Errno::EACCES)
+	from /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:519:in `open'
+	from /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:519:in `extract_files'
+	from /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:500:in `each'
+	from /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:500:in `extract_files'
+	from /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:196:in `install'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/source.rb:170:in `install'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/installer.rb:34:in `run'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/spec_set.rb:12:in `each'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/spec_set.rb:12:in `each'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/installer.rb:21:in `run'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/installer.rb:6:in `install'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/cli.rb:91:in `install'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/task.rb:33:in `send'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/task.rb:33:in `run'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/invocation.rb:109
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/invocation.rb:116:in `call'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/invocation.rb:116:in `invoke'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor.rb:137:in `start'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/base.rb:378:in `start'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor.rb:124:in `start'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/bin/bundle:13
+	from /usr/bin/bundle:19:in `load'
+	from /usr/bin/bundle:19
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ bundle install[1@s[1@u[1@d[1@o[1@ 
+[sudo] password for sunny: 
+Sorry, try again.
+[sudo] password for sunny: 
+Fetching source index from http://rubygems.org/
+Using rake (0.8.7) from system gems 
+Using abstract (1.0.0) from system gems 
+Using activesupport (3.0.0.beta4) from system gems 
+Using builder (2.1.2) from system gems 
+Using i18n (0.4.1) from system gems 
+Using activemodel (3.0.0.beta4) from system gems 
+Using erubis (2.6.6) from bundler gems 
+Using rack (1.1.0) from system gems 
+Using rack-mount (0.6.9) from bundler gems 
+Using rack-test (0.5.4) from system gems 
+Using tzinfo (0.3.22) from system gems 
+Using actionpack (3.0.0.beta4) from system gems 
+Using mime-types (1.16) from system gems 
+Using polyglot (0.3.1) from system gems 
+Using treetop (1.4.8) from system gems 
+Using mail (2.2.5) from system gems 
+Using actionmailer (3.0.0.beta4) from system gems 
+Using arel (0.4.0) from system gems 
+Using activerecord (3.0.0.beta4) from system gems 
+Using activeresource (3.0.0.beta4) from system gems 
+Using bundler (0.9.26) from system gems 
+Installing mysql (2.8.1) from .gem files at /home/sunny/.bundle/ruby/1.8/cache with native extensions /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:483:in `build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
+
+/usr/bin/ruby1.8 extconf.rb
+checking for mysql_query() in -lmysqlclient... no
+checking for main() in -lm... yes
+checking for mysql_query() in -lmysqlclient... no
+checking for main() in -lz... yes
+checking for mysql_query() in -lmysqlclient... no
+checking for main() in -lsocket... no
+checking for mysql_query() in -lmysqlclient... no
+checking for main() in -lnsl... yes
+checking for mysql_query() in -lmysqlclient... no
+checking for main() in -lmygcc... no
+checking for mysql_query() in -lmysqlclient... no
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/usr/bin/ruby1.8
+	--with-mysql-config
+	--without-mysql-config
+	--with-mysql-dir
+	--without-mysql-dir
+	--with-mysql-include
+	--without-mysql-include=${mysql-dir}/include
+	--with-mysql-lib
+	--without-mysql-lib=${mysql-dir}/lib
+	--with-mysqlclientlib
+	--without-mysqlclientlib
+	--with-mlib
+	--without-mlib
+	--with-mysqlclientlib
+	--without-mysqlclientlib
+	--with-zlib
+	--without-zlib
+	--with-mysqlclientlib
+	--without-mysqlclientlib
+	--with-socketlib
+	--without-socketlib
+	--with-mysqlclientlib
+	--without-mysqlclientlib
+	--with-nsllib
+	--without-nsllib
+	--with-mysqlclientlib
+	--without-mysqlclientlib
+	--with-mygcclib
+	--without-mygcclib
+	--with-mysqlclientlib
+	--without-mysqlclientlib
+
+
+Gem files will remain installed in /home/sunny/.bundle/ruby/1.8/gems/mysql-2.8.1 for inspection.
+Results logged to /home/sunny/.bundle/ruby/1.8/gems/mysql-2.8.1/ext/mysql_api/gem_make.out
+	from /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:446:in `each'
+	from /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:446:in `build_extensions'
+	from /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:198:in `install'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/source.rb:170:in `install'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/installer.rb:34:in `run'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/spec_set.rb:12:in `each'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/spec_set.rb:12:in `each'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/installer.rb:21:in `run'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/installer.rb:6:in `install'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/cli.rb:91:in `install'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/task.rb:33:in `send'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/task.rb:33:in `run'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/invocation.rb:109
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/invocation.rb:116:in `call'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/invocation.rb:116:in `invoke'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor.rb:137:in `start'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor/base.rb:378:in `start'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/lib/bundler/vendor/thor.rb:124:in `start'
+	from /usr/lib/ruby/gems/1.8/gems/bundler-0.9.26/bin/bundle:13
+	from /usr/bin/bundle:19:in `load'
+	from /usr/bin/bundle:19
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ ruby1.
+ruby1.8  ruby1.9  
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ ruby1.[Ksudo bundle install[5P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2Prails serverssh sothis.vodkanoire.net[8Pbearnaise.net make sunfox[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cuname -a[Kssh bearnaise.netsothis.vodkanoire.netvim include/postulationInfo.class.inc.php [10P[C[C[C[C[C[C[C[C[C[6@class.[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3Pateliers/inscription/index[C[C[C[C[C[3@include/postulation.class.inc[C[C[C[C[C[6P[C[C[C[C[C[C[C[C[10@Info.class[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[17Pssh sothis.vodkanoire.net[8Pbearnaise.net[9Puname -assh bearnaise.net make sunfox[Ksothis.vodkanoire.net[13Prails serverbundle install[5@sudo [C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ksudo gem install rails --pre
+ERROR:  Error installing rails:
+	activemodel requires builder (~> 2.1.2, runtime)
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ sudo gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text- format thor bundler i18n sqlite3-ruby
+Successfully installed tzinfo-0.3.22
+Successfully installed builder-2.1.2
+Successfully installed memcache-client-1.8.5
+Successfully installed rack-1.2.1
+Successfully installed rack-test-0.5.4
+Successfully installed rack-mount-0.6.9
+Successfully installed abstract-1.0.0
+Successfully installed erubis-2.6.6
+Successfully installed mime-types-1.16
+Successfully installed polyglot-0.3.1
+Successfully installed treetop-1.4.8
+Successfully installed mail-2.2.5
+Successfully installed text-hyphen-1.0.0
+Successfully installed text-format-1.0.0
+Successfully installed thor-0.13.8
+ERROR:  Error installing bundler:
+	bundler requires RubyGems version >= 1.3.6
+ERROR:  Error installing i18n:
+	i18n requires RubyGems version >= 1.3.6
+Building native extensions.  This could take a while...
+Successfully installed sqlite3-ruby-1.3.1
+16 gems installed
+Installing ri documentation for tzinfo-0.3.22...
+Installing ri documentation for builder-2.1.2...
+Installing ri documentation for memcache-client-1.8.5...
+Installing ri documentation for rack-1.2.1...
+Installing ri documentation for rack-test-0.5.4...
+Installing ri documentation for rack-mount-0.6.9...
+Installing ri documentation for abstract-1.0.0...
+Installing ri documentation for erubis-2.6.6...
+Installing ri documentation for mime-types-1.16...
+Installing ri documentation for polyglot-0.3.1...
+Installing ri documentation for treetop-1.4.8...
+Installing ri documentation for mail-2.2.5...
+Installing ri documentation for text-hyphen-1.0.0...
+Installing ri documentation for text-format-1.0.0...
+Installing ri documentation for thor-0.13.8...
+Installing ri documentation for sqlite3-ruby-1.3.1...
+Updating class cache with 131 classes...
+Installing RDoc documentation for tzinfo-0.3.22...
+Installing RDoc documentation for builder-2.1.2...
+Installing RDoc documentation for memcache-client-1.8.5...
+Installing RDoc documentation for rack-1.2.1...
+Installing RDoc documentation for rack-test-0.5.4...
+Installing RDoc documentation for rack-mount-0.6.9...
+Installing RDoc documentation for abstract-1.0.0...
+Installing RDoc documentation for erubis-2.6.6...
+Installing RDoc documentation for mime-types-1.16...
+Installing RDoc documentation for polyglot-0.3.1...
+Installing RDoc documentation for treetop-1.4.8...
+Installing RDoc documentation for mail-2.2.5...
+Installing RDoc documentation for text-hyphen-1.0.0...
+Installing RDoc documentation for text-format-1.0.0...
+Installing RDoc documentation for thor-0.13.8...
+Installing RDoc documentation for sqlite3-ruby-1.3.1...
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ sudo gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-fformat thor bundler i18n sqlite3-ruby[A[C[C[C[C[C[Crails --pre[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C  --no-rdoc --no-ri
+ERROR:  Error installing rails:
+	activemodel requires i18n (~> 0.4.1, runtime)
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ sudo gem install rails --pre  --no-rdoc --no-ritzinfo builder memcache-client rack rack-test rack-mount erubis mail text-fformat thor bundler i18n sqlite3-ruby   --no-rdoc --no-ri[1@i[1@1[1@8[1@n[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P
+Successfully installed tzinfo-0.3.22
+Successfully installed builder-2.1.2
+Successfully installed memcache-client-1.8.5
+Successfully installed rack-1.2.1
+Successfully installed rack-test-0.5.4
+Successfully installed rack-mount-0.6.9
+Successfully installed erubis-2.6.6
+Successfully installed mail-2.2.5
+Successfully installed text-format-1.0.0
+Successfully installed thor-0.13.8
+ERROR:  Error installing bundler:
+	bundler requires RubyGems version >= 1.3.6
+ERROR:  Error installing i18n:
+	i18n requires RubyGems version >= 1.3.6
+Building native extensions.  This could take a while...
+Successfully installed sqlite3-ruby-1.3.1
+ERROR:  Error installing i18n:
+	i18n requires RubyGems version >= 1.3.6
+11 gems installed
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ sudo gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-fformat thor bundler i18n sqlite3-ruby i18n --no-rdoc --no-ri[5P
+Successfully installed tzinfo-0.3.22
+Successfully installed builder-2.1.2
+Successfully installed memcache-client-1.8.5
+Successfully installed rack-1.2.1
+Successfully installed rack-test-0.5.4
+Successfully installed rack-mount-0.6.9
+Successfully installed abstract-1.0.0
+Successfully installed erubis-2.6.6
+Successfully installed activesupport-2.3.8
+Successfully installed mime-types-1.16
+Successfully installed polyglot-0.3.1
+Successfully installed treetop-1.4.8
+Successfully installed mail-2.2.5
+Successfully installed text-hyphen-1.0.0
+Successfully installed text-format-1.0.0
+Successfully installed thor-0.13.8
+Successfully installed bundler-0.9.26
+Successfully installed i18n-0.4.1
+Building native extensions.  This could take a while...
+Successfully installed sqlite3-ruby-1.3.1
+19 gems installed
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ sudo gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-fformat thor bundler i18n sqlite3-ruby --no-rdoc --no-ri[5@i18n [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[44Prails --pre  --no-rdoc --no-ri
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctzinfo builder memcache-client rack rack-test rack-mount erubis mail text-fformat thor bundler i18n sqlite3-ruby[A[C[C[C[C[C[C[44Prails --pre  --no-rdoc --no-ri
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+Successfully installed activesupport-3.0.0.beta4
+Successfully installed activemodel-3.0.0.beta4
+Successfully installed rack-1.1.0
+Successfully installed actionpack-3.0.0.beta4
+Successfully installed arel-0.4.0
+Successfully installed activerecord-3.0.0.beta4
+Successfully installed activeresource-3.0.0.beta4
+Successfully installed actionmailer-3.0.0.beta4
+Successfully installed rake-0.8.7
+Successfully installed railties-3.0.0.beta4
+Successfully installed rails-3.0.0.beta4
+11 gems installed
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ git log
+[?1h=[33mcommit 865aaae5de65592af1ddc99af3d3786774184825[m[m
+Author: Sunny Ripert <sunny@sunfox.org>[m
+Date:   Wed Jul 21 23:42:18 2010 +0200[m
+[m
+    Empty Rails 3[m
+[m
+[33mcommit bea38e55ea7e2abe46c2c14e833a8e6f0e37aa7d[m[m
+Author: Sunny Ripert <sunny@sunfox.org>[m
+Date:   Sat Jun 19 13:33:36 2010 +0200[m
+[m
+    Deleted it all[m
+[m
+[33mcommit a2d102286b9ba0d0a919e2105685e55700ad2814[m[m
+Author: Sunny Ripert <negatif@gmail.com>[m
+Date:   Mon Jan 4 19:12:45 2010 +0100[m
+[m
+    New HAML init[m
+[m
+[33mcommit e7ee338a757bfb4d32830a43db8e3cc84fabda7b[m[m
+Author: Sunny Ripert <negatif@gmail.com>[m
+Date:   Mon Jan 4 19:12:29 2010 +0100[m
+[m
+    README fixes[m
+:[K[K[?1l>]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ git checkout [Kgit revert 865aaae5de65592af1ddc99af3d3786774184825
+error: Your local changes to 'config/database.yml' would be overwritten by merge.  Aborting.
+Please, commit your changes or stash them before you can merge.
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ git sta[K
+# On branch newstuff
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	[32mmodified:   config/database.yml[m
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	[36mserver[m
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ git stash
+Saved working directory and index state WIP on newstuff: 865aaae Empty Rails 3
+HEAD is now at 865aaae Empty Rails 3
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ git log
+[?1h=[33mcommit 865aaae5de65592af1ddc99af3d3786774184825[m[m
+Author: Sunny Ripert <sunny@sunfox.org>[m
+Date:   Wed Jul 21 23:42:18 2010 +0200[m
+[m
+    Empty Rails 3[m
+[m
+[33mcommit bea38e55ea7e2abe46c2c14e833a8e6f0e37aa7d[m[m
+Author: Sunny Ripert <sunny@sunfox.org>[m
+Date:   Sat Jun 19 13:33:36 2010 +0200[m
+[m
+    Deleted it all[m
+[m
+[33mcommit a2d102286b9ba0d0a919e2105685e55700ad2814[m[m
+Author: Sunny Ripert <negatif@gmail.com>[m
+Date:   Mon Jan 4 19:12:45 2010 +0100[m
+[m
+    New HAML init[m
+[m
+[33mcommit e7ee338a757bfb4d32830a43db8e3cc84fabda7b[m[m
+Author: Sunny Ripert <negatif@gmail.com>[m
+Date:   Mon Jan 4 19:12:29 2010 +0100[m
+[m
+    README fixes[m
+:[K[K[?1l>]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ git log[K[K[Kst
+# On branch newstuff
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	[36mserver[m
+nothing added to commit but untracked files present (use "git add" to track)
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ git stlogstash[2Plogstash[Krevert 865aaae5de65592af1ddc99af3d3786774184825
+Finished one revert.
+[?1049h[?1h=[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H".git/COMMIT_EDITMSG" 60L, 2081C[1;1HRevert "Empty Rails 3"
+
+This reverts commit 865aaae5de65592af1ddc99af3d3786774184825.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch newstuff
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       deleted:    .gitignore
+#       deleted:    Gemfile
+#       deleted:    README
+#       deleted:    Rakefile
+#       deleted:    app/controllers/application_controller.rb
+#       deleted:    app/helpers/application_helper.rb
+#       deleted:    app/views/layouts/application.html.erb
+#       deleted:    config.ru
+#       deleted:    config/application.rb
+#       deleted:    config/boot.rb
+#       deleted:    config/database.yml
+#       deleted:    config/environment.rb
+#       deleted:    config/environments/development.rb[1;1H[?12l[?25h[?25l[24;1H[K[24;1H:[?12l[?25hx[?25l[24;1H[K[24;1H[?1l>[?12l[?25h[?1049l[newstuff 6aa2614] Revert "Empty Rails 3"
+ 39 files changed, 0 insertions(+), 9083 deletions(-)
+ delete mode 100644 .gitignore
+ delete mode 100644 Gemfile
+ delete mode 100644 README
+ delete mode 100644 Rakefile
+ delete mode 100644 app/controllers/application_controller.rb
+ delete mode 100644 app/helpers/application_helper.rb
+ delete mode 100644 app/views/layouts/application.html.erb
+ delete mode 100644 config.ru
+ delete mode 100644 config/application.rb
+ delete mode 100644 config/boot.rb
+ delete mode 100644 config/database.yml
+ delete mode 100644 config/environment.rb
+ delete mode 100644 config/environments/development.rb
+ delete mode 100644 config/environments/production.rb
+ delete mode 100644 config/environments/test.rb
+ delete mode 100644 config/initializers/backtrace_silencers.rb
+ delete mode 100644 config/initializers/inflections.rb
+ delete mode 100644 config/initializers/mime_types.rb
+ delete mode 100644 config/initializers/secret_token.rb
+ delete mode 100644 config/initializers/session_store.rb
+ delete mode 100644 config/locales/en.yml
+ delete mode 100644 config/routes.rb
+ delete mode 100644 db/seeds.rb
+ delete mode 100644 doc/README_FOR_APP
+ delete mode 100644 lib/tasks/.gitkeep
+ delete mode 100644 public/404.html
+ delete mode 100644 public/422.html
+ delete mode 100644 public/500.html
+ delete mode 100644 public/favicon.ico
+ delete mode 100644 public/images/rails.png
+ delete mode 100644 public/index.html
+ delete mode 100644 public/javascripts/application.js
+ delete mode 100644 public/javascripts/controls.js
+ delete mode 100644 public/javascripts/dragdrop.js
+ delete mode 100644 public/javascripts/effects.js
+ delete mode 100644 public/javascripts/prototype.js
+ delete mode 100644 public/javascripts/rails.js
+ delete mode 100644 public/robots.txt
+ delete mode 100644 public/stylesheets/.gitkeep
+ delete mode 100755 script/rails
+ delete mode 100644 test/performance/browsing_test.rb
+ delete mode 100644 test/test_helper.rb
+ delete mode 100644 vendor/plugins/.gitkeep
+]0;sunny@tangram: ~/code/iou[01;32msunny@tangram[00m:[01;34m~/code/iou[00m$ cd ..
+]0;sunny@tangram: ~/code[01;32msunny@tangram[00m:[01;34m~/code[00m$ rails iou/[K
+Usage:
+  rails new APP_PATH [options]
+
+Options:
+  -r, [--ruby=PATH]          # Path to the Ruby binary of your choice
+                             # Default: /usr/bin/ruby1.9.1
+  -d, [--database=DATABASE]  # Preconfigure for selected database (options: mysql/oracle/postgresql/sqlite3/frontbase/ibm_db)
+                             # Default: sqlite3
+  -b, [--builder=BUILDER]    # Path to an application builder (can be a filesystem path or URL)
+  -m, [--template=TEMPLATE]  # Path to an application template (can be a filesystem path or URL).
+      [--dev]                # Setup the application with Gemfile pointing to your Rails checkout
+      [--edge]               # Setup the application with Gemfile pointing to Rails repository
+      [--skip-gemfile]       # Don't create a Gemfile
+  -O, [--skip-activerecord]  # Skip ActiveRecord files
+  -T, [--skip-testunit]      # Skip TestUnit files
+  -J, [--skip-prototype]     # Skip Prototype files
+  -G, [--skip-git]           # Skip Git ignores and keeps
+
+Runtime options:
+  -f, [--force]    # Overwrite files that already exist
+  -p, [--pretend]  # Run but do not make any changes
+  -q, [--quiet]    # Supress status output
+  -s, [--skip]     # Skip files that already exist
+
+Rails options:
+  -v, [--version]  # Show Rails version number and quit
+  -h, [--help]     # Show this help message and quit
+
+Description:
+    The 'rails new' command creates a new Rails application with a default
+    directory structure and configuration at the path you specify.
+
+Example:
+    rails new ~/Code/Ruby/weblog
+
+    This generates a skeletal Rails installation in ~/Code/Ruby/weblog.
+    See the README in the newly created application to get going.
+]0;sunny@tangram: ~/code[01;32msunny@tangram[00m:[01;34m~/code[00m$ rails new iou
+[1m[34m       exist[0m  
+[1m[32m      create[0m  README
+[1m[32m      create[0m  Rakefile
+[1m[32m      create[0m  config.ru
+[1m[32m      create[0m  .gitignore
+[1m[32m      create[0m  Gemfile
+[1m[34m       exist[0m  app
+[1m[32m      create[0m  app/views/layouts/application.html.erb
+[1m[32m      create[0m  app/helpers/application_helper.rb
+[1m[32m      create[0m  app/controllers/application_controller.rb
+[1m[34m       exist[0m  app/models
+[1m[32m      create[0m  config
+[1m[32m      create[0m  config/routes.rb
+[1m[32m      create[0m  config/application.rb
+[1m[32m      create[0m  config/environment.rb
+[1m[32m      create[0m  config/environments
+[1m[32m      create[0m  config/environments/test.rb
+[1m[32m      create[0m  config/environments/development.rb
+[1m[32m      create[0m  config/environments/production.rb
+[1m[32m      create[0m  config/initializers
+[1m[32m      create[0m  config/initializers/secret_token.rb
+[1m[32m      create[0m  config/initializers/inflections.rb
+[1m[32m      create[0m  config/initializers/session_store.rb
+[1m[32m      create[0m  config/initializers/backtrace_silencers.rb
+[1m[32m      create[0m  config/initializers/mime_types.rb
+[1m[32m      create[0m  config/locales
+[1m[32m      create[0m  config/locales/en.yml
+[1m[32m      create[0m  config/boot.rb
+[1m[32m      create[0m  config/database.yml
+[1m[32m      create[0m  db
+[1m[32m      create[0m  db/seeds.rb
+[1m[32m      create[0m  doc
+[1m[32m      create[0m  doc/README_FOR_APP
+[1m[32m      create[0m  lib
+[1m[32m      create[0m  lib/tasks
+[1m[32m      create[0m  lib/tasks/.gitkeep
+[1m[34m       exist[0m  log
+[1m[34m   identical[0m  log/server.log
+[1m[34m   identical[0m  log/production.log
+[1m[34m   identical[0m  log/development.log
+[1m[34m   identical[0m  log/test.log
+[1m[32m      create[0m  public
+[1m[32m      create[0m  public/500.html
+[1m[32m      create[0m  public/robots.txt
+[1m[32m      create[0m  public/favicon.ico
+[1m[32m      create[0m  public/422.html
+[1m[32m      create[0m  public/404.html
+[1m[32m      create[0m  public/index.html
+[1m[32m      create[0m  public/images
+[1m[32m      create[0m  public/images/rails.png
+[1m[32m      create[0m  public/stylesheets
+[1m[32m      create[0m  public/stylesheets/.gitkeep
+[1m[32m      create[0m  public/javascripts
+[1m[32m      create[0m  public/javascripts/dragdrop.js
+[1m[32m      create[0m  public/javascripts/rails.js
+[1m[32m      create[0m  public/javascripts/controls.js
+[1m[32m      create[0m  public/javascripts/application.js
+[1m[32m      create[0m  public/javascripts/prototype.js
+[1m[32m      create[0m  public/javascripts/effects.js
+[1m[32m      create[0m  script
+[1m[32m      create[0m  script/rails
+[1m[34m       exist[0m  test
+[1m[32m      create[0m  test/performance/browsing_test.rb
+[1m[32m      create[0m  test/test_helper.rb
+[1m[34m       exist[0m  t
