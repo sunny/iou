@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%=@title="Debt"%></h1>
+<p>Amount: <%= @debt.amount %> €</p>
+<p>From: <%= link_to(@debt.user_from.name, @debt.user_from) %></p>
+<p>To: <%= link_to(@debt.user_to.name, @debt.user_to) %></p>
+<p>Bill: <%= link_to(@debt.bill.description, @debt.bill) %></p>
 
-<%= link_to 'Edit', edit_debt_path(@debt) %> |
-<%= link_to 'Back', debts_path %>
+
+<p>
+  <%= link_to 'Edit', edit_debt_path(@debt) %> |
+  <%= link_to 'Destroy', @debt, :confirm => 'Are you sure?', :method => :delete %>
+</p>

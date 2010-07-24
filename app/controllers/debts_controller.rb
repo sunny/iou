@@ -21,7 +21,7 @@ class DebtsController < ApplicationController
 
   # GET /debts/new
   def new
-    @debt = Debt.new
+    @debt = Debt.new(params[:debt])
 
     respond_to do |format|
       format.html # new.html.erb

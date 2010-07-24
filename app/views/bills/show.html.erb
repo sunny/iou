@@ -5,19 +5,46 @@
 <p><b>Amount:</b>  <%= @bill.amount %> €</p>
 <p><b>Date:</b> <%= @bill.date %></p>
 
-<ul>
-<% @bill.debts.each do |debt| %>
-  <li>
-    <%= link_to(debt.user_from.name, debt.user_from) %>
-    owes
-    <%= debt.amount %> €
-    to
-    <%= link_to(debt.user_to.name, debt.user_to) %>
-    
-    <%= link_to("Edit debt", edit_debt_path(debt)) %>
-  </li>
+<% if @bill.debts.length == 0 %>
+
+<p><%= link_to("Add debts to this bill", new_debt_path('debt[bill_id]' => @bill.id, 'debt[amount]' => @bill.missing_debts_amount))%>.</p>
+
+<% else %>
+
+  <h2>Debts</h2>
+
+  <% unless @bill.has_enough_debts? %>
+    <% if @bill.missing_debts_amount > 0 %>
+      <p>
+        This bill's debts should sum up to <%=@bill.amount %> €.
+        Please add <%=@bill.missing_debts_amount%> in the amounts below or
+        <%= link_to("add another debt", new_debt_path('debt[bill_id]' => @bill.id, 'debt[amount]' => @bill.missing_debts_amount))%>.
+      </p>
+
+    <% else %>
+      
+      <p>
+        This bill's debts should sum up to <%=@bill.amount %> €.
+        Please remove <%=-@bill.missing_debts_amount%> € from the amounts below.
+      </p>
+    <% end %>
+  <% end %>
+
+
+  <ul>
+  <% @bill.debts.each do |debt| %>
+    <li>
+      <%= link_to(debt.user_from.name, debt.user_from) %>
+      owes
+      <%= debt.amount %> €
+      to
+      <%= link_to(debt.user_to.name, debt.user_to) %>
+      
+      <%= link_to("Edit debt", edit_debt_path(debt)) %>
+    </li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
 
 <%= link_to 'Edit', edit_bill_path(@bill) %> |
 <%= link_to 'Back', bills_path %>

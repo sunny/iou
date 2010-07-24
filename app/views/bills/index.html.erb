@@ -4,6 +4,8 @@
   <tr>
     <th>Description</th>
     <th>Amount</th>
+    <th>Users from</th>
+    <th>Users to</th>
     <th>Date</th>
     <th></th>
     <th></th>
@@ -12,12 +14,11 @@
 
 <% @bills.each do |bill| %>
   <tr>
-    <td><%= bill.description %></td>
+    <td><%= link_to(bill.description, bill) %></td>
     <td><%= bill.amount %></td>
+    <td><%= bill.users_from.map{ |u| link_to(h(u.name), u) }.join(', ').html_safe %></td>
+    <td><%= bill.users_to.map{ |u| link_to(h(u.name), u) }.join(', ').html_safe %></td>
     <td><%= bill.date %></td>
-    <td><%= link_to 'Show', bill %></td>
-    <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
-    <td><%= link_to 'Destroy', bill, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

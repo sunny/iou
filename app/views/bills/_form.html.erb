@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.label :amount %>
+    <%= f.text_field :amount, :type => :number, :size => 4 %>
   </div>
   <div class="field">
-    <%= f.label :amount %><br />
-    <%= f.text_field :amount %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
   </div>
   <div class="field">
     <%= f.label :date %><br />
-    <%= f.datetime_select :date %>
+    <%= f.date_select :date %>
   </div>
   <div class="actions">
     <%= f.submit %>
