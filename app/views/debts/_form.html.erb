@@ -1,0 +1,34 @@
+<%= form_for(@debt) do |f| %>
+  <% if @debt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@debt.errors.count, "error") %> prohibited this debt from being saved:</h2>
+
+      <ul>
+      <% @debt.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.text_field :amount, :type => :number, :size => 4 %>
+    €
+  </div>
+  <div class="field">
+    <%= f.label :bill_id %>
+    <%= f.collection_select :bill_id, Bill.all, :id, :description %>
+  </div>
+  <div class="field">
+    <%= f.label :user_from_id %>
+    <%= f.collection_select :user_from_id, User.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :user_to_id %>
+    <%= f.collection_select :user_to_id, User.all, :id, :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

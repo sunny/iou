@@ -1,0 +1,29 @@
+<h1><%=@title="Debts"%></h1>
+
+<table>
+  <tr>
+    <th>User from</th>
+    <th>User to</th>
+    <th>Amount</th>
+    <th>Bill</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @debts.each do |debt| %>
+  <tr>
+    <td><%= link_to(debt.user_from.name, debt.user_from) %></td>
+    <td><%= link_to(debt.user_to.name, debt.user_to) %></td>
+    <td><%= debt.amount %> €</td>
+    <td><%= link_to(debt.bill.description, debt.bill) %></td>
+    <td><%= link_to 'Show', debt %></td>
+    <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
+    <td><%= link_to 'Destroy', debt, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Debt', new_debt_path %>

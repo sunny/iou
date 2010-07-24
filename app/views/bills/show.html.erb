@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @bill.description %></h1>
+
+<p><b>Amount:</b>  <%= @bill.amount %> €</p>
+<p><b>Date:</b> <%= @bill.date %></p>
+
+<ul>
+<% @bill.debts.each do |debt| %>
+  <li>
+    <%= link_to(debt.user_from.name, debt.user_from) %>
+    owes
+    <%= debt.amount %> €
+    to
+    <%= link_to(debt.user_to.name, debt.user_to) %>
+    
+    <%= link_to("Edit debt", edit_debt_path(debt)) %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_bill_path(@bill) %> |
+<%= link_to 'Back', bills_path %>
