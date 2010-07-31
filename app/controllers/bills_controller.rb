@@ -1,7 +1,7 @@
 class BillsController < ApplicationController
   # GET /bills
   def index
-    @bills = Bill.all
+    @bills = Bill.includes(:users_from, :users_to, :debts)
 
     respond_to do |format|
       format.html # index.html.erb

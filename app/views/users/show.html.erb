@@ -1,6 +1,23 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%=@title="User #{@user.name}" %></h1>
+
+<% if @user.bills.length %>
+  <h2>Bills</h2>
+  <ul>
+  <% @user.bills.each do |b| %>
+    <li><%=link_to(b.description, b)%></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<% if @user.debts.length %>
+  <h2>Debts</h2>
+  <ul>
+  <% @user.debts.each do |d| %>
+    <li><%=d.user_to.name%> owes <%= d.amount %> € to <%= d.user_from.name %>
+      <%=link_to(d.bill.description, d.bill)%></li>
+  <% end %>
+  </ul>
+<% end %>
 
 <p>Nothing here yet&hellip;</p>
 

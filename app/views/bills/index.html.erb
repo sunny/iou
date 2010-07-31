@@ -1,24 +1,23 @@
-<h1>Listing bills</h1>
+<h1><%=@title="Bills"%></h1>
 
 <table>
   <tr>
-    <th>Description</th>
+    <th></th>
     <th>Amount</th>
     <th>Users from</th>
     <th>Users to</th>
     <th>Date</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @bills.each do |bill| %>
   <tr>
     <td><%= link_to(bill.description, bill) %></td>
     <td><%= bill.amount %></td>
-    <td><%= bill.users_from.map{ |u| link_to(h(u.name), u) }.join(', ').html_safe %></td>
-    <td><%= bill.users_to.map{ |u| link_to(h(u.name), u) }.join(', ').html_safe %></td>
+    <td><%= bill.users_from.map{ |u| u.name }.join(', ') %></td>
+    <td><%= bill.users_to.map  { |u| u.name }.join(', ') %></td>
     <td><%= bill.date %></td>
+    <td><%= bill.shared?.inspect %></td>
+    <td><%= bill.users.length %></td>
   </tr>
 <% end %>
 </table>

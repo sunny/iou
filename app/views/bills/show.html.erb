@@ -1,44 +1,38 @@
-<p id="notice"><%= notice %></p>
+<h1><%=@title=@bill.description%></h1>
 
-<h1><%= @bill.description %></h1>
-
-<p><b>Amount:</b>  <%= @bill.amount %> €</p>
+<p><b>Amount:</b> <%= @bill.amount %> €</p>
 <p><b>Date:</b> <%= @bill.date %></p>
 
 <% if @bill.debts.length == 0 %>
 
-<p><%= link_to("Add debts to this bill", new_debt_path('debt[bill_id]' => @bill.id, 'debt[amount]' => @bill.missing_debts_amount))%>.</p>
+<p><%= link_to("Add debts to this bill", new_debt_path('debt[bill_id]' => @bill.id, 'debt[amount]' => @bill.missing_amount))%></p>
 
 <% else %>
 
   <h2>Debts</h2>
+  <% if @bill.missing_amount > 0 %>
+    <p>
+      This bill's debts should sum up to <%=@bill.amount %> €.
+      Please add <%=@bill.missing_amount%> € in the amounts below or
+      <%= link_to("add another debt", new_debt_path('debt[bill_id]' => @bill.id, 'debt[amount]' => @bill.missing_amount))%>.
+    </p>
 
-  <% unless @bill.has_enough_debts? %>
-    <% if @bill.missing_debts_amount > 0 %>
-      <p>
-        This bill's debts should sum up to <%=@bill.amount %> €.
-        Please add <%=@bill.missing_debts_amount%> in the amounts below or
-        <%= link_to("add another debt", new_debt_path('debt[bill_id]' => @bill.id, 'debt[amount]' => @bill.missing_debts_amount))%>.
-      </p>
-
-    <% else %>
-      
-      <p>
-        This bill's debts should sum up to <%=@bill.amount %> €.
-        Please remove <%=-@bill.missing_debts_amount%> € from the amounts below.
-      </p>
-    <% end %>
+  <% elsif @bill.missing_amount < 0 %>
+    
+    <p>
+      This bill's debts should sum up to <%=@bill.amount %> €.
+      Please remove <%=-@bill.missing_amount%> € from the amounts below.
+    </p>
   <% end %>
-
 
   <ul>
   <% @bill.debts.each do |debt| %>
     <li>
-      <%= link_to(debt.user_from.name, debt.user_from) %>
+      <%= link_to(debt.user_to.name, debt.user_to) %>
       owes
       <%= debt.amount %> €
       to
-      <%= link_to(debt.user_to.name, debt.user_to) %>
+      <%= link_to(debt.user_from.name, debt.user_from) %>
       
       <%= link_to("Edit debt", edit_debt_path(debt)) %>
     </li>
