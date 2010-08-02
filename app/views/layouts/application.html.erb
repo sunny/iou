@@ -21,7 +21,10 @@
   </nav>
 
   <% if notice %>
-  <p id="notice"><%= notice %></p>
+  <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+  <p class="alert"><%= alert %></p>
   <% end %>
 
   <div id="content">
