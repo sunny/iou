@@ -1,0 +1,15 @@
+<h1><%= @user.name %>'s Home</h1>
+
+<h2>Open Debts</h2>
+
+<table>
+<% for friend in @friends %>
+  <tr>
+    <td><%= link_to(friend.user.name, friend.user) %></td>
+    <td><%= friend.you_owe ? "you owe" : "owes you" %></td>
+    <td><%= friend.amount %>&nbsp;€</td>
+  </tr>
+<% end %>
+</table>
+
+<h2>Recent Bills</h2>

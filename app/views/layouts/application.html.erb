@@ -7,18 +7,27 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div id="page">
+  <header>
+    IOU
+  </header>
 
-<nav>
-  <ul>
-    <li><%=link_to('Bills', bills_path) %></li>
-    <li><%=link_to('Users', users_path) %></li>
-    <li><%=link_to('Debts', debts_path) %></li>
-  </ul>
-</nav>
+  <nav>
+    <ul>
+      <li><%=link_to('Bills', bills_path) %></li>
+      <li><%=link_to('Users', users_path) %></li>
+      <li><%=link_to('Debts', debts_path) %></li>
+    </ul>
+  </nav>
 
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+  <p id="notice"><%= notice %></p>
+  <% end %>
 
+  <div id="content">
 <%= yield %>
+  </div>
 
+</div>
 </body>
 </html>
