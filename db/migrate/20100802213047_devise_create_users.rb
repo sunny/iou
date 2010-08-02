@@ -1,17 +1,21 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def self.up
-    create_table(:users) do |t|
+    change_table(:users) do |t|
       t.database_authenticatable :null => false
       t.recoverable
       t.rememberable
-      t.trackable
-
+      # t.trackable
       # t.confirmable
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       # t.token_authenticatable
+    end
 
-
-      t.timestamps
+    say_with_time "Creating fake emails" do
+      i = 0
+      User.all.each { |user|
+        user.email = "example#{i+=1}@example.org"
+        user.save
+      }
     end
 
     add_index :users, :email,                :unique => true
