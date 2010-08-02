@@ -1,6 +1,6 @@
 <h1><%=@title="User #{@user.name}" %></h1>
 
-<% if @user.bills.length %>
+<% unless @user.bills.empty? %>
   <h2>Bills</h2>
   <ul>
   <% @user.bills.each do |b| %>
@@ -9,7 +9,7 @@
   </ul>
 <% end %>
 
-<% if @user.debts.length %>
+<% unless @user.debts.empty? %>
   <h2>Debts</h2>
   <ul>
   <% @user.debts.each do |d| %>
@@ -19,7 +19,9 @@
   </ul>
 <% end %>
 
+<% if @user.bills.empty? and @user.debts.empty? %>
 <p>Nothing here yet&hellip;</p>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
