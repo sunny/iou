@@ -15,4 +15,22 @@ class User < ActiveRecord::Base
         .order('date')
   end
 
+  def owes(user)
+    from = debts_from.where('debts.user_to = ?', user).sum('amount')
+    to = debts_to.where('debts.user_from = ?', user).sum('amount')
+    from - to
+  end
+
+  def friends
+    debts.map { |debt| debt.user }
+      .uniq
+      .reject { |user| user.id === id }
+  end
+  
+  def friends_diff
+    diff = {}
+    friends.each {
+      owes(friend)
+    }
+  end
 end

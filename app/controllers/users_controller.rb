@@ -18,6 +18,13 @@ class UsersController < ApplicationController
       format.xml  { render :xml => @user }
     end
   end
+  
+  # GET /users/1/home
+  def home
+    @user = User.find(params[:id])
+    @friends = []
+    
+  end
 
   # GET /users/new
   def new
