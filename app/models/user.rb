@@ -4,15 +4,11 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
   def debts
-    Debt.includes(:bill)
-        .where('user_from_id = ? OR user_to_id = ?', id, id)
-        .order('bills.date')
+    Debt.includes(:bill).where('user_from_id = ? OR user_to_id = ?', id, id).order('bills.date')
   end
 
   def bills
-    Bill.includes(:debts)
-        .where('debts.user_from_id = ? OR debts.user_to_id = ?', id, id)
-        .order('date')
+    Bill.includes(:debts).where('debts.user_from_id = ? OR debts.user_to_id = ?', id, id).order('date')
   end
 
   def owes(user)
@@ -22,9 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    debts.map { |debt| debt.user }
-      .uniq
-      .reject { |user| user.id === id }
+    debts.map { |debt| debt.user }.uniq.reject { |user| user.id === id }
   end
   
   def friends_diff
