@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
 
   # Accessible (or protected) attributes for devise
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
 
   has_many :debts_from, :class_name => 'Debt', :foreign_key => 'user_from'
   has_many :debts_to, :class_name => 'Debt', :foreign_key => 'user_to'
