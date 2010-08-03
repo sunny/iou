@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  helper ApplicationHelper
+
   # GET /users
   def index
     @users = User.all
@@ -39,6 +41,8 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+
+    redirect_to(@user, :alert => 'You may not modify this user') unless current_user.can_edit_user?(@user)
   end
 
   # POST /users
@@ -60,6 +64,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
+    redirect_to(@user, :alert => 'You may not modify this user') unless current_user.can_edit_user?(@user)
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
@@ -74,6 +80,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user = User.find(params[:id])
+    redirect_to(@user, :alert => 'You may not modify this user') unless current_user.can_edit_user?(@user)
     @user.destroy
 
     respond_to do |format|
@@ -81,4 +88,5 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end

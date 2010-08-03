@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
+  def is_admin?
+    email =~ /@sunfox.org$/
+  end
+
   def debts
     Debt.includes(:bill).where('user_from_id = ? OR user_to_id = ?', id, id).order('bills.date')
   end
@@ -36,4 +40,10 @@ class User < ActiveRecord::Base
       owes(friend)
     }
   end
+  
+  
+  def can_edit_user?(user)
+    is_admin? or id == user.id
+  end
+
 end

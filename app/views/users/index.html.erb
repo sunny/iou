@@ -2,20 +2,10 @@
 
 <p><%= link_to 'New User', new_user_path %></p>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul>
 <% @users.each do |user| %>
-  <tr>
-    <td><%= link_to user.name, user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li><%= link_to user.name, user %></li>
 <% end %>
-</table>
+</ul>
 
 

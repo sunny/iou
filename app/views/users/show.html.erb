@@ -1,6 +1,6 @@
 <h1><%=@title="User #{@user.name}" %></h1>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Edit', edit_user_path(@user) if current_user.is_admin? %>
 
 <% unless @user.bills.empty? %>
   <h2>Bills</h2>
