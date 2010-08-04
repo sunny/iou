@@ -4,6 +4,7 @@ class CreateBills < ActiveRecord::Migration
       t.text :description
       t.float :amount
       t.datetime :date
+      t.integer :creator_id
 
       t.timestamps
     end
