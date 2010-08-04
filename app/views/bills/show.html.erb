@@ -28,11 +28,11 @@
   <ul>
   <% @bill.debts.each do |debt| %>
     <li>
-      <%= link_to(debt.user_to.name, debt.user_to) %>
+      <%= link_to(debt.person_to.name, debt.person_to) %>
       owes
       <%= debt.amount %> €
       to
-      <%= link_to(debt.user_from.name, debt.user_from) %>
+      <%= link_to(debt.person_from.name, debt.person_from) %>
       
       <%= link_to("Edit debt", edit_debt_path(debt)) %>
     </li>

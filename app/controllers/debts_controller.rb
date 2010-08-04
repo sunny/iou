@@ -1,7 +1,7 @@
 class DebtsController < ApplicationController
   # GET /debts
   def index
-    @debts = Debt.all :include => [:user_from, :user_to, :bill]
+    @debts = Debt.all :include => [:people_from, :people_to, :bill]
 
     respond_to do |format|
       format.html # index.html.erb

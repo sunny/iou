@@ -1,9 +1,12 @@
 Iou::Application.routes.draw do |map|
   devise_for :users
 
-  resources :users
   resources :debts
   resources :bills
+  resources :users do
+    resources :friends
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

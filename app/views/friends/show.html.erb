@@ -1,28 +1,26 @@
-<h1><%=@title="User #{@user.name}" %></h1>
+<h1><%=@title="Friend #{@friend.name}" %></h1>
 
-<%= link_to 'Edit', edit_user_path(@user) if current_user.is_admin? %>
-
-<% unless @user.bills.empty? %>
+<% unless @friend.bills.empty? %>
   <h2>Bills</h2>
   <ul>
-  <% @user.bills.each do |b| %>
+  <% @friend.bills.each do |b| %>
     <li><%=link_to(b.description, b)%></li>
   <% end %>
   </ul>
 <% end %>
 
-<% unless @user.debts.empty? %>
+<% unless @friend.debts.empty? %>
   <h2>Debts</h2>
   <ul>
-  <% @user.debts.each do |d| %>
+  <% @friend.debts.each do |d| %>
     <li><%=d.person_to.name%> owes <%= d.amount %>&nbsp;€ to <%= d.person_from.name %>
       <%=link_to(d.bill.description, d.bill)%></li>
   <% end %>
   </ul>
 <% end %>
 
-<% if @user.bills.empty? and @user.debts.empty? %>
+<% if @friend.bills.empty? and @friend.debts.empty? %>
 <p>Nothing here yet&hellip;</p>
 <% end %>
 
-
+<%= link_to "Back to #{@user.name}'s friends", user_friends_path(@user) %>

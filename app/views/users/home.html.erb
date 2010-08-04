@@ -3,13 +3,14 @@
 <h2>Open Debts</h2>
 
 <table>
-<% for friend in @friends %>
+<% for friend, amount in @friends_and_debts %>
   <tr>
-    <td><%= link_to(friend.user.name, friend.user) %></td>
-    <td><%= friend.you_owe ? "you owe" : "owes you" %></td>
-    <td><%= friend.amount %>&nbsp;€</td>
+    <td><%= link_to(friend.name, friend) %></td>
+    <td><%= amount > 0 ? "you owe" : "owes you" %></td>
+    <td><%= amount.abs %>&nbsp;€</td>
   </tr>
 <% end %>
 </table>
 
 <h2>Recent Bills</h2>
+

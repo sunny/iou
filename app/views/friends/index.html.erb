@@ -1,0 +1,11 @@
+<h1><%=@title="Friends of #{@user.name}"%></h1>
+
+<p><%= link_to 'New Friend', new_user_friend_path(@user) %></p>
+
+<ul>
+<% @friends.each do |friend| %>
+  <li><%= link_to friend.name, user_friend_path(@user, friend) %></li>
+<% end %>
+</ul>
+
+

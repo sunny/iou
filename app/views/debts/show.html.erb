@@ -1,8 +1,8 @@
 <h1><%=@title="Debt"%></h1>
 
 <p>Amount: <%= @debt.amount %> €</p>
-<p>From: <%= link_to(@debt.user_from.name, @debt.user_from) %></p>
-<p>To: <%= link_to(@debt.user_to.name, @debt.user_to) %></p>
+<p>From: <%= link_to(@debt.person_from.name, @debt.person_from) %></p>
+<p>To: <%= link_to(@debt.person_to.name,  @debt.person_to) %></p>
 <p>Bill: <%= link_to(@debt.bill.description, @debt.bill) %></p>
 
 

@@ -22,11 +22,11 @@
   </div>
   <div class="field">
     <%= f.label :user_from_id %>
-    <%= f.collection_select :user_from_id, User.all, :id, :name %>
+    <%= f.collection_select :person_from_id, Person.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :user_to_id %>
-    <%= f.collection_select :user_to_id, User.all, :id, :name %>
+    <%= f.collection_select :person_to_id, Person.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

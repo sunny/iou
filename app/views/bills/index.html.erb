@@ -4,8 +4,8 @@
   <tr>
     <th></th>
     <th>Amount</th>
-    <th>Users from</th>
-    <th>Users to</th>
+    <th>People from</th>
+    <th>People to</th>
     <th>Date</th>
   </tr>
 
@@ -13,11 +13,9 @@
   <tr>
     <td><%= link_to(bill.description, bill) %></td>
     <td><%= bill.amount %></td>
-    <td><%= bill.users_from.map{ |u| u.name }.join(', ') %></td>
-    <td><%= bill.users_to.map  { |u| u.name }.join(', ') %></td>
+    <td><%= bill.people_from.map{ |u| u.name }.join(', ') %></td>
+    <td><%= bill.people_to.map  { |u| u.name }.join(', ') %></td>
     <td><%= bill.date %></td>
-    <td><%= bill.shared?.inspect %></td>
-    <td><%= bill.users.length %></td>
   </tr>
 <% end %>
 </table>
