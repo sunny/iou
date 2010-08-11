@@ -41,8 +41,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-
-    redirect_to(@user, :alert => 'You may not modify this user') unless current_user.can_edit_user?(@user)
+    redirect_to(@user, :alert => 'You may not modify this user') unless current_user.can_edit_person?(@user)
   end
 
   # POST /users
@@ -63,8 +62,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   def update
     @user = User.find(params[:id])
-
-    redirect_to(@user, :alert => 'You may not modify this user') unless current_user.can_edit_user?(@user)
+    redirect_to(@user, :alert => 'You may not modify this user') unless current_user.can_edit_person?(@user)
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
