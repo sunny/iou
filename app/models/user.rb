@@ -10,6 +10,6 @@ class User < Person
   attr_accessible :email, :name, :password, :password_confirmation, :remember_me
 
   def can_edit_person?(person)
-    is_admin? or id == person.id
+    self.admin? or self == person or self.friends.include?(person)
   end
 end

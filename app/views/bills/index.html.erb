@@ -1,5 +1,7 @@
 <h1><%=@title="Bills"%></h1>
 
+<%= link_to 'New Bill', new_bill_path %>
+
 <table>
   <tr>
     <th></th>
@@ -20,6 +22,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Bill', new_bill_path %>

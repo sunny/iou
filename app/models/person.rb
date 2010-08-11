@@ -2,7 +2,7 @@ class Person < ActiveRecord::Base
   has_many :debts_from, :class_name => 'Debt', :foreign_key => 'person_from'
   has_many :debts_to, :class_name => 'Debt', :foreign_key => 'person_to'
 
-  validates_presence_of :name
+  validates :name, :presence => true
 
   def is_admin?
     email =~ /@sunfox.org$/

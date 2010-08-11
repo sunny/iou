@@ -1,0 +1,17 @@
+admin:
+  name: Admin
+  email: admin@example.org
+  encrypted_password: ***************
+  admin: 1
+  type: User
+
+dew:
+  name: Dew
+  email: dew@example.org
+  encrypted_password: ***************
+  type: User
+
+dew_friend:
+  name: Dewie
+  type: Friend
+

@@ -8,4 +8,7 @@ class ApplicationController < ActionController::Base
   def friend_url(friend)
     user_friend_url(friend.creator_id, friend)
   end
+  def edit_friend_url(friend)
+    edit_user_friend_url(friend.creator_id, friend)
+  end
 end

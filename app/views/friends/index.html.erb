@@ -1,6 +1,9 @@
 <h1><%=@title="Friends of #{@user.name}"%></h1>
 
-<p><%= link_to 'New Friend', new_user_friend_path(@user) %></p>
+<p>
+  <%= link_to "New Friend", new_user_friend_path(@user) %>
+  <%= link_to "Back to #{@user.name}", user_path(@user) %>
+</p>
 
 <ul>
 <% @friends.each do |friend| %>
