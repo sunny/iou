@@ -1,11 +1,9 @@
 Iou::Application.routes.draw do |map|
   devise_for :users
-
+  
+  resources :users # FIXME remove GET /users, GET /users/:id, GET /users/new, POST /users
   resources :bills
-  resources :users do
-    resources :friends
-  end
-
+  resources :friends
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
