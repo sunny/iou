@@ -1,7 +1,6 @@
 Iou::Application.routes.draw do |map|
   devise_for :users
 
-  resources :debts
   resources :bills
   resources :users do
     resources :friends
