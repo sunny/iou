@@ -6,7 +6,15 @@
 
 <ul>
 <% @friends.each do |friend| %>
-  <li><%= link_to friend.name, friend_path(friend) %></li>
+  <li>
+    <%= link_to friend.name, friend_path(friend) %>
+    <% owes_you = friend.owes(current_user) %>
+    <% if owes_you > 0 %>
+    owes you <%=owes_you%> €
+    <% elsif owes_you < 0 %>
+    you owe him/her <%=owes_you.abs%> €
+    <% end %>
+  </li>
 <% end %>
 </ul>
 

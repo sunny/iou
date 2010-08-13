@@ -12,6 +12,7 @@ class FriendsController < ApplicationController
   # GET /friends/1
   def show
     @friend = current_user.friends.find(params[:id])
+    @owes_you = @friend.owes(current_user)
 
     respond_to do |format|
       format.html # show.html.erb

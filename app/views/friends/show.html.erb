@@ -1,26 +1,32 @@
 <h1><%=@title="Friend #{@friend.name}" %></h1>
 
-<% unless @friend.debts.empty? %>
-  <h2>Bills</h2>
-  <ul>
-  <% @friend.debts.each do |d| %>
-    <li>
-      <%=link_to(d.bill.description, d.bill)%>:
-      <% if d.person_to == current_user %>
-      you owe him/her <%= d.amount %> €
-      <% elsif d.person_from == current_user %>
-      owes you <%= d.amount %> €
-      <% elsif d.person_from == @friend %>
-      <%=d.person_to.name%> owes him/her <%= d.amount %>&nbsp;€
-      <% elsif d.person_to == @friend %>
-      owes <%= d.amount %> € to <%= d.person_from.name %>
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
+<% if @friend.debts.empty? %>
+<p>Nothing here yet&hellip;</p>
+<% else %>
+
+<% if @owes_you > 0 %>
+<p>Owes you <%=@owes_you%> €</p>
+<% elsif @owes_you < 0 %>
+<p>You owe him/her <%=@owes_you.abs%> €</p>
 <% end %>
 
-<% if @friend.in_bills.empty? and @friend.debts.empty? %>
-<p>Nothing here yet&hellip;</p>
+<h2>Bills</h2>
+<ul>
+<% @friend.debts.each do |d| %>
+  <li>
+    <%=link_to(d.bill.description, d.bill)%>:
+    <% if d.person_to == current_user %>
+    you owe him/her <%= d.amount %> €
+    <% elsif d.person_from == current_user %>
+    owes you <%= d.amount %> €
+    <% elsif d.person_from == @friend %>
+    <%=d.person_to.name%> owes him/her <%= d.amount %>&nbsp;€
+    <% elsif d.person_to == @friend %>
+    owes <%= d.amount %> € to <%= d.person_from.name %>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
 <% end %>
 

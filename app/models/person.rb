@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
-  has_many :debts_from, :class_name => 'Debt', :foreign_key => 'person_from'
-  has_many :debts_to, :class_name => 'Debt', :foreign_key => 'person_to'
+  has_many :debts_from, :class_name => 'Debt', :foreign_key => 'person_from_id'
+  has_many :debts_to, :class_name => 'Debt', :foreign_key => 'person_to_id'
 
   validates :name, :presence => true
 
@@ -17,9 +17,9 @@ class Person < ActiveRecord::Base
   end
 
   def owes(person)
-    from = debts_from.where('debts.person_to_id = ?', person).sum('amount')
-    to = debts_to.where('debts.person_from_id = ?', person).sum('amount')
-    from - to
+    from = debts_from.where(:person_to_id   => person).sum('amount')
+    to   = debts_to.  where(:person_from_id => person).sum('amount')
+    to - from
   end
 
 end
