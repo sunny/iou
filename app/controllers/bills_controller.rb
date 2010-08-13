@@ -12,7 +12,7 @@ class BillsController < ApplicationController
   # GET /bills/1
   def show
     @bill = Bill.find(params[:id])
-    @friend_name = @bill.people.find { |p| current_user.friends.include?(p) }.try(:name)
+    @friend = @bill.people.find { |p| current_user.friends.include?(p) }
     @you_payed = @bill.people_from == [current_user]
 
     respond_to do |format|

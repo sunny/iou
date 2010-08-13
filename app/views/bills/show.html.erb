@@ -1,23 +1,31 @@
-<h1><%=@title=@bill.description%></h1>
+<h1><%=@title="Bill: #{@bill.description}"%></h1>
 
-<p><b>Amount:</b> <%= @bill.amount %> €</p>
-<p><b>Date:</b> <%= @bill.date %></p>
+<p><%= raw((@you_payed ? "%s owes you %s €" : "You owe %s %s €") %
+  [link_to(@friend.name, @friend_to), h(@bill.amount)]) %></p>
 
-<% if @bill.debts.length != 0 %>
+<h2>Details</h2>
+<p>Type: <%= @bill.bill_type %></p>
+<p>With: <%= link_to(@friend.name, @friend_to) %></p>
+<p>Who payed?: <%= @you_payed ? "you" : "him/her" %></p>
+<p>Amount: <%= @bill.amount %> €</p>
+<p>Description: <%= @bill.description %></p>
+<p>Date: <%= @bill.date %></p>
 
-  <h2>Debts</h2>
-  <ul>
-  <% @bill.debts.each do |debt| %>
-    <li>
-      <%= link_to(debt.person_to.name, debt.person_to) %>
-      owes
-      <%= debt.amount %> €
-      to
-      <%= link_to(debt.person_from.name, debt.person_from) %>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
 
 <%= link_to 'Edit', edit_bill_path(@bill) %> |
 <%= link_to 'Back', bills_path %>
+
+<% if @bill.shared? %>
+<h2>Result</h2>
+<ul>
+<% @bill.debts.each do |debt| %>
+  <li>
+    <%= link_to(debt.person_to.name, debt.person_to) %>
+    owes
+    <%= debt.amount %> €
+    to
+    <%= link_to(debt.person_from.name, debt.person_from) %>
+  </li>
+<% end %>
+</ul>
+<% end %>

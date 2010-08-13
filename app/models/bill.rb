@@ -24,6 +24,10 @@ class Bill < ActiveRecord::Base
     debts = [d]
   end
 
+  def shared?
+    bill_type == "Shared"
+  end
+
   private
 
   def ensure_debts_sum_up_to_same_amount
