@@ -8,10 +8,11 @@ class Debt < ActiveRecord::Base
   validates :person_from, :presence => true
   validates :person_to, :presence => true
   
-  before_save :validates_to_and_from_are_different
-  
-  
-  def validates_to_and_from_are_different
+  before_save :ensure_to_and_from_are_different
+
+  private
+
+  def ensure_to_and_from_are_different
     unless person_to != person_from
       errors[:person_to] << 'must be different from the person from'
       return false
