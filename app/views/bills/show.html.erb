@@ -6,21 +6,6 @@
 <% if @bill.debts.length != 0 %>
 
   <h2>Debts</h2>
-  <% if @bill.missing_amount > 0 %>
-    <p>
-      This bill's debts should sum up to <%=@bill.amount %> €.
-      Please add <%=@bill.missing_amount%> € in the amounts below or
-      <%= link_to("add another debt", new_debt_path('debt[bill_id]' => @bill.id, 'debt[amount]' => @bill.missing_amount))%>.
-    </p>
-
-  <% elsif @bill.missing_amount < 0 %>
-    
-    <p>
-      This bill's debts should sum up to <%=@bill.amount %> €.
-      Please remove <%=-@bill.missing_amount%> € from the amounts below.
-    </p>
-  <% end %>
-
   <ul>
   <% @bill.debts.each do |debt| %>
     <li>

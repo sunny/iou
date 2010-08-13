@@ -11,18 +11,53 @@
     </div>
   <% end %>
 
+  <div id="bill_tabs">
+    <label>
+      <%= f.radio_button :bill_type, "Bill" %>
+      Bill
+    </label>
+    <label>
+      <%= f.radio_button :bill_type, "Payment" %>
+      Payment
+    </label>
+    <label>
+      <%= f.radio_button :bill_type, "Shared", :disabled => true %>
+      Shared
+    </label>
+  </div>
+
+  <div class="field">
+    <label id="friend_name">With</label>
+    <%= text_field_tag :friend_name, @friend_name %>
+  </div>
+
+  <div id="who_payed_selection">
+    <label id="you_payed_true">
+      <%= radio_button_tag :you_payed, true, @you_payed %>
+      You payed
+    </label>
+    <label id="you_payed_false">
+      <%= radio_button_tag :you_payed, false, !@you_payed %>
+      He/she payed
+    </label>
+  </div>
+
   <div class="field">
     <%= f.label :amount %>
-    <%= f.text_field :amount, :type => :number, :size => 4 %>
+    <%= f.text_field :amount, :type => :number, :size => 4 %> €
   </div>
+
   <div class="field">
     <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
+
   <div class="field">
-    <%= f.label :date %><br />
+    <%= f.label :date %>
     <%= f.date_select :date %>
   </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
