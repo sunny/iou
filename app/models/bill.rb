@@ -31,7 +31,7 @@ class Bill < ActiveRecord::Base
   private
 
   def ensure_debts_sum_up_to_same_amount
-    if amount != debts.all.sum { |d| d.amount }
+    if amount != debts.to_a.sum { |d| d.amount }
       errors.add(:amount, "must be equal to the debts amount")
       false
     end
