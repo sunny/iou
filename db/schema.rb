@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100811192110) do
+ActiveRecord::Schema.define(:version => 20100813191130) do
 
   create_table "bills", :force => true do |t|
     t.text     "description"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20100811192110) do
     t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "bill_type",   :default => "Bill", :null => false
   end
 
   create_table "debts", :force => true do |t|
