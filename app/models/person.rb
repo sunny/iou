@@ -12,7 +12,7 @@ class Person < ActiveRecord::Base
     Debt.includes(:bill).where('person_from_id = ? OR person_to_id = ?', id, id).order('bills.date')
   end
 
-  def bills
+  def in_bills
     Bill.includes(:debts).where('debts.person_from_id = ? OR debts.person_to_id = ?', id, id).order('date')
   end
 

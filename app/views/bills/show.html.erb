@@ -1,11 +1,11 @@
 <h1><%=@title="Bill: #{@bill.description}"%></h1>
 
 <p><%= raw((@you_payed ? "%s owes you %s €" : "You owe %s %s €") %
-  [link_to(@friend.name, @friend_to), h(@bill.amount)]) %></p>
+  [link_to(@friend.name, @friend), h(@bill.amount)]) %></p>
 
 <h2>Details</h2>
 <p>Type: <%= @bill.bill_type %></p>
-<p>With: <%= link_to(@friend.name, @friend_to) %></p>
+<p>With: <%= link_to(@friend.name, @friend) %></p>
 <p>Who payed?: <%= @you_payed ? "you" : "him/her" %></p>
 <p>Amount: <%= @bill.amount %> €</p>
 <p>Description: <%= @bill.description %></p>
