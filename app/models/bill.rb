@@ -4,12 +4,14 @@ class Bill < ActiveRecord::Base
   has_many :people_to,   :through => :debts, :source => :person_to,   :uniq => true
   belongs_to :creator, :class_name => 'User'
 
+  validates :amount, :numericality => { :greater_than => 0 }
+  validates :description, :presence => true
+  validates :date, :presence => true
+  validates :bill_type, :presence => true, :inclusion => { :in => %w(Bill Payment Shared) }
+
+  validate :debts_must_sum_up_to_the_same_amount, :if => :"errors.empty?"
+
   default_scope order(:date)
-
-  validates_numericality_of :amount, :greater_than => 0
-  validates_presence_of :description, :date
-
-  before_validation :ensure_debts_sum_up_to_same_amount
 
 
   def people
@@ -28,12 +30,12 @@ class Bill < ActiveRecord::Base
     bill_type == "Shared"
   end
 
+
   private
 
-  def ensure_debts_sum_up_to_same_amount
+  def debts_must_sum_up_to_the_same_amount
     if amount != debts.to_a.sum { |d| d.amount }
       errors.add(:amount, "must be equal to the debts amount")
-      false
     end
   end
 end
