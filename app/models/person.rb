@@ -4,10 +4,6 @@ class Person < ActiveRecord::Base
 
   validates :name, :presence => true
 
-  def is_admin?
-    email =~ /@sunfox.org$/
-  end
-
   def debts
     Debt.includes(:bill).where('person_from_id = ? OR person_to_id = ?', id, id).order('bills.date')
   end
