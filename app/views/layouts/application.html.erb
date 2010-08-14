@@ -11,7 +11,7 @@
 <header>
   <h1>I<strong>O</strong>U</h1>
 <% if user_signed_in? -%>
-  <p id="hello">Hello <%=link_to(current_user.name, edit_user_path(current_user)) %>! <%=link_to("Log out", destroy_user_session_path) %> if that's not you.</p>
+  <p id="hello">Hello <%=link_to(current_user.name, edit_user_registration_path) %>! <%=link_to("Log out", destroy_user_session_path) %> if that's not you.</p>
 <% end -%>
 </header>
 

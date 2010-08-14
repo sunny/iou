@@ -1,7 +1,5 @@
 Iou::Application.routes.draw do |map|
   devise_for :users
-  
-  resources :users # FIXME remove GET /users, GET /users/:id, GET /users/new, POST /users
   resources :bills
   resources :friends
 
