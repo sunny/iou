@@ -1,4 +1,4 @@
-<h1><%=@title="Friend #{@friend.name}" %></h1>
+<h1><%=@title=@friend.name %></h1>
 
 <% if @friend.debts.empty? %>
 <p>Nothing here yet&hellip;</p>
@@ -30,3 +30,9 @@
 
 <% end %>
 
+<nav class="links">
+  <ul>
+    <li><%= link_to 'Edit', edit_friend_path(@friend) %></li>
+    <li><%= link_to 'All friends', friends_path %></li>
+  </nav>
+</nav>

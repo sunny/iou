@@ -2,5 +2,8 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', user_friend_path(@user, @friend) %> |
-<%= link_to 'Back', user_friends_path(@user) %>
+<nav class="links">
+  <li><%= link_to 'Show', friend_path(@friend) %></li>
+  <li><%= link_to 'All friends', friends_path %></li>
+</nav>
+

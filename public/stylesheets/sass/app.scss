@@ -47,6 +47,7 @@ html {
   background-size: contain;
   height: 100%;
   padding-right: 10%;
+  @include border-box;
 }
 
 label {
@@ -65,6 +66,8 @@ body {
   padding: 0 2em 0 $sidebar-width;
   border: solid black;
   border-width: 0 1ex;
+  padding-bottom: -1px;
+  margin-bottom: -1px;
 }
 
 
@@ -99,12 +102,12 @@ header {
 nav.main-nav {
   ul {
     position: absolute;
-    margin-left: - $sidebar-width + $gutter_width + 30px;
+    margin: 0;
+    margin-left: - $sidebar-width + $gutter-width;
+    width: $sidebar-width - $gutter-width*2;
     padding: 0;
     text-align: left;
-    li {
-      @include o;
-    }
+    list-style: none;
   }
 }
 
@@ -117,7 +120,7 @@ form {
     label {
       float: left;
       text-align: right;
-      margin-left: - $sidebar-width + $gutter_width;
+      margin-left: - $sidebar-width + $gutter-width;
       clear: left;
       width: $sidebar-width - $gutter-width * 2;
       line-height: 1.7em;

@@ -2,5 +2,9 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @bill %> |
-<%= link_to 'Back', bills_path %>
+<nav class="links">
+  <ul>
+    <li><%= link_to 'Show', @bill %></li>
+    <li><%= link_to 'Back to the list', bills_path %></li>
+  </ul>
+</nav>
