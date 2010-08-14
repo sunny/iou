@@ -14,20 +14,16 @@
   <div id="bill_tabs">
     <label>
       <%= f.radio_button :bill_type, "Bill" %>
-      Bill
+      IOU
     </label>
     <label>
       <%= f.radio_button :bill_type, "Payment" %>
       Payment
     </label>
-    <label>
-      <%= f.radio_button :bill_type, "Shared", :disabled => true %>
-      Shared
-    </label>
   </div>
 
   <div class="field">
-    <label id="friend_name">With</label>
+    <label for="friend_name">With</label>
     <%= text_field_tag :friend_name, @friend_name %>
   </div>
 
@@ -54,7 +50,7 @@
 
   <div class="field">
     <%= f.label :date %>
-    <%= f.date_select :date %>
+    <%= f.date_select :date, :end_year => Time.now.year, :order => [:day, :month, :year] %>
   </div>
 
 

@@ -1,10 +1,14 @@
 <h1><%=@title="Bills"%></h1>
 
-<%= link_to 'New Bill', new_bill_path %>
+<nav class="links">
+  <ul>
+    <li><%= link_to 'New Bill', new_bill_path %></li>
+  </ul>
+</nav>
 
 <table>
   <tr>
-    <th></th>
+    <th>Bill</th>
     <th>Amount</th>
     <th>People from</th>
     <th>People to</th>

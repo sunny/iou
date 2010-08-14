@@ -1,18 +1,27 @@
 <h1><%=@title="Friends"%></h1>
 
-<p>
-  <%= link_to "New", new_friend_path() %>
-</p>
+<nav class="links">
+  <ul>
+    <li><%= link_to "New friend", new_friend_path() %></li>
+  </ul>
+</nav>
 
-<ul>
+<table>
+  <tr>
+    <th>Friend</th>
+    <th>Owes you</th>
+    <th>You owe him/her</th>
+  </tr>
 <% @friends.each do |friend| %>
-  <li>
-    <%= link_to friend.name, friend_path(friend) %>
+  <tr>
+    <td><%= link_to friend.name, friend_path(friend) %></td>
     <% owes_you = friend.owes(current_user) %>
     <% if owes_you > 0 %>
-    owes you <%=owes_you%> €
+    <td><%=owes_you%> €</td>
+    <td></td>
     <% elsif owes_you < 0 %>
-    you owe him/her <%=owes_you.abs%> €
+    <td></td>
+    <td><%=owes_you.abs%> €</td>
     <% end %>
   </li>
 <% end %>
