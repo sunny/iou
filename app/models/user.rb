@@ -9,4 +9,9 @@ class User < Person
 
   # Accessible (or protected) attributes for devise
   attr_accessible :email, :name, :password, :password_confirmation, :remember_me
+
+  validates :email, :presence => true, :format => { :with => /^[^@]+@[^@]+\.[^@]+$/ }
+  validates :encrypted_password, :presence => true
+  validates :password_salt, :presence => true
+  validates :creator_id, :presence => true
 end
