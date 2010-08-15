@@ -3,5 +3,5 @@ class Friend < Person
   validates :email, :nil => true
   validates :encrypted_password, :nil => true
   validates :password_salt, :nil => true
-  validates :creator_id, :nil => true
+  validates :creator_id, :presence => true
 end

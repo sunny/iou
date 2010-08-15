@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
   should have_many(:bills)
   should have_many(:friends)
 
-  should validate_presence_of(:creator_id)
+  should_not allow_value(1).for(:creator_id)
   should validate_presence_of(:password_salt)
 
   should validate_presence_of(:email)

@@ -13,5 +13,5 @@ class User < Person
   validates :email, :presence => true, :format => { :with => /^[^@]+@[^@]+\.[^@]+$/ }
   validates :encrypted_password, :presence => true
   validates :password_salt, :presence => true
-  validates :creator_id, :presence => true
+  validates :creator_id, :nil => true
 end
