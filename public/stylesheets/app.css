@@ -1,0 +1,167 @@
+@font-face {
+  font-family: 'DubtronicSolid';
+  src: url("dubtronic-solid-webfont.eot");
+  src: local("☺"), url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAARwAA0AAAAABpwAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABsAAAAcV+s5d0dERUYAAAFMAAAAHQAAACAAQAAET1MvMgAAAWwAAABOAAAAYITQIJdjbWFwAAABvAAAAGIAAAFqZbAIUGdhc3AAAAIgAAAACAAAAAj//wADZ2x5ZgAAAigAAAAoAAAAKPGO3+xoZWFkAAACUAAAADEAAAA28zZOf2hoZWEAAAKEAAAAHQAAACQF3gMDaG10eAAAAqQAAAAxAAAATBeBABBsb2NhAAAC2AAAAA4AAAAoAIwAoG1heHAAAALoAAAAHQAAACAAVgALbmFtZQAAAwgAAAEDAAAB3iZOQrNwb3N0AAAEDAAAAGIAAAC4LBTMbXjaY2BgYGQAgmNX9GaC6BPdrXlQOh8AS3EG8AB42mNgZGBg4ANiCQYQYGJgBEIhIGYB8xgABRAARQAAAHjaY2BidGacwMDKwMC0h6mLgYGhB0Iz3mUwYvgFFGVgZWMAUSwNQEEGJFBQWVTM4MCgoBDPtOf/OwYD5mkMQQxwNUzngIQCAyMAtAMOAAAAeNpjYGBgZoBgGQZGBhBIAfIYwXwWBg8gzcfAwcDEwMagwODPsECBS0FfIf7/f6A4hM8A4f9//H/r/9QHbPcf3d8MNQcJMLIxwAUZmYAEE7oCiBNIACwMAwZYydIFADDkEmAAAAAAAAH//wACAAEAEP/uAvACzgAHAAASIBYQBiAmEOgBMNjY/tDYAs7Y/tDY2AEwAHjaY2BkYGAA4oYm3bB4fpuvDNzML4AiDCe6W/PhtMD/d0wfmM4BuRwMTCBRAEw4DHQAAAB42mNgZGBg2vP/HYMBM5AFZH9gANNIQBgAZ7YD5wAAAHjaY/zBAAaMvkAMZDMzMgiAaMZ0Bgamcwia4T0QbwbiciiOBOJ+IFaH0kA5AKVaCp8AAAB42mNggAMRfBAAEbwBLQAAeNpjYGRgYBBm4GAA0QwMTEDMCGY7gPkMAAUZAGIAAAB42m2Qy04CMRSGvxE0yoKFD2C6xAQnXDYYV0YDCSsTiCbuuAwwyWRGYRzD3ifxaXwYH8K/pXJJSNOer+f859IC58woEZQvgFftDQdc6rbhEyoknktUKTyXueLL8yl9vj2fyf/r+Yc0qPBAxhtrlsTMWZBjqDHhWvZFsYy6qEVD65ZQfK+OiewuY+VukWwkW+icSvnIB2NFl6qRSjthIEpEUz6lGet1NpIfUZo97bOruhLbqKGp2g237niS7tCzkCpXBasttrGQNp0jfW72+gyVG7u3/M9lNOfIeeaaIXVzjOS37zOqtNaZKyuS7W5zBryrTyyt/RP7U72D7Ew2/ANAhUgjAHjabcU9EoIwFEXhdxM14B+FG3k8DEKZJnuxsWNprE+QXDrPzJlPnGx9ZzH512Md4sSLwcHjgCNOCKhQ44wLrrjhjiZMn7dq0p+muttSox190kh7+qIDHWkqWi7GvABA0yBfAAA=) format("woff"), url(data:font/truetype;charset=utf-8;base64,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) format("truetype"), url("dubtronic-solid-webfont.svg#webfontL4TKN2lD") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+html {
+  text-align: center;
+  background: black url(../images/pattern.png) fixed;
+  color: white;
+  -moz-background-size: contain;
+  background-size: contain;
+  height: 100%;
+  padding-right: 10%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+label {
+  cursor: pointer; }
+
+body {
+  font: .9em Helvetica, sans-serif;
+  width: 60em;
+  margin: 0 auto;
+  text-align: left;
+  background: white;
+  color: black;
+  min-height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 2em 0 180px;
+  border: solid black;
+  border-width: 0 1ex;
+  padding-bottom: -1px;
+  margin-bottom: -1px; }
+
+a {
+  color: #8b008b; }
+  a:visited {
+    color: #682368; }
+  a:hover {
+    color: #8b008b; }
+
+header {
+  display: block;
+  position: relative; }
+  header h1 {
+    font-size: 5em;
+    margin: 0 0 0 -180px;
+    width: 180px;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.1) 2px 2px 10px; }
+    header h1 strong {
+      font-family: 'DubtronicSolid', Helvetica, sans-serif;
+      color: #8b008b;
+      padding-left: .07em; }
+
+nav.main-nav ul {
+  position: absolute;
+  margin: 0;
+  margin-left: -165px;
+  width: 150px;
+  padding: 0;
+  text-align: left;
+  list-style: none; }
+
+h1 {
+  margin-top: 0; }
+
+form .field label {
+  float: left;
+  text-align: right;
+  margin-left: -165px;
+  clear: left;
+  width: 150px;
+  line-height: 1.7em; }
+form .actions {
+  padding: 1ex 0; }
+  form .actions input {
+    color: white;
+    background: #8b008b;
+    border: 2px solid #8b008b;
+    display: inline-block;
+    position: relative;
+    padding: 2px 12px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px; }
+    form .actions input:hover {
+      background-color: #580058;
+      -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px; }
+    form .actions input:active {
+      top: 1px; }
+
+#hello {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+nav.links ul {
+  padding: 0; }
+  nav.links ul li {
+    list-style: none; }
+    nav.links ul li::before {
+      content: 'O';
+      font-family: 'DubtronicSolid', Helvetica, sans-serif;
+      font-size: .8em;
+      padding-right: 10px;
+      margin-left: -15px;
+      color: #8b008b; }
+
+.alert, .notice {
+  padding: 1ex 1em;
+  background: darkred;
+  color: white;
+  width: 80%; }
+
+.notice {
+  background: darkgrey; }
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+div.field, div.actions {
+  margin-bottom: 10px; }
+
+.field_with_errors {
+  display: inline; }
+  .field_with_errors input {
+    border-color: darkred;
+    -moz-box-shadow: rgba(255, 136, 136, 0.4) 0 0 10px; }
+
+#error_explanation {
+  width: 80%;
+  padding: 7px;
+  background-color: darkred;
+  margin-bottom: 25px;
+  color: white; }
+
+#error_explanation h2 {
+  text-align: left;
+  padding: 1ex 1em;
+  font-size: 1.1em;
+  margin: -7px;
+  margin-bottom: 0;
+  background-color: darkred;
+  color: white; }
+
+#error_explanation ul {
+  padding: 5px 35px;
+  margin: 0; }
+  #error_explanation ul li {
+    list-style: none; }
+    #error_explanation ul li::before {
+      content: 'O';
+      font-family: 'DubtronicSolid', Helvetica, sans-serif;
+      font-size: .8em;
+      padding-right: 10px;
+      margin-left: -15px;
+      color: white; }
