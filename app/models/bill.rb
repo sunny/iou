@@ -1,5 +1,5 @@
 class Bill < ActiveRecord::Base
-  has_many :debts, :dependent => :destroy
+  has_many :debts, :dependent => :destroy, :autosave => true, :validate => true
   has_many :people_from, :through => :debts, :source => :person_from, :uniq => true
   has_many :people_to,   :through => :debts, :source => :person_to,   :uniq => true
   belongs_to :creator, :class_name => 'User'
@@ -8,6 +8,8 @@ class Bill < ActiveRecord::Base
   validates :description, :presence => true
   validates :date, :presence => true
   validates :bill_type, :presence => true, :inclusion => { :in => %w(Bill Payment Shared) }
+  validates :creator, :presence => true
+  validates :debts, :presence => true
 
   validate :debts_must_sum_up_to_the_same_amount, :if => :"errors.empty?"
 
