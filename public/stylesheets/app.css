@@ -97,6 +97,28 @@ form .actions {
     form .actions input:active {
       top: 1px; }
 
+#bill_tabs {
+  border-bottom: 1px solid #333;
+  margin-bottom: 10px; }
+  #bill_tabs label {
+    background: #eee;
+    padding: 2px 10px 0 10px;
+    margin-left: 5px;
+    line-height: 1em; }
+  #bill_tabs label.checked {
+    border: 1px solid #333;
+    background: white;
+    border-bottom: none;
+    padding-bottom: 1px;
+    padding-top: 5px; }
+  .js #bill_tabs input {
+    display: none; }
+
+#who_payed_selection {
+  margin: 10px 0; }
+  #who_payed_selection label {
+    display: block; }
+
 #hello {
   position: absolute;
   top: 0;

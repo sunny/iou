@@ -153,6 +153,36 @@ form {
   }
 }
 
+#bill_tabs {
+  border-bottom: 1px solid #333;
+  margin-bottom: 10px;
+
+  label {
+    background: #eee;
+    padding: 2px 10px 0 10px;
+    margin-left: 5px;
+    line-height: 1em;
+  }
+
+  label.checked {
+    border: 1px solid #333;
+    background: white;
+    border-bottom: none;
+    padding-bottom: 1px;
+    padding-top: 5px;
+  }
+
+  .js & input {
+    display: none;
+  }
+}
+#who_payed_selection {
+  margin: 10px 0;
+  label {
+    display: block;
+  }
+}
+
 #hello {
   position: absolute;
   top: 0;
@@ -224,4 +254,5 @@ div.field, div.actions {
     @include o(white);
   }
 }
+
 
