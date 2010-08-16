@@ -45,7 +45,7 @@ class BillsController < ApplicationController
     @bill = Bill.new(params[:bill])
     @friend_name = params[:friend_name]
     @you_payed = params[:you_payed] != "false"
-    friend = current_user.friends.find_or_initialize_by_name(@friend_name)
+    friend = current_user.friends.find_or_initialize_by_name(@friend_name, :creator_id => current_user)
     debt = Debt.new(:amount => @bill.amount, :bill => @bill)
 
     if @you_payed
@@ -57,6 +57,7 @@ class BillsController < ApplicationController
     end
 
     @bill.debts = [debt]
+    @bill.creator = current_user
 
     respond_to do |format|
       if @bill.save
