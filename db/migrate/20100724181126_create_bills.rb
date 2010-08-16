@@ -1,10 +1,11 @@
 class CreateBills < ActiveRecord::Migration
   def self.up
     create_table :bills do |t|
-      t.text :description
-      t.float :amount
+      t.text     :description
+      t.float    :amount
       t.datetime :date
-      t.integer :creator_id
+      t.integer  :creator_id
+      t.string   :bill_type, :default => "Bill", :null => false
 
       t.timestamps
     end
