@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class BillsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
-    @bill = bills(:one)
+    @user = Factory.create(:user)
+    @bill = Factory.create(:bill, :creator => @user)
+    sign_in @user
   end
 
   test "should get index" do

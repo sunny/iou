@@ -30,5 +30,5 @@ gem 'devise', '1.1.rc2'
 # gem 'rspec', :group => :test
 group :test do
   gem 'shoulda'
-  gem 'factory_girl'
+  gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
 end

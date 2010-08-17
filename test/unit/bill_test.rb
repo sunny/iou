@@ -16,4 +16,14 @@ class BillTest < ActiveSupport::TestCase
   should allow_value("Payment").for(:bill_type)
   should allow_value("Shared").for(:bill_type)
   should_not allow_value("Cheese").for(:bill_type)
+
+  context "A Bill" do
+    setup do
+      @bill = Factory.create(:bill)
+    end
+
+    should "be valid" do
+      assert @bill.valid?
+    end
+  end
 end
