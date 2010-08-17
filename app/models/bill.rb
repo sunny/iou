@@ -9,12 +9,14 @@ class Bill < ActiveRecord::Base
   validates :date, :presence => true
   validates :bill_type, :presence => true, :inclusion => { :in => %w(Bill Payment Shared) }
   validates :creator, :presence => true
-  validates :debts, :presence => true
 
-  validate :debts_must_sum_up_to_the_same_amount, :if => :"errors.empty?"
+  validates_length_of :debts, :maximum => 1, :unless => :shared?,
+    :message => "count must be only 1 if the bill isn't shared"
+  validates_length_of :debts, :minimum => 2, :if => lambda { |b| b.shared? and !debts.empty? },
+    :message => "count must be at least 2 if the bill is shared"
+  validate :debts_must_sum_up_to_the_same_amount, :unless => :"debts.empty?"
 
   default_scope order(:date)
-
 
   def people
     (people_from + people_to).uniq
@@ -31,7 +33,6 @@ class Bill < ActiveRecord::Base
   def shared?
     bill_type == "Shared"
   end
-
 
   private
 

@@ -20,17 +20,14 @@ Factory.define :debt do |d|
 end
 
 Factory.define :bill do |b|
+  b.bill_type 'Bill'
   b.amount 42
   b.description 'Restaurant'
   b.date Date.today
-  b.bill_type 'Bill'
   b.association :creator, :factory => :user
-  b.debts do |bill|
-    [bill.association(:debt,
-      :amount => bill.amount,
-      :bill => bill.id,
-      :person_from => bill.creator
-    )]
-  end
+end
+
+Factory.define :shared_bill, :parent => :bill do |s|
+  s.bill_type 'Shared'
 end
 
