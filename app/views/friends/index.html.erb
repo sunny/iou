@@ -1,16 +1,14 @@
 <h1><%=@title="Friends"%></h1>
 
-<nav class="links">
-  <ul>
-    <li><%= link_to "New friend", new_friend_path() %></li>
-  </ul>
-</nav>
+<% if @friends.empty? %>
+<p>No friend here yet, you should <%= link_to "create a Bill", new_bill_path %> first.</p>
+<% else %>
 
 <table>
   <tr>
     <th>Friend</th>
     <th>Owes you</th>
-    <th>You owe him/her</th>
+    <th>You owe that friend</th>
   </tr>
 <% @friends.each do |friend| %>
   <tr>
@@ -27,4 +25,4 @@
 <% end %>
 </ul>
 
-
+<% end %>

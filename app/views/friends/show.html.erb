@@ -30,6 +30,8 @@
 
 <% end %>
 
+<p><%= button_to 'Destroy', friend_path(@friend), :method => 'delete', :confirm => "Are you sure you want to destroy this friend and all his bills?" %></p>
+
 <nav class="links">
   <ul>
     <li><%= link_to 'Edit', edit_friend_path(@friend) %></li>

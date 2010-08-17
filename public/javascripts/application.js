@@ -10,8 +10,8 @@ $(window).load(function() {
               payed_you: "You owe %s %f €"
             },
             payment: {
-              you_payed: "%s payed you back %f €",
-              payed_you: "You gave %f € back to %s"
+              you_payed: "You payed back %f € to %s",
+              payed_you: "%s payed you back %f €"
             }
           },
           without_user: {
@@ -20,8 +20,8 @@ $(window).load(function() {
               payed_you: "You owe someone %f €"
             },
             payment: {
-              you_payed: "Someone payed you back %f €",
-              payed_you: "You gave back %f € to someone"
+              you_payed: "You gave back %f € to someone",
+              payed_you: "Someone payed you back %f €"
             }
           }
         },
@@ -32,8 +32,8 @@ $(window).load(function() {
               payed_you: "You owe money to %s"
             },
             payment: {
-              you_payed: "%s payed you back",
-              payed_you: "You payed back %s"
+              you_payed: "You payed back %s",
+              payed_you: "%s payed you back"
             }
           },
           without_user: {
@@ -42,8 +42,8 @@ $(window).load(function() {
               payed_you: "You owe someone money"
             },
             payment: {
-              you_payed: "Someone payed you back",
-              payed_you: "You payed back someoe"
+              you_payed: "You payed back someoe",
+              payed_you: "Someone payed you back"
             }
           }
         }

@@ -1,20 +1,25 @@
-<h1><%=@title="Bill: #{@bill.description}"%></h1>
+<h1><%=@title=@bill.bill_type%></h1>
 
-<p><%= raw((@you_payed ? "%s owes you %s €" : "You owe %s %s €") %
-  [link_to(@friend.name, @friend), h(@bill.amount)]) %></p>
+<p><%= raw(@resume % [link_to(@friend.name, @friend), h(@bill.amount)]) %></p>
+<dd>
+  <dt>Description</dt>
+  <dd><%= @bill.description %></dd>
 
-<h2>Details</h2>
-<p>Type: <%= @bill.bill_type %></p>
-<p>With: <%= link_to(@friend.name, @friend) %></p>
-<p>Who payed?: <%= @you_payed ? "you" : "him/her" %></p>
-<p>Amount: <%= @bill.amount %> €</p>
-<p>Description: <%= @bill.description %></p>
-<p>Date: <%= @bill.date %></p>
-<p>Date: <%= @bill.created_at %></p>
+  <dt>Date</dt>
+  <dd><%= @bill.date.strftime("%Y-%m-%d") %></dd>
 
+  <dt>Created</dt>
+  <dd><%= @bill.created_at.strftime("%Y-%m-%d") %></dd>
+</ul>
 
-<%= link_to 'Edit', edit_bill_path(@bill) %> |
-<%= link_to 'Back', bills_path %>
+<p><%= button_to 'Destroy', bill_path(@bill), :method => 'delete', :confirm => "Are you sure you want to destroy this bill?" %></p>
+
+<nav class="links">
+  <ul>
+    <li><%= link_to 'Edit', edit_bill_path(@bill) %></li>
+    <li><%= link_to 'Back to all bills', bills_path %></li>
+  </ul>
+</nav>
 
 <% if @bill.shared? %>
 <h2>Result</h2>

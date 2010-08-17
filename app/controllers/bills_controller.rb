@@ -15,6 +15,12 @@ class BillsController < ApplicationController
     @friend = @bill.people.find { |p| current_user.friends.include?(p) }
     @you_payed = @bill.people_from == [current_user]
 
+    @resume = if @bill.bill_type == "Payment"
+      @you_payed ? "You payed back to %s %s &euro;" : "%s payed you back %s &euro;"
+    else
+      @you_payed ? "%s owes you %s &euro;" : "You owe %s %s &euro;"
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @bill }
