@@ -1,37 +1,4 @@
 <h1><%=@title=@bill.bill_type%></h1>
 
 <p><%= raw(@resume % [link_to(@friend.name, @friend), h(@bill.amount)]) %></p>
-<dd>
-  <dt>Description</dt>
-  <dd><%= @bill.description %></dd>
 
-  <dt>Date</dt>
-  <dd><%= @bill.date.strftime("%Y-%m-%d") %></dd>
-
-  <dt>Created</dt>
-  <dd><%= @bill.created_at.strftime("%Y-%m-%d") %></dd>
-</ul>
-
-<p><%= button_to 'Destroy', bill_path(@bill), :method => 'delete', :confirm => "Are you sure you want to destroy this bill?" %></p>
-
-<nav class="links">
-  <ul>
-    <li><%= link_to 'Edit', edit_bill_path(@bill) %></li>
-    <li><%= link_to 'Back to all bills', bills_path %></li>
-  </ul>
-</nav>
-
-<% if @bill.shared? %>
-<h2>Result</h2>
-<ul>
-<% @bill.debts.each do |debt| %>
-  <li>
-    <%= link_to(debt.person_to.name, debt.person_to) %>
-    owes
-    <%= debt.amount %> €
-    to
-    <%= link_to(debt.person_from.name, debt.person_from) %>
-  </li>
-<% end %>
-</ul>
-<% end %>

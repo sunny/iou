@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100802213047) do
+ActiveRecord::Schema.define(:version => 20100818002328) do
 
   create_table "bills", :force => true do |t|
     t.text     "description"
@@ -34,13 +34,14 @@ ActiveRecord::Schema.define(:version => 20100802213047) do
     t.string   "name"
     t.string   "type"
     t.string   "email"
-    t.string   "encrypted_password",  :limit => 128
+    t.string   "encrypted_password",   :limit => 128
     t.string   "password_salt"
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "reset_password_token"
   end
 
   add_index "people", ["email"], :name => "index_people_on_email"
