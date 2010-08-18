@@ -62,13 +62,13 @@ class BillTest < ActiveSupport::TestCase
 
     should "be valid" do
       assert @bill.valid?
-     end
+    end
 
-     should "have more than one debt" do
+    should "have more than one debt" do
         @bill.debt = Factory(:debt, :amount => @bill.amount, :bill => @bill)
         assert !@bill.valid?, "Should not be .valid?"
         assert @bill.errors[:debts], "Should have errors on :debts"
-     end
+    end
 
     should "ensure total amount is the same as the debts" do
       @bill.debts.last.amount = 100000
@@ -76,6 +76,6 @@ class BillTest < ActiveSupport::TestCase
       assert !@bill.valid?, "Should not be .valid?"
       assert @bill.errors[:debts], "Should have errors on :debts"
     end
-   end
+  end
 end
 

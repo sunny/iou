@@ -6,23 +6,25 @@ class BillsControllerTest < ActionController::TestCase
   setup do
     @user = Factory(:user)
     @bill = Factory(:bill, :creator => @user)
-    @bill.debt = Factory(:debt, :person_from => @user, :bill => @bill)
+    @bill.debt = Factory(:debt, :bill => @bill,
+      :person_from => @user,
+      :person_to => Factory(:friend, :creator => @user))
     @bill.save!
     sign_in @user
   end
 
-  test "should get index" do
+  should "get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:bills)
   end
 
-  test "should get new" do
+  should "get new" do
     get :new
     assert_response :success
   end
 
-  test "should create bill" do
+  should "create bill" do
     assert_difference('Bill.count') do
       post :create, "bill"=>{"bill_type"=>"Bill", "amount"=>"20", "description"=>"Test", "date(3i)"=>"18", "date(2i)"=>"8", "date(1i)"=>"2010"}, "friend_name"=>"Max", "you_payed"=>"true"
     end
@@ -30,22 +32,22 @@ class BillsControllerTest < ActionController::TestCase
     assert_redirected_to bill_path(assigns(:bill))
   end
 
-  test "should show bill" do
+  should "show bill" do
     get :show, :id => @bill.to_param
     assert_response :success
   end
 
-  test "should get edit" do
+  should " get edit" do
     get :edit, :id => @bill.to_param
     assert_response :success
   end
 
-  test "should update bill" do
+  should "update bill" do
     put :update, :id => @bill.to_param, :bill => {:amount => 42, :bill_type => "Payment", :description => "Testing"}, :friend_name => "Joe", :you_payed => "true"
     assert_redirected_to bill_path(assigns(:bill))
   end
 
-  test "should destroy bill" do
+  should "destroy bill" do
     assert_difference('Bill.count', -1) do
       delete :destroy, :id => @bill.to_param
     end
@@ -59,24 +61,24 @@ class BillsControllerTest < ActionController::TestCase
       @bill.save!
     end
 
-    test "shoud not show" do
+    should "not show" do
       get :show, :id => @bill.to_param
-      assert_response :failure
+      assert_response 404
     end
 
-    test "shoud not edit" do
+    should "not edit" do
       get :show, :id => @bill.to_param
-      assert_response :failure
+      assert_response 404
     end
 
-    test "should not update" do
+    should "not update" do
       put :update, :id => @bill.to_param, :bill => {:amount => 42, :bill_type => "Payment", :description => "Testing"}, :friend_name => "Joe", :you_payed => "true"
-      assert_response :failure
+      assert_response 404
     end
 
-    test "should not destroy bill" do
+    should "not destroy bill" do
       delete :destroy, :id => @bill.to_param
-      assert_response :failure
+      assert_response 404
     end
   end
 end
