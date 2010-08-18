@@ -76,7 +76,7 @@ class BillsControllerTest < ActionController::TestCase
       assert_response 404
     end
 
-    should "not destroy bill" do
+    should "not destroy" do
       delete :destroy, :id => @bill.to_param
       assert_response 404
     end
