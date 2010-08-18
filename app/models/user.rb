@@ -11,6 +11,7 @@ class User < Person
   attr_accessible :email, :name, :password, :password_confirmation, :remember_me
 
   validates :email, :presence => true, :format => { :with => /^[^@]+@[^@]+\.[^@]+$/ }
+  validates_uniqueness_of :email, :case_sensitive => false
   validates :encrypted_password, :presence => true
   validates :password_salt, :presence => true
   validates :creator_id, :nil => true

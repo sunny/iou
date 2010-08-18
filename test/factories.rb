@@ -1,20 +1,18 @@
-
 Factory.define :user do |u|
-  u.name 'John'
+  u.name 'Ussain'
   u.sequence(:email) {|n| "user#{n}@example.com" }
-
   u.password "fake password"
   u.password_salt "fake salt"
   u.encrypted_password "fake password hash"
 end
 
 Factory.define :friend do |f|
-  f.name 'Ianto'
+  f.name 'Friday'
   f.association :creator, :factory => :user
 end
 
 Factory.define :debt do |d|
-  d.amount 42
+  d.amount { |debt| debt.bill.amount }
   d.association :person_from, :factory => :user
   d.association :person_to, :factory => :friend
 end

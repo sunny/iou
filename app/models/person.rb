@@ -6,11 +6,11 @@ class Person < ActiveRecord::Base
   validates :type, :presence => true, :inclusion => { :in => ['Friend', 'User'] }
 
   def debts
-    Debt.includes(:bill).where('person_from_id = ? OR person_to_id = ?', id, id).order('bills.date')
+    Debt.includes(:bill).where('person_from_id = ? OR person_to_id = ?', id, id)
   end
 
   def in_bills
-    Bill.includes(:debts).where('debts.person_from_id = ? OR debts.person_to_id = ?', id, id).order('date')
+    Bill.includes(:debts).where('debts.person_from_id = ? OR debts.person_to_id = ?', id, id)
   end
 
   def owes(person)

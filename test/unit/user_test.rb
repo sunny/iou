@@ -24,7 +24,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     should "have a unique email" do
-      assert !Factory.build(:user, :email => @user.email).valid?
+      assert !Factory.build(:user, :email => @user.email.upcase).valid?
     end
   end
 end
