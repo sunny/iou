@@ -12,7 +12,7 @@
   <% end %>
 
   <div id="bill_tabs">
-    <label>
+    <label class="first">
       <%= f.radio_button :bill_type, "Bill" %>
       IOU
     </label>
@@ -21,21 +21,22 @@
       Payment
     </label>
   </div>
+  <div id="bill_tabs_content">
+    <div class="field">
+      <label for="friend_name">With</label>
+      <%= text_field_tag :friend_name, @friend_name %>
+    </div>
 
-  <div class="field">
-    <label for="friend_name">With</label>
-    <%= text_field_tag :friend_name, @friend_name %>
-  </div>
-
-  <div id="who_payed_selection">
-    <label id="you_payed_true">
-      <%= radio_button_tag :you_payed, true, @you_payed %>
-      <span>You payed</span>
-    </label>
-    <label id="you_payed_false">
-      <%= radio_button_tag :you_payed, false, !@you_payed %>
-      <span>He/she payed</span>
-    </label>
+    <div class="field_selection" id="who_payed_selection">
+      <label id="you_payed_true">
+        <%= radio_button_tag :you_payed, true, @you_payed %>
+        <span>You payed</span>
+      </label>
+      <label id="you_payed_false">
+        <%= radio_button_tag :you_payed, false, !@you_payed %>
+        <span>He/she payed</span>
+      </label>
+    </div>
   </div>
 
   <div class="field">
@@ -52,7 +53,6 @@
     <%= f.label :date %>
     <%= f.date_select :date, :end_year => Time.now.year, :order => [:day, :month, :year] %>
   </div>
-
 
   <div class="actions">
     <%= f.submit %>

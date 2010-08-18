@@ -115,19 +115,29 @@ h1 {
   margin-top: 0;
 }
 
+$labels-width: 80px;
+$labels-gutter: 20px;
+
 form {
   .field {
     label {
       float: left;
       text-align: right;
-      margin-left: - $sidebar-width + $gutter-width;
+      margin-right: $labels-gutter;
       clear: left;
-      width: $sidebar-width - $gutter-width * 2;
+      width: $labels-width;
       line-height: 1.7em;
+    }
+  }
+  .field_selection {
+    margin-left: $labels-width + $labels-gutter;
+    label {
+      display: block
     }
   }
   .actions {
     padding: 1ex 0;
+    margin-left: $labels-width + $labels-gutter;
     input {
       color: white; 
       background: $main-color;
@@ -154,18 +164,22 @@ form {
 }
 
 #bill_tabs {
-  border-bottom: 1px solid #333;
-  margin-bottom: 10px;
 
   label {
     background: #eee;
     padding: 2px 10px 0 10px;
-    margin-left: 5px;
+    margin-left: 10px;
     line-height: 1em;
+    
+    &.first {
+      margin-left: $labels-width+$labels-gutter;
+    }
   }
+  
+  
 
   label.checked {
-    border: 1px solid #333;
+    border: 1px solid #aaa;
     background: white;
     border-bottom: none;
     padding-bottom: 1px;
@@ -176,12 +190,12 @@ form {
     display: none;
   }
 }
-#who_payed_selection {
-  margin: 10px 0;
-  label {
-    display: block;
-  }
+#bill_tabs_content {
+  border: 1px solid #aaa;
+  padding: 10px 0;
+  margin-bottom: 10px;
 }
+
 
 #hello {
   position: absolute;

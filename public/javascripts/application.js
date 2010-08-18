@@ -42,7 +42,7 @@ $(window).load(function() {
               payed_you: "You owe someone money"
             },
             payment: {
-              you_payed: "You payed back someoe",
+              you_payed: "You payed back someone",
               payed_you: "Someone payed you back"
             }
           }
