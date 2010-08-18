@@ -7,4 +7,31 @@ class PersonTest < ActiveSupport::TestCase
   should validate_presence_of(:name)
   should_not allow_value("Cheese").for(:type)
   should_not allow_value("Person").for(:type)
+
+  context "A Person" do
+    setup do
+      # A friend is the simplest form of Person available
+      @person = Factory(:friend)
+
+      # Give it a debt
+      @bill = Factory(:bill, :amount => 42)
+      @bill.debt = Factory(:debt, :person_to => @person, :bill => @bill)
+      @bill.save!
+    end
+
+    should "find its debts" do
+      assert_equal @person.debts, [@bill.debt]
+    end
+
+    should "find its bills" do
+      assert_equal @person.in_bills, [@bill]
+    end
+
+    should "calculate what it owes to another person" do
+      @person2 = @bill.debt.person_from
+      assert_equal 42, @person.owes(@person2)
+      assert_equal -42, @person2.owes(@person)
+    end
+  end
 end
+

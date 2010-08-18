@@ -95,7 +95,11 @@ class BillsController < ApplicationController
     end
 
     respond_to do |format|
-      if debt.save and @bill.save
+      if friend.valid? and debt.valid? and @bill.valid?
+        friend.save
+        debt.save
+        @bill.save
+
         format.html { redirect_to(@bill, :notice => 'Bill was successfully updated.') }
         format.xml  { head :ok }
       else

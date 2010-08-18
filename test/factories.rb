@@ -1,36 +1,31 @@
-
 Factory.define :user do |u|
-  u.name 'John'
+  u.name 'Ussain'
   u.sequence(:email) {|n| "user#{n}@example.com" }
-
   u.password "fake password"
   u.password_salt "fake salt"
   u.encrypted_password "fake password hash"
 end
 
 Factory.define :friend do |f|
-  f.name 'Ianto'
+  f.name 'Friday'
   f.association :creator, :factory => :user
 end
 
 Factory.define :debt do |d|
-  d.amount 42
+  d.amount { |debt| debt.bill.amount }
   d.association :person_from, :factory => :user
   d.association :person_to, :factory => :friend
 end
 
 Factory.define :bill do |b|
+  b.bill_type 'Bill'
   b.amount 42
   b.description 'Restaurant'
   b.date Date.today
-  b.bill_type 'Bill'
   b.association :creator, :factory => :user
-  b.debts do |bill|
-    [bill.association(:debt,
-      :amount => bill.amount,
-      :bill => bill.id,
-      :person_from => bill.creator
-    )]
-  end
+end
+
+Factory.define :shared_bill, :parent => :bill do |s|
+  s.bill_type 'Shared'
 end
 

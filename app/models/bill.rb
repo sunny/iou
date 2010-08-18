@@ -9,12 +9,11 @@ class Bill < ActiveRecord::Base
   validates :date, :presence => true
   validates :bill_type, :presence => true, :inclusion => { :in => %w(Bill Payment Shared) }
   validates :creator, :presence => true
-  validates :debts, :presence => true
 
-  validate :debts_must_sum_up_to_the_same_amount, :if => :"errors.empty?"
+  validate :ensure_correct_number_of_debts, :unless => :"debts.empty?"
+  validate :debts_must_sum_up_to_the_same_amount, :unless => :"debts.empty?"
 
   default_scope order(:date)
-
 
   def people
     (people_from + people_to).uniq
@@ -25,15 +24,22 @@ class Bill < ActiveRecord::Base
   end
 
   def debt=(d)
-    debts = [d]
+    self.debts = [d]
   end
 
   def shared?
     bill_type == "Shared"
   end
 
-
   private
+
+  def ensure_correct_number_of_debts
+    if shared?
+      errors.add(:debts, "count must be at least 2 if the bill is shared") if debts.length == 1
+    else
+      errors.add(:debts, "count must be only 1 if the bill isn't shared") if debts.length != 1
+    end
+  end
 
   def debts_must_sum_up_to_the_same_amount
     if amount != debts.to_a.sum { |d| d.amount }
