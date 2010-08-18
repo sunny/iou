@@ -1,4 +1,17 @@
 class BillsController < ApplicationController
+  # GET /
+  def overview
+    @bills = current_user.bills.includes(:people_from, :people_to, :debts)
+    @friends = current_user.friends
+    @you_owe = @friends.map { |f| [f, current_user.owes(f)] }
+    @owes_you = @friends.map { |f| [f, f.owes(current_user)] }
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @bills }
+    end
+  end
+
   # GET /bills
   def index
     @bills = current_user.bills.includes(:people_from, :people_to, :debts)

@@ -1,0 +1,17 @@
+<h1>You owe</h1>
+<table>
+  <tr>
+<% @you_owe.each do |person, amount| %>
+    <th><%=@person%></th>
+ <% end %>
+  </tr>
+ </table>
+ 
+ <h1>Owes you</h1>
+<table>
+  <tr>
+<% @owes_you.each do |person, amount| %>
+    <th><%=@person%></th>
+ <% end %>
+  </tr>
+ </table>
