@@ -1,7 +1,7 @@
 class BillsController < ApplicationController
   # GET /bills
   def index
-    @bills = Bill.includes(:people_from, :people_to, :debts)
+    @bills = current_user.bills.includes(:people_from, :people_to, :debts)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,7 +11,7 @@ class BillsController < ApplicationController
 
   # GET /bills/1
   def show
-    @bill = Bill.find(params[:id])
+    @bill = current_user.bills.find(params[:id])
     @friend = @bill.people.find { |p| current_user.friends.include?(p) }
     @you_payed = @bill.people_from == [current_user]
 
@@ -41,7 +41,7 @@ class BillsController < ApplicationController
 
   # GET /bills/1/edit
   def edit
-    @bill = Bill.find(params[:id])
+    @bill = current_user.bills.find(params[:id])
     @friend_name = @bill.people.find { |p| current_user.friends.include?(p) }.try(:name)
     @you_payed = @bill.people_from == [current_user]
   end
@@ -78,7 +78,7 @@ class BillsController < ApplicationController
 
   # PUT /bills/1
   def update
-    @bill = Bill.find(params[:id])
+    @bill = current_user.bills.find(params[:id])
     @bill.attributes = params[:bill]
     @friend_name = params[:friend_name]
     @you_payed = params[:you_payed] != "false"
@@ -111,7 +111,7 @@ class BillsController < ApplicationController
 
   # DELETE /bills/1
   def destroy
-    @bill = Bill.find(params[:id])
+    @bill = current_user.bills.find(params[:id])
     @bill.destroy
 
     respond_to do |format|

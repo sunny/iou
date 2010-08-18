@@ -52,4 +52,31 @@ class BillsControllerTest < ActionController::TestCase
 
     assert_redirected_to bills_path
   end
+
+  context "With another user's bill" do
+    setup do
+      @bill.creator = Factory(:user)
+      @bill.save!
+    end
+
+    test "shoud not show" do
+      get :show, :id => @bill.to_param
+      assert_response :failure
+    end
+
+    test "shoud not edit" do
+      get :show, :id => @bill.to_param
+      assert_response :failure
+    end
+
+    test "should not update" do
+      put :update, :id => @bill.to_param, :bill => {:amount => 42, :bill_type => "Payment", :description => "Testing"}, :friend_name => "Joe", :you_payed => "true"
+      assert_response :failure
+    end
+
+    test "should not destroy bill" do
+      delete :destroy, :id => @bill.to_param
+      assert_response :failure
+    end
+  end
 end
