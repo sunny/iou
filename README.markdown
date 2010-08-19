@@ -8,13 +8,14 @@ A bit like Billmonk.com, only opensource.
 * Author: Sunny Ripert <http://sunfox.org>
 * Licence: GNU GPL v3 <http://www.gnu.org/licenses/gpl.html>
 
+![Screenshot](http://github.com/sunny/iou/raw/master/public/images/screenshot.png)
+
 Planned to do
 -------------
 
 * Tests/specs
 * Shared bills with more than two participants
 * Overview page with friends + recent bills
-* SVG Graphics to show how much you owe to whom
 * Support for different currencies
 * Support for different means of payments than money (he he.)
 
