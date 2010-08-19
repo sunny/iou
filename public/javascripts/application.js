@@ -1,4 +1,58 @@
-$(window).load(function() {
+$(document).ready(function() {
+
+  // A Raphael.js pie chart
+  Raphael.fn.pieChart = function(cx, cy, r, values, labels) {
+    var paper = this,
+        rad = Math.PI / 180,
+        chart = this.set()
+
+    function sector(cx, cy, r, startAngle, endAngle, params) {
+      var x1 = cx + r * Math.cos(-startAngle * rad),
+          x2 = cx + r * Math.cos(-endAngle * rad),
+          y1 = cy + r * Math.sin(-startAngle * rad),
+          y2 = cy + r * Math.sin(-endAngle * rad)
+      return paper.path(["M", cx, cy, "L", x1, y1, "A", r, r, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"]).attr(params)
+    }
+
+    var angle = 0,
+        total = 0,
+        start = .8,
+    process = function(j) {
+      start = start > 0.9 ? 0 : start
+      var value = values[j],
+          angleplus = 360 * value / total,
+          popangle = angle + (angleplus / 2),
+          color = "hsb(" + start + ", 1, .7)",
+          ms = 500,
+          delta = 30,
+          bcolor = "hsb(" + start + ", 1, 1)",
+          p = sector(cx, cy, r, angle, angle + angleplus, {gradient: "90-" + bcolor + "-" + color, "stroke-width": 0}),
+          txt = paper.text(cx + (r + delta + 55) * Math.cos(-popangle * rad), cy + (r + delta + 25) * Math.sin(-popangle * rad), labels[j]).attr({fill: bcolor, stroke: "none", opacity: 0, "font-family": 'Fontin-Sans, Arial', "font-size": "20px"})
+      angle += angleplus
+      chart.push(p)
+      chart.push(txt)
+      start += .1
+    }
+    for (var i = 0, ii = values.length; i < ii; i++)
+      total += values[i]
+    for (var i = 0; i < ii; i++)
+      process(i)
+    return chart
+  };
+
+  // Include a pie chart for a table of debts
+  function debtPie(table) {
+    var values = [],
+        labels = []
+    table.find('tr').each(function () {
+      labels.push($("th a", this).text())
+      values.push(parseFloat($("td", this).text()))
+    })
+    if (!values.empty && !labels.empty)
+      Raphael(table[0], 100, 100).pieChart(50, 50, 49, values, labels, "#fff")
+  }
+
+
   // Text translations by language
   var translations = {
     en: {
@@ -54,6 +108,11 @@ $(window).load(function() {
 
   $('body').addClass('js')
 
+  // Overview pies
+  if ($('#overview').length) {
+    debtPie($('#you-owe'))
+    debtPie($('#owe-you'))
+  }
 
   // Bill form
   var bill_form = $('.new_bill,.edit_bill')
