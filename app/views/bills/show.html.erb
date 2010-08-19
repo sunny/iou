@@ -1,9 +1,18 @@
-<h1><%=@title=@bill.bill_type%></h1>
+<h1>Bill</h1>
 
-<p><%= raw(@resume % [link_to(@friend.name, @friend), h(@bill.amount)]) %></p>
+<dl>
+  <dt>Bill</dt>
+  <dd><%=bill_resume(@bill)%></dt>
 
+  <dt>Amount</dt>
+  <dd><%=money(@bill)%></dd>
 
-<p><%= link_to 'Edit', edit_bill_path(@bill) %></p>
+  <dt>Description</dt>
+  <dd><%= @bill.description %></dd>
+
+  <dt>Date</dt>
+  <dd><%= @bill.date.strftime('%Y-%m-%d') %></dd>
+</dl>
 
 <% if @bill.shared? %>
 <h2>Result</h2>
@@ -19,3 +28,7 @@
 <% end %>
 </ul>
 <% end %>
+
+<%= button_to 'Edit', edit_bill_path(@bill) %>
+<%= button_to 'Delete', bill_path(@bill), :method => 'delete', :confirm => "Are you sure you want to destroy this bill?" %>
+

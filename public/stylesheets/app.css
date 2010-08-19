@@ -87,23 +87,23 @@ form .field_selection {
 form .actions {
   padding: 1ex 0;
   margin-left: 100px; }
-  form .actions input {
-    color: white;
-    background: #8b008b;
-    border: 2px solid #8b008b;
-    display: inline-block;
-    position: relative;
-    padding: 2px 12px;
-    cursor: pointer;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px; }
-    form .actions input:hover {
-      background-color: #580058;
-      -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px; }
-    form .actions input:active {
-      top: 1px; }
+form .actions input, form.button_to input {
+  color: white;
+  background: #8b008b;
+  border: 2px solid #8b008b;
+  display: inline-block;
+  position: relative;
+  padding: 2px 12px;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px; }
+  form .actions input:hover, form.button_to input:hover {
+    background-color: #580058;
+    -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px; }
+  form .actions input:active, form.button_to input:active {
+    top: 1px; }
 
 #bill_tabs label {
   background: #eee;

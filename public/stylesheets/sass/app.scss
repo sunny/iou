@@ -142,27 +142,28 @@ form {
   .actions {
     padding: 1ex 0;
     margin-left: $labels-width + $labels-gutter;
-    input {
-      color: white; 
-      background: $main-color;
+  }
+  .actions input,
+  &.button_to input {
+    color: white;
+    background: $main-color;
 
-      border: 2px solid $main-color;
+    border: 2px solid $main-color;
 
-      display: inline-block;
-      position: relative;
-      padding: 2px 12px;
+    display: inline-block;
+    position: relative;
+    padding: 2px 12px;
 
-      cursor: pointer;
-      @include border-radius(5px);
-      -moz-box-shadow: rgba(0,0,0,.2) 0 0 10px;
+    cursor: pointer;
+    @include border-radius(5px);
+    -moz-box-shadow: rgba(0,0,0,.2) 0 0 10px;
 
-	    &:hover {
-	      background-color: darken($main-color, 10%);
-	      -moz-box-shadow: rgba(0,0,0,.5) 0 0 10px;
-	    }
-	    &:active {
-	      top: 1px;
-	    }
+    &:hover {
+      background-color: darken($main-color, 10%);
+      -moz-box-shadow: rgba(0,0,0,.5) 0 0 10px;
+    }
+    &:active {
+      top: 1px;
     }
   }
 }
