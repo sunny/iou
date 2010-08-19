@@ -2,3 +2,20 @@
 
 <p><%= raw(@resume % [link_to(@friend.name, @friend), h(@bill.amount)]) %></p>
 
+
+<p><%= link_to 'Edit', edit_bill_path(@bill) %></p>
+
+<% if @bill.shared? %>
+<h2>Result</h2>
+<ul>
+<% @bill.debts.each do |debt| %>
+  <li>
+    <%= link_to(debt.person_to.name, debt.person_to) %>
+    owes
+    <%= debt.amount %> €
+    to
+    <%= link_to(debt.person_from.name, debt.person_from) %>
+  </li>
+<% end %>
+</ul>
+<% end %>
