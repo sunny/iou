@@ -3,8 +3,11 @@ class BillsController < ApplicationController
   def overview
     @bills = current_user.bills.includes(:people_from, :people_to, :debts)
     @friends = current_user.friends
-    @you_owe = @friends.map { |f| [f, current_user.owes(f)] }
-    @owes_you = @friends.map { |f| [f, f.owes(current_user)] }
+
+    # Create two arrays of debts
+    debts = @friends.map { |f| [f, current_user.owes(f)] }
+    @you_owe, @owes_you = debts.partition { |f, a| a > 0 }
+    @owes_you.map! { |f, a| [f, a.abs] }
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,17 +1,28 @@
 <h1>You owe</h1>
+<% if @you_owe.empty? %>
+<p>Nothing yet.</p>
+<% else %>
 <table>
+<% @you_owe.each do |friend, amount| %>
   <tr>
-<% @you_owe.each do |person, amount| %>
-    <th><%=@person%></th>
- <% end %>
+    <td><%=link_to friend.name, friend %></td>
+    <td><%=money(amount)%></td>
   </tr>
- </table>
- 
- <h1>Owes you</h1>
+<% end %>
+</table>
+<%end %>
+
+<h1>Owes you</h1>
+<% if @owes_you.empty? %>
+<p>Nothing yet.</p>
+<% else %>
 <table>
+<% @owes_you.each do |friend, amount| %>
   <tr>
-<% @owes_you.each do |person, amount| %>
-    <th><%=@person%></th>
- <% end %>
+    <td><%=link_to friend.name, friend%></td>
+    <td><%=money(amount)%></td>
   </tr>
- </table>
+<% end %>
+</table>
+<% end %>
+

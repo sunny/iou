@@ -1,6 +1,5 @@
 module ApplicationHelper
   def money(amount)
-    "%d&nbsp;&euro;" if amount % 1 === 0
-    "%.2f&nbsp;&euro;" % amount
+    ("#{amount % 1 == 0 ? '%d' : '%.2f'}&nbsp;&euro;" % amount).html_safe
   end
 end

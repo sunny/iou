@@ -5,12 +5,21 @@ class BillsControllerTest < ActionController::TestCase
 
   setup do
     @user = Factory(:user)
-    @bill = Factory(:bill, :creator => @user)
+    @friend = Factory(:friend, :creator => @user)
+    @bill = Factory(:bill, :creator => @user, :amount => 42)
     @bill.debt = Factory(:debt, :bill => @bill,
+      :amount => 42,
       :person_from => @user,
-      :person_to => Factory(:friend, :creator => @user))
+      :person_to => @friend)
     @bill.save!
     sign_in @user
+  end
+
+  should "get overview" do
+    get :overview
+    assert_response :success
+    assert_equal [], assigns(:you_owe)
+    assert_equal [[@friend, 42]], assigns(:owes_you)
   end
 
   should "get index" do
