@@ -12,18 +12,22 @@
 <body>
 
 <header>
-  <h1>I<strong><%= response.status == 404 ? raw("&#9785;") : "O" %></strong>U</h1>
+  <h1>
+    <%= link_to_unless (!user_signed_in? or current_page?(root_path)),
+      raw("I<strong>#{ response.status == 404 ? "&#9785;" : "O"}</strong>U"),
+      root_path %>
+  </h1>
 <% if user_signed_in? -%>
-  <p id="hello">Hello <%=link_to(current_user.name, edit_user_registration_path) %>! <%=link_to("Log out", destroy_user_session_path) %> if that's not you.</p>
+  <p id="hello">Hello <%=link_to_unless_current(current_user.name, edit_user_registration_path) %>! <%=link_to("Log out", destroy_user_session_path) %> if that's not you.</p>
 <% end -%>
 </header>
 
 <% if user_signed_in? -%>
 <nav class="main-nav">
   <ul>
-    <li><%=link_to('New Bill', new_bill_path) %></li>
-    <li><%=link_to('Bills', bills_path) %></li>
-    <li><%=link_to('Friends', friends_path) %></li>
+    <li><%=link_to_unless_current('New Bill', new_bill_path) %></li>
+    <li><%=link_to_unless_current('Bills', bills_path) %></li>
+    <li><%=link_to_unless_current('Friends', friends_path) %></li>
   </ul>
 </nav>
 <% end -%>

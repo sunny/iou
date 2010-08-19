@@ -91,6 +91,10 @@ header {
     width: $sidebar-width;
     text-align: center;
     text-shadow: rgba(0,0,0,.1) 2px 2px 10px;
+    a, a:visited {
+      color: black;
+      text-decoration: none;
+    }
     strong {
       font-family: 'DubtronicSolid', Helvetica, sans-serif;
       color: $main-color;

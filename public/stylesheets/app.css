@@ -53,6 +53,9 @@ header {
     width: 180px;
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.1) 2px 2px 10px; }
+    header h1 a, header h1 a:visited {
+      color: black;
+      text-decoration: none; }
     header h1 strong {
       font-family: 'DubtronicSolid', Helvetica, sans-serif;
       color: #8b008b;
