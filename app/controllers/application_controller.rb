@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from Error404, :with => :render_404
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  rescue_from ActionController::RoutingError, :with => :rescue_404
+
 
   protected
 
