@@ -52,8 +52,8 @@ class BillsControllerTest < ActionController::TestCase
   end
 
   should "update bill" do
-    put :update, :id => @bill.to_param, :bill => {:amount => 42, :bill_type => "Payment", :description => "Testing"}, :friend_name => "Joe", :you_payed => "true"
-    assert_redirected_to bill_path(assigns(:bill))
+    put :update, :id => @bill.to_param, :bill => {:amount => 20, :bill_type => "Payment", :description => "Testing"}, :friend_name => "Joe", :you_payed => "true"
+    assert_redirected_to bill_path(@bill)
   end
 
   should "destroy bill" do
