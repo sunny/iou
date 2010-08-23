@@ -5,7 +5,7 @@ class BillsController < ApplicationController
     @friends = current_user.friends
 
     # Create two arrays of debts
-    debts = @friends.map { |f| [f, current_user.owes(f)] }
+    debts = @friends.map { |f| [f, current_user.owes(f)] }.sort_by { |f, a| -a.abs }
     @you_owe, @owes_you = debts.partition { |f, a| a > 0 }
     @owes_you.map! { |f, a| [f, a.abs] }
 

@@ -4,9 +4,15 @@ $(document).ready(function() {
   Raphael.fn.pieChart = function(cx, cy, r, values, labels) {
     var paper = this,
         rad = Math.PI / 180,
-        chart = this.set()
+        chart = this.set(),
+        colors = [0.8, 0.1, 0.3, 0.5, 0.9, 0.6, 0.2, 0.4, 0.7, 0],
+        angle = 0,
+        total = 0,
+        start = 0
 
     function sector(cx, cy, r, startAngle, endAngle, params) {
+      if (startAngle == 0 && endAngle == 360)
+        return paper.circle(cx, cy, r).attr(params)
       var x1 = cx + r * Math.cos(-startAngle * rad),
           x2 = cx + r * Math.cos(-endAngle * rad),
           y1 = cy + r * Math.sin(-startAngle * rad),
@@ -14,29 +20,34 @@ $(document).ready(function() {
       return paper.path(["M", cx, cy, "L", x1, y1, "A", r, r, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"]).attr(params)
     }
 
-    var angle = 0,
-        total = 0,
-        start = .8,
-    process = function(j) {
-      start = start > 0.9 ? 0 : start
+    function process(j) {
       var value = values[j],
-          angleplus = 360 * value / total,
+          ratio = value / total,
+          label = labels[j] + ' ' + Math.floor(ratio*100) + '%',
+          angleplus = 360 * ratio,
           popangle = angle + (angleplus / 2),
-          color = "hsb(" + start + ", 1, .7)",
+          hue = colors[start],
+          color = "hsb(" + hue + ", 1, .7)",
           ms = 500,
-          delta = 30,
-          bcolor = "hsb(" + start + ", 1, 1)",
-          p = sector(cx, cy, r, angle, angle + angleplus, {gradient: "90-" + bcolor + "-" + color, "stroke-width": 0}),
-          txt = paper.text(cx + (r + delta + 55) * Math.cos(-popangle * rad), cy + (r + delta + 25) * Math.sin(-popangle * rad), labels[j]).attr({fill: bcolor, stroke: "none", opacity: 0, "font-family": 'Fontin-Sans, Arial', "font-size": "20px"})
+          delta = 20,
+          bcolor = "hsb(" + hue + ", 1, 1)",
+          tx = cx + (r + delta + 10) * Math.cos(-popangle * rad),
+          ty = cy + (r + delta +  0) * Math.sin(-popangle * rad),
+          p = sector(cx, cy, r, angle, angle + angleplus, {gradient: "90-" + bcolor + "-" + color, "stroke-width": 1, stroke: 'white'}),
+          txt = paper.text(tx, ty, label).attr({"font-family": 'Helvetica, sans-serif', "font-size": "9px"})
+
       angle += angleplus
       chart.push(p)
       chart.push(txt)
-      start += .1
+      start++
     }
+
     for (var i = 0, ii = values.length; i < ii; i++)
       total += values[i]
+
     for (var i = 0; i < ii; i++)
       process(i)
+
     return chart
   };
 
@@ -48,8 +59,10 @@ $(document).ready(function() {
       labels.push($("th a", this).text())
       values.push(parseFloat($("td", this).text()))
     })
+
+
     if (!values.empty && !labels.empty)
-      Raphael(table[0], 100, 100).pieChart(50, 50, 49, values, labels, "#fff")
+      Raphael(table[0], 300, 150).pieChart(300/2, 150/2, 49, values, labels, "#fff")
   }
 
 
