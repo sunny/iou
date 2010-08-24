@@ -29,6 +29,7 @@
 </ul>
 <% end %>
 
-<%= button_to 'Edit', edit_bill_path(@bill) %>
+<div><%= link_to 'Edit', edit_bill_path(@bill) %></div>
+
 <%= button_to 'Delete', bill_path(@bill), :method => 'delete', :confirm => "Are you sure you want to destroy this bill?" %>
 
