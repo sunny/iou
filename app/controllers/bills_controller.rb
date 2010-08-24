@@ -61,7 +61,7 @@ class BillsController < ApplicationController
     @bill = Bill.new(params[:bill])
     @friend_name = params[:friend_name]
     @you_payed = params[:you_payed] != "false"
-    friend = current_user.friends.find_or_initialize_by_name(@friend_name, :creator_id => current_user)
+    friend = current_user.friends.find_or_initialize_by_name(@friend_name)
     debt = Debt.new(:amount => @bill.amount, :bill => @bill)
 
     if @you_payed
@@ -76,7 +76,11 @@ class BillsController < ApplicationController
     @bill.creator = current_user
 
     respond_to do |format|
-      if @bill.save
+      if (!friend.new_record? or friend.valid?) and debt.valid? and @bill.valid?
+        friend.save! if friend.new_record?
+        debt.save!
+        @bill.save!
+
         format.html { redirect_to(@bill, :notice => 'Bill was successfully created.') }
         format.xml  { render :xml => @bill, :status => :created, :location => @bill }
       else
@@ -105,10 +109,10 @@ class BillsController < ApplicationController
     end
 
     respond_to do |format|
-      if friend.valid? and debt.valid? and @bill.valid?
-        friend.save
-        debt.save
-        @bill.save
+      if (!friend.new_record? or friend.valid?) and debt.valid? and @bill.valid?
+        friend.save! if friend.new_record?
+        debt.save!
+        @bill.save!
 
         format.html { redirect_to(@bill, :notice => 'Bill was successfully updated.') }
         format.xml  { head :ok }
