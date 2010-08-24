@@ -5,6 +5,8 @@ class Person < ActiveRecord::Base
   validates :name, :presence => true
   validates :type, :presence => true, :inclusion => { :in => ['Friend', 'User'] }
 
+  before_validation :trim_name
+
   def debts
     Debt.includes(:bill).where('person_from_id = ? OR person_to_id = ?', id, id)
   end
@@ -17,6 +19,12 @@ class Person < ActiveRecord::Base
     from = debts_from.where(:person_to_id   => person).sum('amount')
     to   = debts_to.  where(:person_from_id => person).sum('amount')
     to - from
+  end
+
+  private
+
+  def trim_name
+    name.strip! if name.respond_to?(:strip!)
   end
 
 end

@@ -32,6 +32,12 @@ class PersonTest < ActiveSupport::TestCase
       assert_equal 42, @person.owes(@person2)
       assert_equal -42, @person2.owes(@person)
     end
+
+    should "keep his name trimmed" do
+      @person.name = "	Trimmy "
+      @person.save!
+      assert_equal "Trimmy", @person.name
+    end
   end
 end
 

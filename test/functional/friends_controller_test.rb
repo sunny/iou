@@ -22,7 +22,7 @@ class FriendsControllerTest < ActionController::TestCase
 
   should "create friend" do
     assert_difference('Friend.count') do
-      post :create, :friend => @friend.attributes
+      post :create, :friend => { :name => "Solidus" }
     end
 
     assert_redirected_to friends_path
