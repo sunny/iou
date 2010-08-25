@@ -73,34 +73,34 @@ $(document).ready(function() {
         with_amount: {
           with_user: {
             bill: {
-              you_payed: "%s owes you %f €",
-              payed_you: "You owe %s %f €"
+              you_payed: "%person owes you %money",
+              payed_you: "You owe %person %money"
             },
             payment: {
-              you_payed: "You payed back %f € to %s",
-              payed_you: "%s payed you back %f €"
+              you_payed: "You payed back %money to %person",
+              payed_you: "%person payed you back %money"
             }
           },
           without_user: {
             bill: {
-              you_payed: "Someone owes you %f €",
-              payed_you: "You owe someone %f €"
+              you_payed: "Someone owes you %money",
+              payed_you: "You owe someone %money"
             },
             payment: {
-              you_payed: "You gave back %f € to someone",
-              payed_you: "Someone payed you back %f €"
+              you_payed: "You gave back %money to someone",
+              payed_you: "Someone payed you back %money"
             }
           }
         },
         without_amount: {
           with_user: {
             bill: {
-              you_payed: "%s owes you money",
-              payed_you: "You owe money to %s"
+              you_payed: "%person owes you money",
+              payed_you: "You owe money to %person"
             },
             payment: {
-              you_payed: "You payed back %s",
-              payed_you: "%s payed you back"
+              you_payed: "You payed back %person",
+              payed_you: "%person payed you back"
             }
           },
           without_user: {
@@ -147,6 +147,8 @@ $(document).ready(function() {
       var checked = bill_tabs.find(':checked'),
           type = checked.attr('value'),
           amount = bill_amount(),
+          currencyValue = amount_input.attr('data-currency-symbol'),
+          txtAmount = amount + ' ' + currencyValue,
           user = friend_input.val(),
           text = translations.en.bill
             [amount > 0 ? 'with_amount' : 'without_amount']
@@ -155,8 +157,8 @@ $(document).ready(function() {
 
       bill_tabs.removeClass('checked')
       checked.parent('label').addClass('checked')
-      you_payed_text.text(text.you_payed.replace(/%f/, amount).replace(/%s/, user))
-      payed_you_text.text(text.payed_you.replace(/%f/, amount).replace(/%s/, user))
+      you_payed_text.text(text.you_payed.replace(/%money/, txtAmount).replace(/%person/, user))
+      payed_you_text.text(text.payed_you.replace(/%money/, txtAmount).replace(/%person/, user))
     }
 
     // Add events on bill form

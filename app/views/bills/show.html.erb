@@ -21,7 +21,7 @@
   <li>
     <%= link_to(debt.person_to.name, debt.person_to) %>
     owes
-    <%= debt.amount %> €
+    <%= money(debt.amount) %>
     to
     <%= link_to(debt.person_from.name, debt.person_from) %>
   </li>

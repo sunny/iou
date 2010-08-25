@@ -15,7 +15,7 @@
 <% @bills.each do |bill| %>
   <tr>
     <td><%= link_to(bill.description, bill) %></td>
-    <td><%= bill.amount %> €</td>
+    <td><%= money(bill.amount) %></td>
     <td><%= bill.people.reject{|u| u == current_user}.map{|u| u.name}.join(', ') %></td>
     <td><%= bill.date.strftime("%Y-%m-%d") %></td>
   </tr>
