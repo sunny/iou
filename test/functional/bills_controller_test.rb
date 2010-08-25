@@ -39,6 +39,7 @@ class BillsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to bill_path(assigns(:bill))
+    assert_equal assigns(:bill).creator_id, @user.id, "should have the current user as the creator"
   end
 
   should "show bill" do
