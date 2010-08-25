@@ -1,5 +1,5 @@
 class Bill < ActiveRecord::Base
-  has_many :debts, :dependent => :destroy, :autosave => true, :validate => true
+  has_many :debts, :dependent => :destroy, :autosave => true
   has_many :people_from, :through => :debts, :source => :person_from, :uniq => true
   has_many :people_to,   :through => :debts, :source => :person_to,   :uniq => true
   belongs_to :creator, :class_name => 'User'

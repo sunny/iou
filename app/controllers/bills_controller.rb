@@ -108,10 +108,12 @@ class BillsController < ApplicationController
       debt.person_to = current_user
     end
 
+    @bill.debts.clear
+    @bill.debt = debt
+    @bill.creator = current_user
+
     respond_to do |format|
-      if (!friend.new_record? or friend.valid?) and debt.valid? and @bill.valid?
-        friend.save! if friend.new_record?
-        debt.save!
+      if @bill.valid?
         @bill.save!
 
         format.html { redirect_to(@bill, :notice => 'Bill was successfully updated.') }

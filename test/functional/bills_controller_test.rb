@@ -51,8 +51,8 @@ class BillsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  should "update bill" do
-    put :update, :id => @bill.to_param, :bill => {:amount => 20, :bill_type => "Payment", :description => "Testing"}, :friend_name => "Joe", :you_payed => "true"
+  should "update bill amount" do
+    put :update, :id => @bill.to_param, "bill"=>{"bill_type"=>"Bill", "amount"=>"30", "description"=>"Test", "date(3i)"=>"18", "date(2i)"=>"8", "date(1i)"=>"2010"}, "friend_name"=>"Max", "you_payed"=>"true"
     assert_redirected_to bill_path(@bill)
   end
 
