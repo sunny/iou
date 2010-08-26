@@ -26,5 +26,18 @@ class UserTest < ActiveSupport::TestCase
     should "have a unique email" do
       assert !Factory.build(:user, :email => @user.email.upcase).valid?
     end
+
+    context "when destroyed" do
+      should "destroy his friends" do
+        friends = @user.friend_ids
+        @user.destroy
+        assert Friend.find_all_by_id(friends).empty?, "should not find old friends"
+      end
+      should "destroy his created bills" do
+        bills = @user.bill_ids
+        @user.destroy
+        assert Bill.find_all_by_id(bills).empty?, "should not find old bills"
+      end
+    end
   end
 end

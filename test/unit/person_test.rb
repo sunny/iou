@@ -38,6 +38,15 @@ class PersonTest < ActiveSupport::TestCase
       @person.save!
       assert_equal "Trimmy", @person.name
     end
+
+    context "when destroyed" do
+      should "destroy the bills that person appears in" do
+        bills = @person.in_bills.map { |b| b.id }
+        @person.destroy
+        assert Bill.find_all_by_id(bills).empty?, "should not find old bills"
+      end
+    end
+
   end
 end
 

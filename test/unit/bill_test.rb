@@ -50,6 +50,13 @@ class BillTest < ActiveSupport::TestCase
       assert @bill.errors[:debts], "Should have errors on :debts"
     end
 
+    context "when destroyed" do
+      should "destroy its debts" do
+        debts = @bill.debt_ids
+        @bill.destroy
+        assert Debt.find_all_by_id(debts).empty?, "should not find old debts"
+      end
+    end
   end
 
   context "A shared Bill" do

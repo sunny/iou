@@ -6,6 +6,7 @@ class Person < ActiveRecord::Base
   validates :type, :presence => true, :inclusion => { :in => ['Friend', 'User'] }
 
   before_validation :trim_name
+  before_destroy :destroy_associated_bills
 
   def debts
     Debt.includes(:bill).where('person_from_id = ? OR person_to_id = ?', id, id)
@@ -27,4 +28,7 @@ class Person < ActiveRecord::Base
     name.strip! if name.respond_to?(:strip!)
   end
 
+  def destroy_associated_bills
+    in_bills.each(&:destroy)
+  end
 end
