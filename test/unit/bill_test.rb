@@ -79,9 +79,9 @@ class BillTest < ActiveSupport::TestCase
     end
 
     should "have more than one debt" do
-        @bill.debt = Factory(:debt, :amount => @bill.amount, :bill => @bill)
-        assert !@bill.valid?, "Should not be .valid?"
-        assert @bill.errors[:debts], "Should have errors on :debts"
+      @bill.debt = Factory(:debt, :amount => @bill.amount, :bill => @bill)
+      assert !@bill.valid?, "Should not be .valid?"
+      assert @bill.errors[:debts], "Should have errors on :debts"
     end
 
     should "ensure total amount is the same as the debts" do
