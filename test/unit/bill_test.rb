@@ -43,6 +43,13 @@ class BillTest < ActiveSupport::TestCase
       assert @bill.errors[:debts], "Should have errors on :debts"
     end
 
+    should "allow to enter an amount in text format" do
+      @bill.amount = "12 345,55"
+      @bill.debt = Factory(:debt, :amount => @bill.amount, :bill => @bill)
+      @bill.save!
+      assert_equal @bill.amount, 12345.55
+    end
+
     should "ensure total amount is the same as the debts" do
       @bill.debt.amount = 100000
       @bill.debt.save

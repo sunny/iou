@@ -2,7 +2,7 @@ class Person < ActiveRecord::Base
   has_many :debts_from, :class_name => 'Debt', :foreign_key => 'person_from_id'
   has_many :debts_to, :class_name => 'Debt', :foreign_key => 'person_to_id'
 
-  validates :name, :presence => true
+  validates :name, :presence => true, :linkable => true
   validates :type, :presence => true, :inclusion => { :in => ['Friend', 'User'] }
 
   before_validation :trim_name

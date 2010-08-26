@@ -5,4 +5,8 @@ class Friend < Person
   validates :encrypted_password, :nil => true
   validates :password_salt, :nil => true
   validates :creator_id, :presence => true
+
+  def to_param
+    name_changed? ? name_was : name
+  end
 end

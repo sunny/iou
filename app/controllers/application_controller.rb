@@ -19,4 +19,12 @@ class ApplicationController < ActionController::Base
       format.xml  { render :nothing => true, :status => '404 Not Found' }
     end
   end
+
+  def current_user_friend
+    if params[:id] =~ /^[0-9]+$/
+      current_user.friends.find params[:id]
+    else
+      current_user.friends.find_by_name! params[:id]
+    end
+  end
 end

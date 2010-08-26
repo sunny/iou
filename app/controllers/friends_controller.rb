@@ -11,7 +11,7 @@ class FriendsController < ApplicationController
 
   # GET /friends/1
   def show
-    @friend = current_user.friends.find(params[:id])
+    @friend = current_user_friend
     @owes_you = @friend.owes(current_user)
 
     respond_to do |format|
@@ -22,7 +22,7 @@ class FriendsController < ApplicationController
 
   # GET /friends/new
   def new
-    @friend = Friend.new(:creator => current_user)
+    @friend = current_user.friends.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,13 +32,12 @@ class FriendsController < ApplicationController
 
   # GET /friends/1
   def edit
-    @friend = current_user.friends.find(params[:id])
+    @friend = current_user_friend
   end
 
   # POST /friends
   def create
-    @friend = Friend.new(params[:friend])
-    @friend.creator = current_user
+    @friend = current_user.friends.build(:name => params[:friend][:name])
 
     respond_to do |format|
       if @friend.save
@@ -53,7 +52,7 @@ class FriendsController < ApplicationController
 
   # PUT /friends/1
   def update
-    @friend = current_user.friends.find(params[:id])
+    @friend = current_user_friend
 
     respond_to do |format|
       if @friend.update_attributes(params[:friend])
@@ -68,7 +67,7 @@ class FriendsController < ApplicationController
 
   # DELETE /friends/1
   def destroy
-    @friend = current_user.friends.find(params[:id])
+    @friend = current_user_friend
     @friend.destroy
 
     respond_to do |format|
