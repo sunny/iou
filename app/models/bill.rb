@@ -31,6 +31,12 @@ class Bill < ActiveRecord::Base
     bill_type == "Shared"
   end
 
+  # We can give it an amount of "4 200,50" and it will set it right
+  def amount=(value)
+    value = value.gsub(' ', '').sub(',', '.').to_f if value.is_a?(String)
+    super(value)
+  end
+
   private
 
   def ensure_correct_number_of_debts
