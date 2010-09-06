@@ -1,6 +1,6 @@
 <h1><%=@title=@friend.name %></h1>
 
-<% if @friend.debts.empty? %>
+<% if @debts.empty? %>
 <p>Nothing here yet&hellip;</p>
 <% else %>
 
@@ -12,7 +12,7 @@
 
 <h2>Bills</h2>
 <ul>
-<% @friend.debts.each do |d| %>
+<% @debts.each do |d| %>
   <li>
     <%=link_to(d.bill.description, d.bill)%>:
     <% if d.person_to == current_user %>

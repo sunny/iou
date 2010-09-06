@@ -24,6 +24,7 @@ class FriendsController < ApplicationController
   def show
     @friend = current_user_friend
     @owes_you = @friend.owes(current_user)
+    @debts = @friend.debts.includes(:bill).order('bills.date DESC, bills.id DESC')
 
     respond_to do |format|
       format.html # show.html.erb
