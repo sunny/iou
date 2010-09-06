@@ -1,6 +1,6 @@
 module ApplicationHelper
   def link_to_person(person, params = {})
-    link_to person.name, person
+    link_to person.try(:name), person
   end
 
   def money(amount)

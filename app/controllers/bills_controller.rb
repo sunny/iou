@@ -28,8 +28,16 @@ class BillsController < ApplicationController
   # GET /bills/1
   def show
     @bill = current_user.bills.find(params[:id])
-    @friend = @bill.people.find { |p| current_user.friends.include?(p) }
-    @you_payed = @bill.people_from == [current_user]
+    person_from = @bill.people_from.first
+    person_to = @bill.people_to.first
+
+    if current_user == person_from
+      @you_payed = true
+      @friend = person_to
+    else
+      @you_payed = false
+      @friend = person_from
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -61,14 +69,14 @@ class BillsController < ApplicationController
     @bill = Bill.new(params[:bill])
     @friend_name = params[:friend_name]
     @you_payed = params[:you_payed] != "false"
-    friend = current_user.friends.find_or_initialize_by_name(@friend_name)
-    debt = Debt.new(:amount => @bill.amount, :bill => @bill)
+    @friend = current_user.friends.find_or_create_by_name(@friend_name)
+    debt = Debt.new(:amount => @bill.amount)
 
     if @you_payed
       debt.person_from = current_user
-      debt.person_to = friend
+      debt.person_to = @friend
     else
-      debt.person_from = friend
+      debt.person_from = @friend
       debt.person_to = current_user
     end
 
@@ -76,8 +84,7 @@ class BillsController < ApplicationController
     @bill.creator = current_user
 
     respond_to do |format|
-      if (!friend.new_record? or friend.valid?) and debt.valid? and @bill.valid?
-        friend.save! if friend.new_record?
+      if debt.valid? and @bill.valid?
         debt.save!
         @bill.save!
 
@@ -96,20 +103,19 @@ class BillsController < ApplicationController
     @bill.attributes = params[:bill]
     @friend_name = params[:friend_name]
     @you_payed = params[:you_payed] != "false"
-    friend = current_user.friends.find_or_initialize_by_name(@friend_name)
+    @friend = current_user.friends.find_or_create_by_name(@friend_name)
 
-    debt = @bill.debt
-    debt.amount = @bill.amount
+    # FIXME update the debt instead of insert/delete
+    debt = Debt.new(:amount => @bill.amount)
     if @you_payed
       debt.person_from = current_user
-      debt.person_to = friend
+      debt.person_to = @friend
     else
-      debt.person_from = friend
+      debt.person_from = @friend
       debt.person_to = current_user
     end
 
-    @bill.debts.clear
-    @bill.debt = debt
+    @bill.debts = [debt]
     @bill.creator = current_user
 
     respond_to do |format|

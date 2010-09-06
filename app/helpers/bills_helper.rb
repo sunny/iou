@@ -8,7 +8,7 @@ module BillsHelper
       when "Shared"
         return "Shared bill"
     end
-    (html_escape(sentence) % link_to(@friend.name, @friend)).html_safe
+    (html_escape(sentence) % link_to_person(@friend)).html_safe
   end
 end
 
