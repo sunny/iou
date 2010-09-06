@@ -70,7 +70,7 @@ class BillsController < ApplicationController
     @friend_name = params[:friend_name]
     @you_payed = params[:you_payed] != "false"
     @friend = current_user.friends.find_or_create_by_name(@friend_name)
-    debt = Debt.new(:amount => @bill.amount)
+    debt = Debt.new(:amount => @bill.amount, :bill => @bill)
 
     if @you_payed
       debt.person_from = current_user
@@ -84,9 +84,7 @@ class BillsController < ApplicationController
     @bill.creator = current_user
 
     respond_to do |format|
-      if debt.valid? and @bill.valid?
-        debt.save!
-        @bill.save!
+      if @bill.save
 
         format.html { redirect_to(@bill, :notice => 'Bill was successfully created.') }
         format.xml  { render :xml => @bill, :status => :created, :location => @bill }
@@ -106,7 +104,7 @@ class BillsController < ApplicationController
     @friend = current_user.friends.find_or_create_by_name(@friend_name)
 
     # FIXME update the debt instead of insert/delete
-    debt = Debt.new(:amount => @bill.amount)
+    debt = Debt.new(:amount => @bill.amount, :bill => @bill)
     if @you_payed
       debt.person_from = current_user
       debt.person_to = @friend
@@ -119,8 +117,7 @@ class BillsController < ApplicationController
     @bill.creator = current_user
 
     respond_to do |format|
-      if @bill.valid?
-        @bill.save!
+      if @bill.save
 
         format.html { redirect_to(@bill, :notice => 'Bill was successfully updated.') }
         format.xml  { head :ok }
