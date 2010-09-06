@@ -121,16 +121,16 @@ h1 {
   margin-top: 0;
 }
 
-$labels-width: 80px;
+$labels-width: 100px;
 $labels-gutter: 20px;
 
 form {
   .field {
+    clear: left;
     label {
       float: left;
       text-align: right;
       margin-right: $labels-gutter;
-      clear: left;
       width: $labels-width;
       line-height: 1.7em;
     }

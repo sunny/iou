@@ -74,20 +74,21 @@ nav.main-nav ul {
 h1 {
   margin-top: 0; }
 
-form .field label {
-  float: left;
-  text-align: right;
-  margin-right: 20px;
-  clear: left;
-  width: 80px;
-  line-height: 1.7em; }
+form .field {
+  clear: left; }
+  form .field label {
+    float: left;
+    text-align: right;
+    margin-right: 20px;
+    width: 100px;
+    line-height: 1.7em; }
 form .field_selection {
-  margin-left: 100px; }
+  margin-left: 120px; }
   form .field_selection label {
     display: block; }
 form .actions {
   padding: 1ex 0;
-  margin-left: 100px; }
+  margin-left: 120px; }
 form .actions input, form.button_to input {
   color: white;
   background: #8b008b;
@@ -112,7 +113,7 @@ form .actions input, form.button_to input {
   margin-left: 10px;
   line-height: 1em; }
   #bill_tabs label.first {
-    margin-left: 100px; }
+    margin-left: 120px; }
 #bill_tabs label.checked {
   border: 1px solid #aaa;
   background: white;
