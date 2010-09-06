@@ -24,7 +24,7 @@
   <div id="bill_tabs_content">
     <div class="field">
       <label for="friend_name">With</label>
-      <%= text_field_tag :friend_name, @friend_name %>
+      <%= text_field_tag :friend_name, @friend_name, :autocomplete => "off", :autocomplete_url => autocomplete_friends_path(:format => 'json') %>
     </div>
 
     <div class="field_selection" id="who_payed_selection">

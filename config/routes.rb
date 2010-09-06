@@ -1,7 +1,9 @@
 Iou::Application.routes.draw do |map|
   devise_for :users
   resources :bills
-  resources :friends
+  resources :friends do
+    get :autocomplete, :on => :collection
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

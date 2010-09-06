@@ -1,4 +1,15 @@
 class FriendsController < ApplicationController
+  # GET /autocomplete.json?term=Foo
+  def autocomplete
+    friends = {}
+    if params[:term] and !params[:term].empty?
+      friends = current_user.friends.where(["LOWER(name) LIKE ?", "#{params[:term].downcase}%"]).limit(5).order('name')
+    end
+    respond_to do |format|
+      format.json { render :json => friends.collect { |f| {"id" => f.id, "label" => f.name, "value" => f.name } } }
+    end
+  end
+
   # GET /friends
   def index
     @friends = current_user.friends
