@@ -1,5 +1,5 @@
 module BillsHelper
-  def bill_resume(bill)
+  def bill_resume
     sentence = case @bill.bill_type
       when "Payment"
         @you_payed ? "You payed back %s" : "%s payed you back"
@@ -8,7 +8,7 @@ module BillsHelper
       when "Shared"
         return "Shared bill"
     end
-    (html_escape(sentence) % link_to_person(@friend)).html_safe
+    (html_escape(sentence) % link_to(@friend.name, @friend)).html_safe
   end
 end
 
