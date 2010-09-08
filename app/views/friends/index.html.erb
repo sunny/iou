@@ -8,14 +8,14 @@
   <tr>
     <th>Friend</th>
     <th>Owes you</th>
-    <th>You owe that friend</th>
+    <th>You owe</th>
   </tr>
 <% @friends.each do |friend| %>
   <tr>
     <td><%= link_to friend.name, friend_path(friend) %></td>
     <% owes_you = friend.owes(current_user) %>
-    <td><%= money(owes_you) if owes_you > 0 %></td>
-    <td><%= money(owes_you.abs) if owes_you < 0 %></td>
+    <td class="amount owes_you"><%= money(owes_you) if owes_you > 0 %></td>
+    <td class="amount you_owe"><%= money(owes_you.abs) if owes_you < 0 %></td>
     <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
     <td><%= button_to 'Destroy', friend_path(friend), :method => 'delete',
       :confirm => "Are you sure you want to destroy this friend and all his bills?" %></td>

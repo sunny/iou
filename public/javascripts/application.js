@@ -128,8 +128,8 @@ $(document).ready(function() {
 
   // Overview pies
   if ($('#overview').length) {
-    debtPie($('#you-owe'))
-    debtPie($('#owe-you'))
+    debtPie($('#you_owe'))
+    debtPie($('#owes_you'))
   }
 
   // Bill form

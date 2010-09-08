@@ -62,7 +62,7 @@ header {
       color: #8b008b;
       padding-left: .07em; }
 
-nav.main-nav ul {
+nav.main_nav ul {
   position: absolute;
   margin: 0;
   margin-left: -165px;

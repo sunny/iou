@@ -22,7 +22,7 @@
 </header>
 
 <% if user_signed_in? -%>
-<nav class="main-nav">
+<nav class="main_nav">
   <ul>
     <li><%=link_to_unless_current('New Bill', new_bill_path) %></li>
     <li><%=link_to_unless_current('Bills', bills_path) %></li>
