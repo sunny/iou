@@ -4,7 +4,7 @@
 <p>No bill here yet, you should <%= link_to "create one", new_bill_path %> first.</p>
 <% else %>
 
-<table>
+<table class="bills">
   <tr>
     <th>Bill</th>
     <th>Amount</th>
@@ -15,7 +15,7 @@
 <% @bills.each do |bill| %>
   <tr>
     <td><%= link_to(bill.description, bill) %></td>
-    <td><%= money(bill.amount) %></td>
+    <td class="amount"><%= money(bill.amount) %></td>
     <td>
       <% bill.people.each do |u| %>
         <%= link_to_person(u) unless u == current_user %>

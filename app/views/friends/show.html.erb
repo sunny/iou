@@ -7,26 +7,29 @@
 <% if @owes_you > 0 %>
 <p>Owes you <%= money(@owes_you) %></p>
 <% elsif @owes_you < 0 %>
-<p>You owe him/her <%= money(@owes_you.abs) %></p>
+<p>You owe <%= money(@owes_you.abs) %></p>
 <% end %>
 
-<h2>Bills</h2>
-<ul>
-<% @debts.each do |d| %>
-  <li>
-    <%=link_to(d.bill.description, d.bill)%>:
-    <% if d.person_to == current_user %>
-    you owe him/her <%= money(d.amount) %>
-    <% elsif d.person_from == current_user %>
-    owes you <%= money(d.amount) %>
-    <% elsif d.person_from == @friend %>
-    <%=d.person_to.name%> owes him/her <%= money(d.amount) %>
-    <% elsif d.person_to == @friend %>
-    owes <%= money(d.amount) %> to <%= d.person_from.name %>
-    <% end %>
-  </li>
+<table class="debts">
+  <thead>
+    <tr>
+      <th>Bill</th>
+      <th>Owes you</th>
+      <th>You owe</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @debts.each do |debt| %>
+    <tr>
+      <td><%=link_to(debt.bill.description, debt.bill)%></td>
+      <td class="amount owes_you"><%= money(debt.amount) if debt.person_from == current_user %></td>
+      <td class="amount you_owe"><%= money(debt.amount) if debt.person_to == current_user %></td>
+      <td><%= debt.bill.date.strftime("%Y-%m-%d") %></td>
+    </tr>
 <% end %>
-</ul>
+  </tbody>
+</table>
 
 <% end %>
 

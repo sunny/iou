@@ -196,3 +196,6 @@ div.field, div.actions {
       padding-right: 10px;
       margin-left: -15px;
       color: white; }
+
+td.amount {
+  text-align: right; }
