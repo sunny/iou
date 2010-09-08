@@ -41,7 +41,7 @@
 
   <div class="field">
     <%= f.label :amount %>
-    <%= f.text_field :amount, :type => :number, :size => 4, :'data-currency-symbol' => DEFAULT_CURRENCY_SYMBOL %> <%= DEFAULT_CURRENCY_SYMBOL %>
+    <%= f.text_field :amount, :type => :number, :size => 4, :step => 0.01, :'data-currency-symbol' => DEFAULT_CURRENCY_SYMBOL %> <%= DEFAULT_CURRENCY_SYMBOL %>
   </div>
 
   <div class="field">
