@@ -1,4 +1,6 @@
 class BillsController < ApplicationController
+  respond_to :html, :xml
+
   # GET /
   def overview
     @bills = current_user.bills.includes(:people_from, :people_to, :debts)
@@ -10,21 +12,12 @@ class BillsController < ApplicationController
                     .sort_by { |f, a| -a.abs }
     @you_owe, @owes_you = debts.partition { |f, a| a > 0 }
     @owes_you.map! { |f, a| [f, a.abs] }
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @bills }
-    end
   end
 
   # GET /bills
   def index
     @bills = current_user.bills.includes(:people_from, :people_to, :debts)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @bills }
-    end
+    respond_with @bills
   end
 
   # GET /bills/1
@@ -41,10 +34,7 @@ class BillsController < ApplicationController
       @friend = person_from
     end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @bill }
-    end
+    respond_with @bill
   end
 
   # GET /bills/new
@@ -53,10 +43,7 @@ class BillsController < ApplicationController
     @friend_name = ""
     @you_payed = true
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @bill }
-    end
+    respond_with @bill
   end
 
   # GET /bills/1/edit
@@ -85,16 +72,8 @@ class BillsController < ApplicationController
     @bill.debts = [debt]
     @bill.creator = current_user
 
-    respond_to do |format|
-      if @bill.save
-
-        format.html { redirect_to(@bill, :notice => 'Bill was successfully created.') }
-        format.xml  { render :xml => @bill, :status => :created, :location => @bill }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @bill.errors, :status => :unprocessable_entity }
-      end
-    end
+    @bill.save
+    respond_with @bill
   end
 
   # PUT /bills/1
@@ -118,16 +97,8 @@ class BillsController < ApplicationController
     @bill.debts = [debt]
     @bill.creator = current_user
 
-    respond_to do |format|
-      if @bill.save
-
-        format.html { redirect_to(@bill, :notice => 'Bill was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @bill.errors, :status => :unprocessable_entity }
-      end
-    end
+    @bill.save
+    respond_with @bill
   end
 
   # DELETE /bills/1
@@ -135,9 +106,6 @@ class BillsController < ApplicationController
     @bill = current_user.bills.find(params[:id])
     @bill.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(bills_url) }
-      format.xml  { head :ok }
-    end
+    respond_with @bill
   end
 end

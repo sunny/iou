@@ -1,12 +1,14 @@
 class FriendsController < ApplicationController
+  respond_to :html, :xml
+
   # GET /autocomplete.json?term=Foo
   def autocomplete
-    friends = {}
+    @friends = []
     if params[:term] and !params[:term].empty?
-      friends = current_user.friends.where(["LOWER(name) LIKE ?", "#{params[:term].downcase}%"]).limit(5).order('name')
+      @friends = current_user.friends.where(["LOWER(name) LIKE ?", "#{params[:term].downcase}%"]).limit(5).order('name')
     end
-    respond_to do |format|
-      format.json { render :json => friends.collect { |f| {"id" => f.id, "label" => f.name, "value" => f.name } } }
+    respond_with(@friends) do |format|
+      format.json { render :json => @friends.collect { |f| {"id" => f.id, "label" => f.name, "value" => f.name } } }
     end
   end
 
@@ -14,10 +16,7 @@ class FriendsController < ApplicationController
   def index
     @friends = current_user.friends
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @friends }
-    end
+    respond_with @friends
   end
 
   # GET /friends/1
@@ -26,20 +25,14 @@ class FriendsController < ApplicationController
     @owes_you = @friend.owes(current_user)
     @debts = @friend.debts.includes(:bill).order('bills.date DESC, bills.id DESC')
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @friend }
-    end
+    respond_with @friends
   end
 
   # GET /friends/new
   def new
     @friend = current_user.friends.build
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @friend }
-    end
+    respond_with @friends
   end
 
   # GET /friends/1
@@ -49,32 +42,15 @@ class FriendsController < ApplicationController
 
   # POST /friends
   def create
-    @friend = current_user.friends.build(:name => params[:friend][:name])
-
-    respond_to do |format|
-      if @friend.save
-        format.html { redirect_to(friends_url, :notice => 'Friend was successfully created.') }
-        format.xml  { render :xml => @friend, :status => :created, :location => @friend }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @friend.errors, :status => :unprocessable_entity }
-      end
-    end
+    @friend = current_user.friends.create(:name => params[:friend][:name])
+    respond_with(@friend, :location => friends_url)
   end
 
   # PUT /friends/1
   def update
     @friend = current_user_friend
-
-    respond_to do |format|
-      if @friend.update_attributes(params[:friend])
-        format.html { redirect_to(friends_path, :notice => 'Friend was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @friend.errors, :status => :unprocessable_entity }
-      end
-    end
+    @friend.update_attributes(params[:friend])
+    respond_with(@friend, :location => friends_path)
   end
 
   # DELETE /friends/1
@@ -82,10 +58,7 @@ class FriendsController < ApplicationController
     @friend = current_user_friend
     @friend.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(friends_url) }
-      format.xml  { head :ok }
-    end
+    respond_with @friend
   end
 
 end
