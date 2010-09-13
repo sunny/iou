@@ -4,11 +4,11 @@
   <% if @you_owe.empty? %>
   <p>Nothing yet.</p>
   <% else %>
-  <table id="you-owe">
+  <table id="you_owe">
   <% @you_owe.each do |friend, amount| %>
     <tr>
       <th><%=link_to friend.name, friend %></th>
-      <td><%=money(amount)%></td>
+      <td class="amount you_owe"><%=money(amount)%></td>
     </tr>
   <% end %>
   </table>
@@ -18,11 +18,11 @@
   <% if @owes_you.empty? %>
   <p>Nothing yet.</p>
   <% else %>
-  <table id="owe-you">
+  <table id="owes_you">
   <% @owes_you.each do |friend, amount| %>
     <tr>
       <th><%=link_to friend.name, friend%></th>
-      <td><%=money(amount)%></td>
+      <td class="amount owes_you"><%=money(amount)%></td>
     </tr>
   <% end %>
   </table>

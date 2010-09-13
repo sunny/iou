@@ -121,10 +121,15 @@ $(document).ready(function() {
 
   $('body').addClass('js')
 
+  // Autocompleters
+  $('input[autocomplete_url]').each(function(i){
+    $(this).autocomplete({ source: $(this).attr('autocomplete_url') });
+  });
+
   // Overview pies
   if ($('#overview').length) {
-    debtPie($('#you-owe'))
-    debtPie($('#owe-you'))
+    debtPie($('#you_owe'))
+    debtPie($('#owes_you'))
   }
 
   // Bill form

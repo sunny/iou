@@ -8,6 +8,8 @@ class Person < ActiveRecord::Base
   before_validation :trim_name
   before_destroy :destroy_associated_bills
 
+  default_scope order('people.name, people.email')
+
   def debts
     Debt.includes(:bill).where('person_from_id = ? OR person_to_id = ?', id, id)
   end

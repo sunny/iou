@@ -13,7 +13,7 @@ class Bill < ActiveRecord::Base
   validate :ensure_correct_number_of_debts, :unless => :"debts.empty?"
   validate :debts_must_sum_up_to_the_same_amount, :unless => :"debts.empty?"
 
-  default_scope order(:date)
+  default_scope order('bills.date DESC, bills.id DESC')
 
   def people
     (people_from + people_to).uniq

@@ -1,3 +1,5 @@
+@import "jquery-ui-1.8.4.custom.css";
+
 $main-color: #8B008B;
 $light-color: desaturate(lighten($main-color, 70%), 70%);
 $sidebar-width: 180px;
@@ -103,7 +105,7 @@ header {
   }
 }
 
-nav.main-nav {
+nav.main_nav {
   ul {
     position: absolute;
     margin: 0;
@@ -119,16 +121,16 @@ h1 {
   margin-top: 0;
 }
 
-$labels-width: 80px;
+$labels-width: 100px;
 $labels-gutter: 20px;
 
 form {
   .field {
+    clear: left;
     label {
       float: left;
       text-align: right;
       margin-right: $labels-gutter;
-      clear: left;
       width: $labels-width;
       line-height: 1.7em;
     }
@@ -275,3 +277,6 @@ div.field, div.actions {
 }
 
 
+td.amount {
+  text-align: right;
+}
