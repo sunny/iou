@@ -1,5 +1,6 @@
 module BillsHelper
   def bill_resume(bill)
+    return "Shared bill" unless @friend
     sentence = case bill.bill_type
       when "Payment"
         @you_payed ? "You payed back %s" : "%s payed you back"
