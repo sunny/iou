@@ -1,68 +1,37 @@
 $(document).ready(function() {
 
-  // A Raphael.js pie chart
-  Raphael.fn.pieChart = function(cx, cy, r, values, labels) {
-    var paper = this,
-        rad = Math.PI / 180,
-        chart = this.set(),
-        colors = [0.8, 0.1, 0.3, 0.5, 0.9, 0.6, 0.2, 0.4, 0.7, 0],
-        angle = 0,
-        total = 0,
-        start = 0
-
-    function sector(cx, cy, r, startAngle, endAngle, params) {
-      if (startAngle == 0 && endAngle == 360)
-        return paper.circle(cx, cy, r).attr(params)
-      var x1 = cx + r * Math.cos(-startAngle * rad),
-          x2 = cx + r * Math.cos(-endAngle * rad),
-          y1 = cy + r * Math.sin(-startAngle * rad),
-          y2 = cy + r * Math.sin(-endAngle * rad)
-      return paper.path(["M", cx, cy, "L", x1, y1, "A", r, r, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"]).attr(params)
-    }
-
-    function process(j) {
-      var value = values[j],
-          ratio = value / total,
-          label = labels[j] + ' ' + Math.floor(ratio*100) + '%',
-          angleplus = 360 * ratio,
-          popangle = angle + (angleplus / 2),
-          hue = colors[start],
-          color = "hsb(" + hue + ", 1, .7)",
-          ms = 500,
-          delta = 20,
-          bcolor = "hsb(" + hue + ", 1, 1)",
-          tx = cx + (r + delta + 10) * Math.cos(-popangle * rad),
-          ty = cy + (r + delta +  0) * Math.sin(-popangle * rad),
-          p = sector(cx, cy, r, angle, angle + angleplus, {gradient: "90-" + bcolor + "-" + color, "stroke-width": 1, stroke: 'white'}),
-          txt = paper.text(tx, ty, label).attr({"font-family": 'Helvetica, sans-serif', "font-size": "9px"})
-
-      angle += angleplus
-      chart.push(p)
-      chart.push(txt)
-      start++
-    }
-
-    for (var i = 0, ii = values.length; i < ii; i++)
-      total += values[i]
-
-    for (var i = 0; i < ii; i++)
-      process(i)
-
-    return chart
-  };
-
   // Include a pie chart for a table of debts
   function debtPie(table) {
     var values = [],
-        labels = []
+        labels = [],
+        hrefs = []
     table.find('tr').each(function () {
-      labels.push($("th a", this).text())
-      values.push(parseFloat($("td", this).text()))
+      var a = $("th a", this),
+          value = parseFloat($("td", this).text())
+      labels.push(value + " EUR " + a.text())
+      values.push(value)
+      hrefs.push(a.attr('href'))
     })
+    if (values.length > 1) {
+      var r = Raphael(table[0], 300, 120),
+          pie = r.g.piechart(60, 60, 50, values, {legend: labels, legendpos: "east", href: hrefs, colors:['#8B008B']})
+      pie.hover(function () {
+        this.sector.stop()
+        this.sector.scale(1.1, 1.1, this.cx, this.cy)
+        if (this.label) {
+          this.label[0].stop()
+          this.label[0].scale(1.5)
+          this.label[1].attr({"font-weight": 800})
+        }
+      }, function () {
+        this.sector.animate({scale: [1, 1, this.cx, this.cy]}, 500, "bounce")
+        if (this.label) {
+          this.label[0].animate({scale: 1}, 500, "bounce")
+          this.label[1].attr({"font-weight": 400})
+        }
+      })
 
-
-    if (!values.empty && !labels.empty)
-      Raphael(table[0], 300, 150).pieChart(300/2, 150/2, 49, values, labels, "#fff")
+    }
   }
 
 
