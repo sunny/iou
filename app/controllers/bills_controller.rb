@@ -12,6 +12,9 @@ class BillsController < ApplicationController
                     .sort_by { |f, a| -a.abs }
     @you_owe, @owes_you = debts.partition { |f, a| a > 0 }
     @owes_you.map! { |f, a| [f, a.abs] }
+
+    @total_owes_you = @owes_you.sum { |f, a| a }
+    @total_you_owe = @you_owe.sum { |f, a| a }
   end
 
   # GET /bills
