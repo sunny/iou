@@ -1,7 +1,7 @@
 <div id="overview">
   <h1>You owe <%=money(@total_you_owe)%></h1>
-
   <% unless @you_owe.empty? %>
+  <div id="you_owe_pie"></div>
   <table id="you_owe">
   <% @you_owe.each do |friend, amount| %>
     <tr>
@@ -14,6 +14,7 @@
 
   <h1>Owes you <%=money(@total_owes_you)%></h1>
   <% unless @owes_you.empty? %>
+  <div id="owes_you_pie"></div>
   <table id="owes_you">
   <% @owes_you.each do |friend, amount| %>
     <tr>

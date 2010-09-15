@@ -4,16 +4,17 @@ $(document).ready(function() {
   function debtPie(table) {
     var values = [],
         labels = [],
-        hrefs = []
+        hrefs = [],
+        holder = table.prev('div')[0]
     table.find('tr').each(function () {
       var a = $("th a", this),
           value = parseFloat($("td", this).text())
       labels.push(value + " EUR " + a.text())
       values.push(value)
       hrefs.push(a.attr('href'))
-    })
-    if (values.length > 1) {
-      var r = Raphael(table[0], 300, 120),
+    }).hide()
+    if (values.length != 0) {
+      var r = Raphael(holder, 300, 120),
           pie = r.g.piechart(60, 60, 50, values, {legend: labels, legendpos: "east", href: hrefs, colors:['#8B008B']})
       pie.hover(function () {
         this.sector.stop()
