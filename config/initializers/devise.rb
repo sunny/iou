@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "sunny+iou@sunfox.org"
+  config.mailer_sender = ENV['IOU_EMAIL'] || "sunny+iou@sunfox.org"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -46,7 +46,7 @@ Devise.setup do |config|
   config.encryptor = :bcrypt
 
   # Setup a pepper to generate the encrypted password.
-  config.pepper = "cc540a56e3f7cadc564c3c296c32dca75c9ca1986d54b186c848b5550b02d5e7dadfe1945a7fdb04478c774b3b25cf9fe2a0e5f2bf203b16a7f873b31f32b5a6"
+  config.pepper = ENV['IOU_PEPPER'] || "cc540a56e3f7cadc564c3c296c32dca75c9ca1986d54b186c848b5550b02d5e7dadfe1945a7fdb04478c774b3b25cf9fe2a0e5f2bf203b16a7f873b31f32b5a6b"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
