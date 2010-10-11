@@ -24,6 +24,15 @@ Requires Rails 3, which runs on Ruby 1.8.7 or 1.9.2. If you have none of these [
     $ rake db:migrate
     $ rails server
 
+Here are the environment variables you might need to fill, for example in your `~/.bashrc`:
+
+    export IOU_HOST='localhost:3000'
+    export IOU_TOKEN='your_app_token_here_should_be_a_long_string_of_random_characters'
+    export IOU_EMAIL='email@example.org'
+    export IOU_PEPPER='your_pepper_string_should_also_be_a_long_string_of_random_characters'
+    export IOU_RPX_APP_NAME='your_janrain_engage_app_name_that_you_setup_on_rpxnow_dot_com'
+    export IOU_RPX_KEY='the_corresponding_rpx_key'
+
 Planned to do
 -------------
 
