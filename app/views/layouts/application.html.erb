@@ -12,9 +12,7 @@
 
 <header>
   <h1>
-    <%= link_to_unless (!user_signed_in? or current_page?(root_path)),
-      raw("I<strong>#{ response.status == 404 ? "&#9785;" : "O"}</strong>U"),
-      root_path %>
+    <%= link_to_unless_current raw("I<strong>#{ response.status == 404 ? "&#9785;" : "O"}</strong>U"), root_path %>
   </h1>
 <% if user_signed_in? -%>
   <p id="hello">Hello <%=link_to_unless_current(current_user.name, edit_user_registration_path) %>! <%=link_to("Log out", destroy_user_session_path) %> if that's not you.</p>
