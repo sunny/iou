@@ -1,4 +1,4 @@
-class AddUserRecoverable < ActiveRecord::Migration
+class AddPeopleRecoverable < ActiveRecord::Migration
   def self.up
     change_table :people do |t|
       t.recoverable # devise column reset_password_token
