@@ -43,12 +43,9 @@ $gutter-width: 15px;
 
 html {
   text-align: center;
-  background: black url(../images/pattern.png) fixed;
+  background: black url(../images/background.png);
   color: white;
-  -moz-background-size: contain;
-  background-size: contain;
   height: 100%;
-  padding-right: 10%;
   @include border-box;
 }
 
@@ -66,7 +63,7 @@ body {
   min-height: 100%;
   @include border-box;
   padding: 0 2em 0 $sidebar-width;
-  border: solid black;
+  border: solid #333;
   border-width: 0 1ex;
   padding-bottom: -1px;
   margin-bottom: -1px;

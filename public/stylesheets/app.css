@@ -8,12 +8,9 @@
 
 html {
   text-align: center;
-  background: black url(../images/pattern.png) fixed;
+  background: black url(../images/background.png);
   color: white;
-  -moz-background-size: contain;
-  background-size: contain;
   height: 100%;
-  padding-right: 10%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -33,7 +30,7 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0 2em 0 180px;
-  border: solid black;
+  border: solid #333;
   border-width: 0 1ex;
   padding-bottom: -1px;
   margin-bottom: -1px; }
