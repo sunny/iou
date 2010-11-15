@@ -18,6 +18,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 group :test do
   gem 'shoulda'
-  gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
+  gem 'factory_girl_rails'
 end
 
