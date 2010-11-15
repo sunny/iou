@@ -13,6 +13,7 @@ gem 'devise', '1.1.rc2'
 # gem 'unicorn'
 # gem 'capistrano'
 # gem 'ruby-debug'
+gem 'mysql'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 group :test do
