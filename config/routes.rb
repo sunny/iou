@@ -1,4 +1,4 @@
-Iou::Application.routes.draw do |map|
+Iou::Application.routes.draw do
   devise_for :users
   resources :bills
   resources :friends do

@@ -29,4 +29,7 @@ Iou::Application.configure do
   # This is necessary if your schema can't be completely dumped by the schema dumper,
   # like if you have constraints or database-specific column types
   # config.active_record.schema_format = :sql
+
+  # How to show Active Support deprecations
+  config.active_support.deprecation = :stderr
 end
