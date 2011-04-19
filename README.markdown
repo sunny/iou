@@ -15,10 +15,9 @@ A bit like Billmonk.com only open source, RESTful, with HTML5 & SVG.
 Installation
 ------------
 
-Requires Rails 3, which runs on Ruby 1.8.7 or 1.9.2. If you have none of these [RVM](http://rvm.beginrescueend.com/) will come handy. Then:
+With ruby 1.9.2 ([RVM](http://rvm.beginrescueend.com/) might come handy):
 
-    $ gem install rails --pre
-    $ git clone git@github.com:sunny/iou.git
+    $ git clone https://sunny@github.com/sunny/iou.git
     $ cd iou
     $ bundle install
     $ rake db:migrate
